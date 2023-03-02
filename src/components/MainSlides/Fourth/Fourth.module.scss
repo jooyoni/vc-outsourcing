@@ -1,0 +1,5 @@
+.logoSlider {
+  & > div {
+    transition-timing-function: linear;
+  }
+}

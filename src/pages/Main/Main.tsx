@@ -1,5 +1,7 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Mousewheel } from 'swiper';
+import 'swiper/css';
+
 import styles from './Main.module.scss';
 import First from '../../components/MainSlides/First/First';
 import Second from '../../components/MainSlides/Second/Second';
@@ -13,21 +15,22 @@ function Main() {
         slidesPerView={1}
         speed={1500}
         spaceBetween={0}
-        mousewheel={true}
+        mousewheel={{
+          thresholdDelta: 30,
+        }}
         modules={[Mousewheel]}
-        touchRatio={0}
-        className="mySwiper"
-        style={{ width: '100%', height: '100vh' }}
+        allowTouchMove={true}
+        className={styles.mainSlider}
       >
-        <SwiperSlide>
+        <SwiperSlide style={{ backgroundColor: 'blue' }}>
           <First />
         </SwiperSlide>
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <Second />
         </SwiperSlide>
         <SwiperSlide>
           <Third />
-        </SwiperSlide>
+        </SwiperSlide> */}
         <SwiperSlide>
           <Fourth />
         </SwiperSlide>
