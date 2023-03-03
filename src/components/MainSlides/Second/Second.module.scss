@@ -1,0 +1,116 @@
+.container {
+  height: 100%;
+  display: flex;
+  position: relative;
+}
+.left {
+  width: 1088px;
+  padding-top: 21vh;
+  padding-left: 304px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  h3 {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 46px;
+    color: #1e1e1e;
+    padding: 70px 10px;
+  }
+  .contentArea {
+    padding: 16.5px 10px 26.5px;
+    height: 283px;
+    box-sizing: border-box;
+    position: relative;
+    .content {
+      position: absolute;
+      top: 16.5px;
+      left: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      opacity: 0;
+      transition: all 1s;
+      transform: translate(0, 50px);
+      &.hit {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+      h4 {
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 700;
+        font-size: 32px;
+        line-height: 50px;
+        color: #1e1e1e;
+      }
+      p {
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        color: rgba(30, 30, 30, 0.5);
+      }
+    }
+  }
+  .slideNextBtn {
+    width: 79px;
+    height: 79px;
+    background: #1e1e1e;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin: 46px 0 0;
+    img {
+      transform: rotate(180deg);
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+.right {
+  width: 832px;
+  background: url('../../../assets/background/aboutBg.png');
+  background-size: cover;
+  background-position: right;
+}
+.sliderWrap {
+  position: absolute;
+  left: 720px;
+  right: 0;
+  bottom: 150px;
+  & > div {
+    padding-left: 32px;
+  }
+  .slideWrap {
+    width: 416px;
+    height: 517px;
+    border-radius: 20px;
+    background-size: cover;
+    display: flex;
+    align-items: flex-end;
+    .slideTitle {
+      padding: 10px 20px;
+      height: 220px;
+      font-family: 'Spoqa Han Sans Neo';
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 50px;
+      color: #ffffff;
+    }
+    &:global(.slide0) {
+      background-image: url('../../../assets/background/aboutSlide01.png');
+    }
+    &:global(.slide1) {
+      background-image: url('../../../assets/background/aboutSlide02.png');
+    }
+    &:global(.slide2) {
+      background-image: url('../../../assets/background/aboutSlide03.png');
+    }
+    &:global(.slide3) {
+      background-image: url('../../../assets/background/aboutSlide04.png');
+    }
+  }
+}

@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   z-index: 999;
-  background-color: red;
+  background-color: transparent;
   padding-top: env(safe-area-inset-top);
   height: 80px;
   display: flex;
@@ -39,6 +39,7 @@
     line-height: 24px;
     letter-spacing: 0.2px;
     color: #ffffff;
+    cursor: pointer;
   }
 }
 .right {

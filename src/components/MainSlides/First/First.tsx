@@ -1,5 +1,5 @@
 import styles from './First.module.scss';
 function First() {
-  return <div>first</div>;
+  return <div className={styles.container}>first</div>;
 }
 export default First;
