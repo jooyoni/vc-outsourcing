@@ -1,0 +1,105 @@
+.container {
+  display: flex;
+  height: 100%;
+}
+.left {
+  background: url('../../../assets/background/portfolioBg.png');
+  background-size: cover;
+  width: 942px;
+  position: relative;
+  .textWrap {
+    position: absolute;
+    top: 297px;
+    left: 338px;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    span {
+      font-family: 'Spoqa Han Sans Neo';
+      font-weight: 700;
+      font-size: 128px;
+      line-height: 80px;
+      color: #ffffff;
+    }
+    p:nth-child(2) {
+      font-family: 'Spoqa Han Sans Neo';
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 66px;
+      color: #ffffff;
+      margin-bottom: 25px;
+      padding: 10px;
+    }
+    p:last-child {
+      font-family: 'Spoqa Han Sans Neo';
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 34px;
+      color: rgba(255, 255, 255, 0.9);
+      padding: 10px;
+    }
+  }
+}
+.right {
+  background-color: white;
+  width: 978px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  ul {
+    display: flex;
+    flex-direction: column;
+    width: 528px;
+    position: absolute;
+    top: 309px;
+    left: 144px;
+    li {
+      display: flex;
+      flex-direction: column;
+      border-bottom: 1px solid #000000;
+      padding: 30px 0 10px;
+      &.isOpen {
+        p {
+          max-height: 100px;
+        }
+        .title {
+          img {
+            transform: rotate(45deg);
+          }
+        }
+      }
+      .title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 6px 30px 0;
+        cursor: pointer;
+        h3 {
+          font-family: 'Spoqa Han Sans Neo';
+          font-weight: 700;
+          font-size: 36px;
+          line-height: 45px;
+          color: #1e1e1e;
+        }
+        img {
+          width: 30px;
+          height: 30px;
+          transform: rotate(0);
+          transition: all 0.3s linear;
+        }
+      }
+      p {
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: -0.03em;
+        color: #1e1e1e;
+        max-height: 0px;
+        overflow: hidden;
+        transform-origin: top;
+        transition: all 0.5s linear;
+      }
+    }
+  }
+}

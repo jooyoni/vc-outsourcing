@@ -7,6 +7,7 @@ import Second from '../../components/MainSlides/Second/Second';
 import Third from '../../components/MainSlides/Third/Third';
 import Fourth from '../../components/MainSlides/Fourth/Fourth';
 import { useState } from 'react';
+import Fifth from '../../components/MainSlides/Fifth/Fifth';
 function Main() {
   const [activeIdx, setActiveIdx] = useState(0);
   return (
@@ -46,6 +47,7 @@ function Main() {
             freeMode: false,
           },
         }}
+        touchRatio={0}
         onSlideChange={(swiper) => setActiveIdx(swiper.activeIndex)}
         allowTouchMove={true}
         className={styles.mainSlider}
@@ -61,6 +63,9 @@ function Main() {
         </SwiperSlide>
         <SwiperSlide>
           <Fourth />
+        </SwiperSlide>
+        <SwiperSlide>
+          <Fifth />
         </SwiperSlide>
       </Swiper>
     </div>
