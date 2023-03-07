@@ -8,6 +8,7 @@ import Third from '../../components/MainSlides/Third/Third';
 import Fourth from '../../components/MainSlides/Fourth/Fourth';
 import { useState } from 'react';
 import Fifth from '../../components/MainSlides/Fifth/Fifth';
+import Footer from '../../components/Footer/Footer';
 function Main() {
   const [activeIdx, setActiveIdx] = useState(0);
   return (
@@ -34,7 +35,7 @@ function Main() {
       </div>
       <Swiper
         direction={'vertical'}
-        slidesPerView={1}
+        slidesPerView={'auto'}
         speed={1500}
         spaceBetween={0}
         mousewheel={{
@@ -47,7 +48,7 @@ function Main() {
             freeMode: false,
           },
         }}
-        touchRatio={0}
+        // touchRatio={0}
         onSlideChange={(swiper) => setActiveIdx(swiper.activeIndex)}
         allowTouchMove={true}
         className={styles.mainSlider}
@@ -66,6 +67,9 @@ function Main() {
         </SwiperSlide>
         <SwiperSlide>
           <Fifth />
+        </SwiperSlide>
+        <SwiperSlide style={{ height: 'unset' }}>
+          <Footer />
         </SwiperSlide>
       </Swiper>
     </div>

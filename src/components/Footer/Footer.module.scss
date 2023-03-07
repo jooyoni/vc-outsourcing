@@ -1,0 +1,72 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  .top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+    .left {
+      display: flex;
+      align-items: center;
+      h1 {
+        font-family: 'Inter';
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 29px;
+        color: #ffffff;
+        padding: 10px 27.5px;
+      }
+      span {
+        font-family: 'Inter';
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 19px;
+        color: #ffffff;
+        padding: 10px;
+      }
+    }
+    ul.right {
+      display: flex;
+      gap: 26px;
+      li {
+        width: 140px;
+        display: flex;
+        justify-content: center;
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.2px;
+        color: rgba(255, 255, 255, 0.6);
+        position: relative;
+        &:first-child::after {
+          content: 'l';
+          display: block;
+          position: absolute;
+          top: 50%;
+          right: -14px;
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+  .bottom {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    .companyInfo {
+      display: flex;
+      padding: 0 18px;
+      gap: 33px;
+      li {
+        font-family: 'Inter';
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 19px;
+        color: #ffffff;
+      }
+    }
+  }
+}

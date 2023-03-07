@@ -5,15 +5,16 @@
 .left {
   background: url('../../../assets/background/portfolioBg.png');
   background-size: cover;
-  width: 942px;
+  width: 49.1%;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
   .textWrap {
-    position: absolute;
-    top: 297px;
-    left: 338px;
     right: 0;
     display: flex;
     flex-direction: column;
+    transform: translateY(-30px);
     span {
       font-family: 'Spoqa Han Sans Neo';
       font-weight: 700;
@@ -42,17 +43,16 @@
 }
 .right {
   background-color: white;
-  width: 978px;
+  width: 50.9%;
   display: flex;
   align-items: center;
   position: relative;
+  padding-left: 5%;
+  box-sizing: border-box;
   ul {
     display: flex;
     flex-direction: column;
     width: 528px;
-    position: absolute;
-    top: 309px;
-    left: 144px;
     li {
       display: flex;
       flex-direction: column;

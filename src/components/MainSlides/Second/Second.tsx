@@ -43,55 +43,57 @@ function Second() {
   const [activeIdx, setActiveIdx] = useState(0);
   return (
     <div className={styles.container}>
-      <div className={styles.left}>
-        <h3>Our Business</h3>
-        <div className={styles.contentArea}>
-          {slideContent.map((slide, idx) => (
-            <div
-              className={`${styles.content} ${
-                idx == activeIdx ? styles.hit : ''
-              }`}
-              key={idx}
-            >
-              <h4 dangerouslySetInnerHTML={{ __html: slide.title }}></h4>
-              <p dangerouslySetInnerHTML={{ __html: slide.content }}></p>
-              <p dangerouslySetInnerHTML={{ __html: slide.content2 }}></p>
-            </div>
-          ))}
+      <div className={styles.contentWrap}>
+        <div>
+          <h3>Our Business</h3>
+          <div className={styles.contentArea}>
+            {slideContent.map((slide, idx) => (
+              <div
+                className={`${styles.content} ${
+                  idx == activeIdx ? styles.hit : ''
+                }`}
+                key={idx}
+              >
+                <h4 dangerouslySetInnerHTML={{ __html: slide.title }}></h4>
+                <p dangerouslySetInnerHTML={{ __html: slide.content }}></p>
+                <p dangerouslySetInnerHTML={{ __html: slide.content2 }}></p>
+              </div>
+            ))}
+          </div>
+          <div
+            className={styles.slideNextBtn}
+            onClick={() => swiper?.slideNext()}
+          >
+            <img src={arrow} />
+          </div>
         </div>
-        <div
-          className={styles.slideNextBtn}
-          onClick={() => swiper?.slideNext()}
-        >
-          <img src={arrow} />
+        <div className={styles.sliderWrap}>
+          <Swiper
+            onSwiper={setSwiper}
+            slidesPerView={'auto'}
+            loop={true}
+            speed={800}
+            onSlideChangeTransitionEnd={(swiper) => {
+              setActiveIdx(swiper.activeIndex % 4);
+            }}
+            slideToClickedSlide={true}
+            spaceBetween={32}
+          >
+            {slideContent.map((val, idx) => (
+              <SwiperSlide
+                key={idx}
+                className={`${styles.slideWrap} ${'slide' + idx}`}
+              >
+                <div
+                  className={styles.slideTitle}
+                  dangerouslySetInnerHTML={{ __html: val.title }}
+                ></div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
       <div className={styles.right}></div>
-      <div className={styles.sliderWrap}>
-        <Swiper
-          onSwiper={setSwiper}
-          slidesPerView={'auto'}
-          loop={true}
-          speed={800}
-          onSlideChangeTransitionEnd={(swiper) => {
-            setActiveIdx(swiper.activeIndex % 4);
-          }}
-          slideToClickedSlide={true}
-          spaceBetween={32}
-        >
-          {slideContent.map((val, idx) => (
-            <SwiperSlide
-              key={idx}
-              className={`${styles.slideWrap} ${'slide' + idx}`}
-            >
-              <div
-                className={styles.slideTitle}
-                dangerouslySetInnerHTML={{ __html: val.title }}
-              ></div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
     </div>
   );
 }
