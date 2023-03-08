@@ -1,100 +1,173 @@
-.container {
+.container.pc {
   background: #00050f;
   height: 100%;
   display: flex;
-}
-.left {
-  width: 48.8%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  .contentWrap {
-    padding-right: 48px;
-    h3 {
-      font-family: 'Inter';
-      font-weight: 700;
-      font-size: 48px;
-      line-height: 58px;
-      color: #ffffff;
-      padding: 10px;
-      margin-bottom: 37px;
+  // @media screen and (max-width: 1320px) {
+  //   display: none;
+  // }
+  .left {
+    width: 48.8%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @media screen and (max-width: 1200px) {
+      width: 55%;
     }
-    p {
-      font-family: 'Spoqa Han Sans Neo';
-      font-weight: 500;
-      font-size: 24px;
-      line-height: 37px;
-      color: #ffffff;
-      padding: 10px;
-      margin-bottom: 61px;
+    .contentWrap {
+      padding-right: 48px;
+      @media screen and (max-width: 1480px) {
+        padding-right: 24px;
+      }
+      h3 {
+        font-family: 'Inter';
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 58px;
+        color: #ffffff;
+        padding: 10px;
+        margin-bottom: 37px;
+      }
+      p {
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 37px;
+        color: #ffffff;
+        padding: 10px;
+        margin-bottom: 61px;
+      }
+      .btns {
+        display: flex;
+        gap: 32px;
+        img {
+          width: 80px;
+          height: 80px;
+          cursor: pointer;
+          &:last-child {
+            transform: rotate(180deg);
+          }
+        }
+      }
+      @media screen and (max-width: 1480px) {
+        h3 {
+          font-size: 40px;
+          line-height: 46px;
+          margin-bottom: 20px;
+        }
+        p {
+          line-height: 32px;
+          font-size: 20px;
+          margin-bottom: 40px;
+        }
+        .btns img {
+          width: 70px;
+          height: 70px;
+        }
+      }
+      @media screen and (max-width: 1040px) {
+        h3 {
+          font-size: 34px;
+          line-height: 42px;
+          margin-bottom: 12px;
+        }
+        p {
+          line-height: 28px;
+          font-size: 18px;
+          margin-bottom: 32px;
+        }
+        .btns img {
+          width: 60px;
+          height: 60px;
+        }
+      }
     }
-    .btns {
-      display: flex;
-      gap: 32px;
-      img {
-        width: 80px;
-        height: 80px;
-        cursor: pointer;
-        &:last-child {
-          transform: rotate(180deg);
+  }
+  .right {
+    width: 51.2%;
+    position: relative;
+    // background-color: red;
+    @media screen and (max-width: 1200px) {
+      width: 45%;
+    }
+    & > img {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 0;
+      width: 80%;
+      max-width: 832px;
+    }
+    .slider {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      right: 0;
+      padding-left: 32px;
+      .slide {
+        width: 416px;
+        aspect-ratio: 1/1.219;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(9px);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media screen and (max-width: 1480px) {
+          width: 370px;
+        }
+        @media screen and (max-width: 1200px) {
+          width: 280px;
+        }
+        &:global(.slide0) {
+          background: rgba(51, 103, 182, 0.45);
+        }
+        &:global(.slide1) {
+          background: rgba(47, 245, 234, 0.45);
+        }
+        &:global(.slide2) {
+          background: rgba(47, 245, 234, 0.45);
+        }
+        h3 {
+          font-family: 'Spoqa Han Sans Neo';
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 25px;
+          color: #ffffff;
+          padding: 10px;
+        }
+        span {
+          font-family: 'Spoqa Han Sans Neo';
+          font-weight: 700;
+          font-size: 48px;
+          line-height: 60px;
+          color: #ffffff;
+          display: inline-block;
+          padding: 10px;
+          @media screen and (max-width: 1200px) {
+            font-size: 36px;
+            line-height: 52px;
+          }
         }
       }
     }
   }
 }
-.right {
-  width: 51.2%;
-  position: relative;
-  // background-color: red;
-  & > img {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    right: 0;
-    width: 80%;
+.container.mobile {
+  height: 100%;
+  background: #00050f;
+  display: none;
+  @media screen and (min-width: 1321px) {
+    display: none;
   }
-  .slider {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    right: 0;
-    padding-left: 32px;
-    .slide {
-      width: 416px;
-      height: 507px;
-      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-      backdrop-filter: blur(9px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      &:global(.slide0) {
-        background: rgba(51, 103, 182, 0.45);
-      }
-      &:global(.slide1) {
-        background: rgba(47, 245, 234, 0.45);
-      }
-      &:global(.slide2) {
-        background: rgba(47, 245, 234, 0.45);
-      }
-      h3 {
-        font-family: 'Spoqa Han Sans Neo';
-        font-weight: 700;
-        font-size: 20px;
-        line-height: 25px;
-        color: #ffffff;
-        padding: 10px;
-      }
-      span {
-        font-family: 'Spoqa Han Sans Neo';
-        font-weight: 700;
-        font-size: 48px;
-        line-height: 60px;
-        color: #ffffff;
-        display: inline-block;
-        padding: 10px;
-      }
-    }
+  & > h2 {
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #ffffff;
+    padding: 10px;
+  }
+  & > p {
   }
 }

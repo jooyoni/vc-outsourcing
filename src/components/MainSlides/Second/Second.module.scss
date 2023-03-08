@@ -1,126 +1,270 @@
-.container {
+.container.pc {
   height: 100%;
   display: flex;
   position: relative;
+  @media screen and (max-width: 1024px) {
+    display: none;
+  }
+  .contentWrap {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    & > div:first-child {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+      padding-left: 17.7vw;
+      h3 {
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 700;
+        font-size: 64px;
+        line-height: 46px;
+        color: #1e1e1e;
+        padding: 70px 10px;
+        @media screen and (max-width: 1400px) {
+          font-size: 54px;
+          padding: 40px 10px;
+        }
+      }
+      .contentArea {
+        padding: 16.5px 10px 26.5px;
+        height: 283px;
+        box-sizing: border-box;
+        position: relative;
+        .content {
+          position: absolute;
+          top: 16.5px;
+          left: 10px;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          opacity: 0;
+          transition: all 1s;
+          transform: translate(0, 50px);
+          &.hit {
+            opacity: 1;
+            transform: translate(0, 0);
+          }
+          h4 {
+            font-family: 'Spoqa Han Sans Neo';
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 50px;
+            color: #1e1e1e;
+            @media screen and (max-width: 1400px) {
+              font-size: 28px;
+              line-height: 40px;
+            }
+          }
+          p {
+            font-family: 'Spoqa Han Sans Neo';
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: rgba(30, 30, 30, 0.5);
+          }
+        }
+      }
+      .slideNextBtn {
+        width: 79px;
+        height: 79px;
+        background: #1e1e1e;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        margin: 46px 0 0;
+        img {
+          transform: rotate(180deg);
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+    .sliderWrap {
+      // flex-grow: 1;
+      padding-top: 320px;
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      @media screen and (max-width: 1400px) {
+        padding-top: 170px;
+      }
+      & > div {
+        padding-left: 32px;
+        width: 100%;
+      }
+      .slideWrap {
+        width: 416px;
+        aspect-ratio: 1/1.243;
+        border-radius: 20px;
+        background-size: cover;
+        display: flex;
+        align-items: flex-end;
+        @media screen and (max-width: 1400px) {
+          width: 350px;
+        }
+        .slideTitle {
+          padding: 10px 20px;
+          height: 220px;
+          font-family: 'Spoqa Han Sans Neo';
+          font-weight: 700;
+          font-size: 32px;
+          line-height: 50px;
+          color: #ffffff;
+        }
+        &:global(.slide0) {
+          background-image: url('../../../assets/background/aboutSlide01.png');
+        }
+        &:global(.slide1) {
+          background-image: url('../../../assets/background/aboutSlide02.png');
+        }
+        &:global(.slide2) {
+          background-image: url('../../../assets/background/aboutSlide03.png');
+        }
+        &:global(.slide3) {
+          background-image: url('../../../assets/background/aboutSlide04.png');
+        }
+      }
+    }
+  }
+  .right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 43.3%;
+    height: 100%;
+    background: url('../../../assets/background/aboutBg.png');
+    background-size: cover;
+    background-position: right;
+  }
 }
-.contentWrap {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  & > div:first-child {
-    box-sizing: border-box;
+.container.mobile {
+  // background-color: red;
+  height: 100%;
+  position: relative;
+  @media screen and (min-width: 1025px) {
+    display: none;
+  }
+  .bg {
+    height: 46.2%;
+    background: url('../../../assets/background/aboutBg.png');
+    background-size: cover;
+    background-position: top right;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  .content {
+    max-width: 343px;
+    // background-color: white;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    flex-shrink: 0;
-    padding-left: 17.7vw;
     h3 {
       font-family: 'Spoqa Han Sans Neo';
       font-weight: 700;
-      font-size: 64px;
+      font-size: 32px;
       line-height: 46px;
-      color: #1e1e1e;
-      padding: 70px 10px;
+      color: #ffffff;
+      padding: 40.5px 10px;
     }
-    .contentArea {
-      padding: 16.5px 10px 26.5px;
-      height: 283px;
-      box-sizing: border-box;
+    .sliderWrap {
       position: relative;
-      .content {
-        position: absolute;
-        top: 16.5px;
-        left: 10px;
+      flex-shrink: 1;
+      .nextBtn {
+        background: #252629;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
         display: flex;
-        flex-direction: column;
-        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        bottom: -26px;
+        right: 0;
+        width: 69px;
+        height: 69px;
+        border-radius: 50%;
+        z-index: 1;
+        cursor: pointer;
+        img {
+          width: 24px;
+          height: 24px;
+          transform: rotate(180deg);
+        }
+      }
+      .slider {
+        filter: drop-shadow(0px 8px 20px rgba(0, 0, 0, 0.15));
+        position: relative;
+        border-radius: 16px;
+
+        .slide {
+          width: 100%;
+          aspect-ratio: 1/1.216;
+          background-size: cover;
+          padding-top: 53px;
+          span {
+            font-family: 'Spoqa Han Sans Neo';
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 50px;
+            color: #ffffff;
+            display: inline-block;
+            padding: 10px 20px;
+          }
+          &:global(.slide0) {
+            background-image: url('../../../assets/background/aboutSlide01.png');
+          }
+          &:global(.slide1) {
+            background-image: url('../../../assets/background/aboutSlide02.png');
+          }
+          &:global(.slide2) {
+            background-image: url('../../../assets/background/aboutSlide03.png');
+          }
+          &:global(.slide3) {
+            background-image: url('../../../assets/background/aboutSlide04.png');
+          }
+        }
+      }
+    }
+    .contentDetail {
+      flex-grow: 1;
+      position: relative;
+      height: 220px;
+      padding: 20px 0;
+      & > div {
+        position: absolute;
+        top: 20px;
+        left: 6px;
+        right: 6px;
         opacity: 0;
+        transform: translateY(40px);
         transition: all 1s;
-        transform: translate(0, 50px);
         &.hit {
+          transform: translateY(0);
           opacity: 1;
-          transform: translate(0, 0);
         }
         h4 {
           font-family: 'Spoqa Han Sans Neo';
           font-weight: 700;
-          font-size: 32px;
+          font-size: 24px;
           line-height: 50px;
           color: #1e1e1e;
         }
         p {
           font-family: 'Spoqa Han Sans Neo';
           font-weight: 400;
-          font-size: 16px;
-          line-height: 24px;
+          font-size: 14px;
+          line-height: 18px;
           color: rgba(30, 30, 30, 0.5);
+          padding: 10px 0;
         }
       }
     }
-    .slideNextBtn {
-      width: 79px;
-      height: 79px;
-      background: #1e1e1e;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      cursor: pointer;
-      margin: 46px 0 0;
-      img {
-        transform: rotate(180deg);
-        width: 24px;
-        height: 24px;
-      }
-    }
   }
-  .sliderWrap {
-    // flex-grow: 1;
-    padding-top: 320px;
-    position: relative;
-    z-index: 10;
-    width: 100%;
-    & > div {
-      padding-left: 32px;
-      width: 100%;
-    }
-    .slideWrap {
-      width: 416px;
-      height: 517px;
-      border-radius: 20px;
-      background-size: cover;
-      display: flex;
-      align-items: flex-end;
-      .slideTitle {
-        padding: 10px 20px;
-        height: 220px;
-        font-family: 'Spoqa Han Sans Neo';
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 50px;
-        color: #ffffff;
-      }
-      &:global(.slide0) {
-        background-image: url('../../../assets/background/aboutSlide01.png');
-      }
-      &:global(.slide1) {
-        background-image: url('../../../assets/background/aboutSlide02.png');
-      }
-      &:global(.slide2) {
-        background-image: url('../../../assets/background/aboutSlide03.png');
-      }
-      &:global(.slide3) {
-        background-image: url('../../../assets/background/aboutSlide04.png');
-      }
-    }
-  }
-}
-.right {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 43.3%;
-  height: 100%;
-  background: url('../../../assets/background/aboutBg.png');
-  background-size: cover;
-  background-position: right;
 }
