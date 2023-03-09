@@ -13,10 +13,16 @@
   align-items: center;
   flex-direction: column;
   margin: 0 auto;
-  h3,
-  span {
+  h3 {
     display: inline-block;
     padding: 10px;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    color: #ffffff;
+  }
+  span {
     font-family: 'Inter';
     font-weight: 700;
     font-size: 60px;
@@ -32,6 +38,49 @@
     line-height: 34px;
     text-align: center;
     color: #ffffff;
+  }
+  @media screen and (max-width: 1920px) {
+    h3 {
+      font-size: 3.3vw;
+      line-height: 3.8vw;
+    }
+    span {
+      font-size: 3.1vw;
+      line-height: 3.8vw;
+    }
+    p {
+      font-size: 1.2vw;
+      line-height: 1.8vw;
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    h3 {
+      font-size: 5.9vw;
+      line-height: 6.6vw;
+    }
+    span {
+      font-size: 4.2vw;
+      line-height: 5.1vw;
+    }
+    p {
+      font-size: 2.4vw;
+      line-height: 3.3vw;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    h3 {
+      font-size: 8.5vw;
+      line-height: 10.4vw;
+    }
+    span {
+      font-size: 5.3vw;
+      line-height: 6.4vw;
+    }
+    p {
+      font-size: 3.7vw;
+      line-height: 4.8vw;
+    }
   }
 }
 .logoListWrap {

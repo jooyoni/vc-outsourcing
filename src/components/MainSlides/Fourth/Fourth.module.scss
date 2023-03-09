@@ -2,22 +2,20 @@
   background: #00050f;
   height: 100%;
   display: flex;
-  // @media screen and (max-width: 1320px) {
-  //   display: none;
-  // }
+  @media screen and (max-width: 767px) {
+    display: none;
+  }
   .left {
     width: 48.8%;
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    @media screen and (max-width: 1200px) {
-      width: 55%;
-    }
     .contentWrap {
       padding-right: 48px;
       @media screen and (max-width: 1480px) {
         padding-right: 24px;
       }
+
       h3 {
         font-family: 'Inter';
         font-weight: 700;
@@ -48,36 +46,29 @@
           }
         }
       }
-      @media screen and (max-width: 1480px) {
+      @media screen and (max-width: 1920px) {
         h3 {
-          font-size: 40px;
-          line-height: 46px;
-          margin-bottom: 20px;
+          font-size: 2.5vw;
+          line-height: 3.02vw;
         }
         p {
-          line-height: 32px;
-          font-size: 20px;
-          margin-bottom: 40px;
+          font-size: 1.25vw;
+          line-height: 1.927vw;
+        }
+      }
+      @media screen and (max-width: 1023px) {
+        h3 {
+          font-size: 4vw;
+          line-height: 5vw;
+          margin-bottom: 16px;
+        }
+        p {
+          font-size: 2vw;
+          line-height: 2.6vw;
         }
         .btns img {
           width: 70px;
           height: 70px;
-        }
-      }
-      @media screen and (max-width: 1040px) {
-        h3 {
-          font-size: 34px;
-          line-height: 42px;
-          margin-bottom: 12px;
-        }
-        p {
-          line-height: 28px;
-          font-size: 18px;
-          margin-bottom: 32px;
-        }
-        .btns img {
-          width: 60px;
-          height: 60px;
         }
       }
     }
@@ -85,10 +76,6 @@
   .right {
     width: 51.2%;
     position: relative;
-    // background-color: red;
-    @media screen and (max-width: 1200px) {
-      width: 45%;
-    }
     & > img {
       position: absolute;
       top: 50%;
@@ -113,12 +100,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        @media screen and (max-width: 1480px) {
-          width: 370px;
-        }
-        @media screen and (max-width: 1200px) {
-          width: 280px;
-        }
+
         &:global(.slide0) {
           background: rgba(51, 103, 182, 0.45);
         }
@@ -144,9 +126,25 @@
           color: #ffffff;
           display: inline-block;
           padding: 10px;
-          @media screen and (max-width: 1200px) {
-            font-size: 36px;
-            line-height: 52px;
+        }
+        @media screen and (max-width: 1920px) {
+          width: 21.666vw;
+          h3 {
+            font-size: 1.041vw;
+            line-height: 1.302vw;
+          }
+          span {
+            font-size: 2.5vw;
+            line-height: 3.125vw;
+          }
+        }
+        @media screen and (max-width: 1023px) {
+          width: 24vw;
+          h3 {
+            font-size: 1.8vw;
+          }
+          span {
+            font-size: 2.8vw;
           }
         }
       }
@@ -156,9 +154,34 @@
 .container.mobile {
   height: 100%;
   background: #00050f;
-  display: none;
-  @media screen and (min-width: 1321px) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  @media screen and (min-width: 768px) {
     display: none;
+  }
+  .bg {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    width: 50%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    object-position: left;
+    @media screen and (max-width: 720px) {
+      width: 60%;
+      aspect-ratio: 1/1.2;
+    }
+    @media screen and (max-width: 520px) {
+      width: 70%;
+      // aspect-ratio: 1/1.747;
+    }
+    @media screen and (max-width: 375px) {
+      width: 80%;
+      aspect-ratio: 1/1.747;
+    }
   }
   & > h2 {
     font-family: 'Inter';
@@ -169,5 +192,65 @@
     padding: 10px;
   }
   & > p {
+    font-family: 'Spoqa Han Sans Neo';
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 18px;
+    color: #ffffff;
+    padding: 10px;
+  }
+  .slider {
+    width: 100%;
+    padding-left: 16px;
+    margin: 60px 0 48px;
+    .slide {
+      width: 252px;
+      height: 348px;
+      aspect-ratio: 1/1.381;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      &:global(.slide0) {
+        background: rgba(51, 103, 182, 0.45);
+      }
+      &:global(.slide1) {
+        background: rgba(47, 245, 234, 0.45);
+      }
+      &:global(.slide2) {
+        background: rgba(47, 245, 234, 0.45);
+      }
+      h5 {
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 25px;
+        color: #ffffff;
+        padding: 10px;
+      }
+      span {
+        font-family: 'Spoqa Han Sans Neo';
+        font-weight: 700;
+        font-size: 36px;
+        line-height: 45px;
+        color: #ffffff;
+        display: inline-block;
+        padding: 10px;
+      }
+    }
+  }
+  .slideBtns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    padding-right: 17px;
+    img {
+      width: 70px;
+      height: 70px;
+      cursor: pointer;
+      &:last-child {
+        transform: rotate(180deg);
+      }
+    }
   }
 }

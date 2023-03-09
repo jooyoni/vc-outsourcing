@@ -3,12 +3,10 @@
   height: calc(var(--vh, 1vh) * 100);
   & > div > div {
     min-height: calc(var(--vh, 1vh) * 100);
-    &:last-child {
-      min-height: unset;
-    }
-    @media screen and (max-width: 800px) {
+
+    @media screen and (max-width: 767px) {
       height: auto;
-      min-height: unset;
+      // min-height: unset;
     }
   }
 }
@@ -21,6 +19,9 @@
   left: 40px;
   transform: translateY(-50%);
   z-index: 10;
+  @media screen and (max-width: 1023px) {
+    display: none;
+  }
   ul {
     display: flex;
     flex-direction: column;

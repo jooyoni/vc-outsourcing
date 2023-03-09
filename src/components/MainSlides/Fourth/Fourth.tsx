@@ -26,6 +26,7 @@ const slideData = [
   },
 ];
 function Fourth() {
+  const [swiperPC, setSwiperPC] = useState<SwiperCore>();
   const [swiper, setSwiper] = useState<SwiperCore>();
 
   return (
@@ -42,15 +43,15 @@ function Fourth() {
               펀드운용 수익이라는 목표를 추진해오고 있습니다.
             </p>
             <div className={styles.btns}>
-              <img src={arrow} onClick={() => swiper?.slidePrev()} />
-              <img src={arrow} onClick={() => swiper?.slideNext()} />
+              <img src={arrow} onClick={() => swiperPC?.slidePrev()} />
+              <img src={arrow} onClick={() => swiperPC?.slideNext()} />
             </div>
           </div>
         </div>
         <div className={styles.right}>
           <img src={irBg} />
           <Swiper
-            onSwiper={setSwiper}
+            onSwiper={setSwiperPC}
             className={styles.slider}
             slidesPerView={'auto'}
             spaceBetween={32}
@@ -66,6 +67,7 @@ function Fourth() {
         </div>
       </div>
       <div className={`${styles.container} ${styles.mobile}`}>
+        <img src={irBg} className={styles.bg} />
         <h2>i SQUARE VENTURES</h2>
         <p>
           최고의 전문인력과 차별화된 가치증대 방식으로
@@ -74,6 +76,26 @@ function Fourth() {
           <br />
           펀드운용 수익이라는 목표를 추진해오고 있습니다.
         </p>
+        <Swiper
+          slidesPerView={'auto'}
+          spaceBetween={11}
+          className={styles.slider}
+          onSwiper={setSwiper}
+        >
+          {slideData.map((data, idx) => (
+            <SwiperSlide
+              key={idx}
+              className={`${styles.slide} ${'slide' + idx}`}
+            >
+              <h5>{data.title}</h5>
+              <span>{data.content}</span>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <div className={styles.slideBtns}>
+          <img src={arrow} onClick={() => swiper?.slidePrev()} />
+          <img src={arrow} onClick={() => swiper?.slideNext()} />
+        </div>
       </div>
     </>
   );

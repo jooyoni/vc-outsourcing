@@ -6,11 +6,16 @@ import First from '../../components/MainSlides/First/First';
 import Second from '../../components/MainSlides/Second/Second';
 import Third from '../../components/MainSlides/Third/Third';
 import Fourth from '../../components/MainSlides/Fourth/Fourth';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Fifth from '../../components/MainSlides/Fifth/Fifth';
 import Footer from '../../components/Footer/Footer';
 function Main() {
   const [activeIdx, setActiveIdx] = useState(0);
+  useEffect(() => {
+    window.addEventListener('resize', (e) => {
+      console.log(e);
+    });
+  }, []);
   return (
     <div className={styles.container}>
       <div className={styles.paginationWrap}>
@@ -44,7 +49,7 @@ function Main() {
         freeMode={true}
         modules={[Mousewheel, FreeMode]}
         breakpoints={{
-          800: {
+          767: {
             freeMode: false,
           },
         }}
@@ -68,7 +73,7 @@ function Main() {
         <SwiperSlide>
           <Fifth />
         </SwiperSlide>
-        <SwiperSlide style={{ height: 'unset' }}>
+        <SwiperSlide style={{ height: 'auto', minHeight: 'unset' }}>
           <Footer />
         </SwiperSlide>
       </Swiper>
