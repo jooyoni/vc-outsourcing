@@ -11,10 +11,21 @@ import Fifth from '../../components/MainSlides/Fifth/Fifth';
 import Footer from '../../components/Footer/Footer';
 function Main() {
   const [activeIdx, setActiveIdx] = useState(0);
+  const [isFullpage, setIsFullpage] = useState(0); //1이면 풀페이지 2는 일반
+  function pageHandler(e: UIEvent) {
+    let target = e.currentTarget as Window;
+    if (target.innerWidth > 767) setIsFullpage(1);
+    else setIsFullpage(2);
+  }
   useEffect(() => {
-    window.addEventListener('resize', (e) => {
-      console.log(e);
-    });
+    window.addEventListener('resize', (e) => pageHandler(e));
+    return () => {
+      window.removeEventListener('resize', (e) => pageHandler(e));
+    };
+  }, []);
+  useEffect(() => {
+    if (window.innerWidth > 767) setIsFullpage(1);
+    else setIsFullpage(2);
   }, []);
   return (
     <div className={styles.container}>
@@ -38,45 +49,57 @@ function Main() {
           </li>
         </ul>
       </div>
-      <Swiper
-        direction={'vertical'}
-        slidesPerView={'auto'}
-        speed={1500}
-        spaceBetween={0}
-        mousewheel={{
-          thresholdDelta: 30,
-        }}
-        freeMode={true}
-        modules={[Mousewheel, FreeMode]}
-        breakpoints={{
-          767: {
-            freeMode: false,
-          },
-        }}
-        // touchRatio={0}
-        onSlideChange={(swiper) => setActiveIdx(swiper.activeIndex)}
-        allowTouchMove={true}
-        className={styles.mainSlider}
-      >
-        <SwiperSlide>
+      {isFullpage == 1 && (
+        <Swiper
+          direction={'vertical'}
+          slidesPerView={'auto'}
+          speed={1500}
+          spaceBetween={0}
+          mousewheel={{
+            thresholdDelta: 30,
+          }}
+          freeMode={false}
+          modules={[Mousewheel, FreeMode]}
+          // breakpoints={{
+          //   767: {
+          //     freeMode: false,
+          //   },
+          // }}
+          // touchRatio={0}
+          onSlideChange={(swiper) => setActiveIdx(swiper.activeIndex)}
+          allowTouchMove={true}
+          className={styles.mainSlider}
+        >
+          <SwiperSlide>
+            <First />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Second />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Third />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Fourth />
+          </SwiperSlide>
+          <SwiperSlide>
+            <Fifth />
+          </SwiperSlide>
+          <SwiperSlide style={{ height: 'auto', minHeight: 'unset' }}>
+            <Footer />
+          </SwiperSlide>
+        </Swiper>
+      )}
+      {isFullpage == 2 && (
+        <>
           <First />
-        </SwiperSlide>
-        <SwiperSlide>
           <Second />
-        </SwiperSlide>
-        <SwiperSlide>
           <Third />
-        </SwiperSlide>
-        <SwiperSlide>
           <Fourth />
-        </SwiperSlide>
-        <SwiperSlide>
           <Fifth />
-        </SwiperSlide>
-        <SwiperSlide style={{ height: 'auto', minHeight: 'unset' }}>
           <Footer />
-        </SwiperSlide>
-      </Swiper>
+        </>
+      )}
     </div>
   );
 }

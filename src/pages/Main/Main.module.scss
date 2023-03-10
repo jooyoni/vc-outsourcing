@@ -3,7 +3,6 @@
   height: calc(var(--vh, 1vh) * 100);
   & > div > div {
     min-height: calc(var(--vh, 1vh) * 100);
-
     @media screen and (max-width: 767px) {
       height: auto;
       // min-height: unset;
@@ -12,6 +11,9 @@
 }
 .container {
   position: relative;
+  & > div {
+    min-height: calc(var(--vh, 1vh) * 100);
+  }
 }
 .paginationWrap {
   position: fixed;
