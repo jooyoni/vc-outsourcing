@@ -1,9 +1,18 @@
 import styles from './Header.module.scss';
 import arrow from '../../assets/arrowWhite.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 function Header() {
   const [sideIsOpen, setSideIsOpen] = useState(false);
   const [language, setLanguage] = useState('kor');
+  useEffect(() => {
+    if (!sideIsOpen) document.body.style.overflow = 'unset';
+    else {
+      if (window.innerWidth <= 1023) document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [sideIsOpen]);
   return (
     <>
       <div className={styles.container}>
