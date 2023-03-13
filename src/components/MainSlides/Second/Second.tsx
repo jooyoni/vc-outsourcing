@@ -42,6 +42,9 @@ function Second() {
   const [swiper, setSwiper] = useState<SwiperCore>();
   const [swiperPC, setSwiperPC] = useState<SwiperCore>();
   const [activeIdx, setActiveIdx] = useState(0);
+  const [pcActiveIdx, setPcActiveIdx] = useState(0);
+
+  console.log(activeIdx);
   return (
     <>
       <div className={`${styles.container} ${styles.pc}`}>
@@ -52,11 +55,13 @@ function Second() {
               {slideContent.map((slide, idx) => (
                 <div
                   className={`${styles.content} ${
-                    idx == activeIdx ? styles.hit : ''
+                    idx == pcActiveIdx ? styles.hit : ''
                   }`}
                   key={idx}
                 >
-                  <h4 dangerouslySetInnerHTML={{ __html: slide.title }}></h4>
+                  <h4
+                    dangerouslySetInnerHTML={{ __html: slide.title + idx }}
+                  ></h4>
                   <p dangerouslySetInnerHTML={{ __html: slide.content }}></p>
                   <p dangerouslySetInnerHTML={{ __html: slide.content2 }}></p>
                 </div>
@@ -76,9 +81,10 @@ function Second() {
               loop={true}
               speed={800}
               onSlideChangeTransitionEnd={(swiper) => {
-                setActiveIdx(swiper.activeIndex % 4);
+                setPcActiveIdx(swiper.activeIndex % 4);
               }}
-              slideToClickedSlide={true}
+              // slideToClickedSlide={true}
+              // loopedSlides={20}
               spaceBetween={32}
             >
               {slideContent.map((val, idx) => (
@@ -106,7 +112,9 @@ function Second() {
               className={styles.slider}
               loop={true}
               onSwiper={setSwiper}
+              speed={800}
               onSlideChangeTransitionEnd={(swiper) => {
+                console.log(swiper.activeIndex % 4);
                 setActiveIdx(swiper.activeIndex % 4);
               }}
             >
@@ -116,7 +124,7 @@ function Second() {
                   className={`${styles.slide} ${'slide' + idx}`}
                 >
                   <span
-                    dangerouslySetInnerHTML={{ __html: content.title }}
+                    dangerouslySetInnerHTML={{ __html: content.title + idx }}
                   ></span>
                 </SwiperSlide>
               ))}

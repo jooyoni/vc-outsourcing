@@ -1,26 +1,16 @@
 .mainSlider {
   width: 100%;
   height: calc(var(--vh, 1vh) * 100);
-  & > div > div {
-    min-height: calc(var(--vh, 1vh) * 100);
-    @media screen and (max-width: 767px) {
-      height: auto;
-      // min-height: unset;
-    }
-  }
 }
-.container {
+.scrollPage {
   position: relative;
-  & > div {
-    min-height: calc(var(--vh, 1vh) * 100);
-    &:first-child {
-      //풀페이지 페이지네이션
-      min-height: unset;
-    }
-    &:last-child {
-      min-height: unset;
-    }
-  }
+  // & > div {
+  //   height: 100vh;
+  //   box-sizing: border-box;
+  //   &:last-child {
+  //     height: unset;
+  //   }
+  // }
 }
 .paginationWrap {
   position: fixed;

@@ -9,9 +9,11 @@ import Fourth from '../../components/MainSlides/Fourth/Fourth';
 import { useEffect, useState } from 'react';
 import Fifth from '../../components/MainSlides/Fifth/Fifth';
 import Footer from '../../components/Footer/Footer';
+import Modal from '../../components/Modal/Modal';
 function Main() {
   const [activeIdx, setActiveIdx] = useState(0);
   const [isFullpage, setIsFullpage] = useState(0); //1이면 풀페이지 2는 일반
+  const [modalType, setModalType] = useState(0); // 푸터 메뉴 관련 모달  0:닫힘 1:스튜어드십 2: 개인정보처리방침 3:고객정보 취급방침, 4:사이버신고센터
   function pageHandler(e: UIEvent) {
     let target = e.currentTarget as Window;
     if (target.innerWidth > 767) setIsFullpage(1);
@@ -58,6 +60,7 @@ function Main() {
           mousewheel={{
             thresholdDelta: 30,
           }}
+          shortSwipes={false}
           freeMode={false}
           modules={[Mousewheel, FreeMode]}
           // breakpoints={{
@@ -86,19 +89,22 @@ function Main() {
             <Fifth />
           </SwiperSlide>
           <SwiperSlide style={{ height: 'auto', minHeight: 'unset' }}>
-            <Footer />
+            <Footer setModalType={setModalType} />
           </SwiperSlide>
         </Swiper>
       )}
       {isFullpage == 2 && (
-        <>
+        <div className={styles.scrollPage}>
           <First />
           <Second />
           <Third />
           <Fourth />
           <Fifth />
-          <Footer />
-        </>
+          <Footer setModalType={setModalType} />
+        </div>
+      )}
+      {modalType !== 0 && (
+        <Modal type={modalType} setModalType={setModalType} />
       )}
     </div>
   );

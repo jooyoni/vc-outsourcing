@@ -149,3 +149,7 @@
   text-decoration: none;
   list-style: none;
 }
+body {
+  // background-color: red;
+  padding-bottom: env(safe-area-inset-bottom);
+}

@@ -115,6 +115,7 @@
       position: relative;
       z-index: 10;
       width: 100%;
+      overflow: hidden;
       @media screen and (max-width: 1920px) {
         padding-top: 14vw;
       }
@@ -192,6 +193,8 @@
   // background-color: red;
   height: 100%;
   position: relative;
+  display: flex;
+  align-items: center;
   @media screen and (min-width: 768px) {
     display: none;
   }
