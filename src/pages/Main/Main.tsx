@@ -56,7 +56,7 @@ function Main() {
           direction={'vertical'}
           slidesPerView={'auto'}
           speed={1500}
-          spaceBetween={0}
+          spaceBetween={-1}
           mousewheel={{
             thresholdDelta: 30,
           }}

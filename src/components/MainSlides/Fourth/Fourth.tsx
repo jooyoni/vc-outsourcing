@@ -56,6 +56,7 @@ function Fourth() {
             slidesPerView={'auto'}
             spaceBetween={32}
             loop={true}
+            speed={1000}
           >
             {slideData.map((data, idx) => (
               <SwiperSlide className={`${styles.slide} slide${idx}`}>
