@@ -478,6 +478,7 @@
         }
         ul {
           width: 100%;
+          box-sizing: border-box;
           padding: 0 20px;
           li {
             text-align: left;
@@ -515,6 +516,21 @@
         td {
           font-size: 14px;
           line-height: 17px;
+        }
+        .row1 {
+          td:last-child {
+            height: 160px;
+          }
+        }
+        .row2 {
+          td:last-child {
+            height: 100px;
+          }
+        }
+        .row3 {
+          td:last-child {
+            height: 140px;
+          }
         }
       }
     }
