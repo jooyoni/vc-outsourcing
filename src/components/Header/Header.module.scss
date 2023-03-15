@@ -66,6 +66,9 @@
       opacity: 1;
       transition: all 0.3s ease;
       transition-delay: 0.4s;
+      li {
+        cursor: pointer;
+      }
     }
     @media screen and (max-width: 1023px) {
       display: none;
@@ -82,7 +85,7 @@
       line-height: 24px;
       letter-spacing: 0.2px;
       color: #ffffff;
-      cursor: pointer;
+      cursor: default;
     }
   }
   .translationWrap {

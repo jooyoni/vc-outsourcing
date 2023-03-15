@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
 import ScrollTop from './components/ScrollTop/ScrollTop';
+import About from './pages/About/About';
 import Main from './pages/Main/Main';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <ScrollTop />
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/about" element={<About />} />
         </Routes>
       </BrowserRouter>
     </div>

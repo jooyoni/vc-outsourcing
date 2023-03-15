@@ -1,7 +1,9 @@
 import styles from './Header.module.scss';
 import arrow from '../../assets/arrowWhite.png';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 function Header() {
+  const navigate = useNavigate();
   const [sideIsOpen, setSideIsOpen] = useState(false);
   const [language, setLanguage] = useState('kor');
   useEffect(() => {
@@ -21,7 +23,14 @@ function Header() {
           <ul
             className={`${styles.navigation} ${sideIsOpen ? styles.hit : ''}`}
           >
-            <li>ABOUT</li>
+            <li
+              onClick={() => {
+                if (!sideIsOpen) return;
+                navigate('/about');
+              }}
+            >
+              ABOUT
+            </li>
             <li>TEAM</li>
             <li>PORTFOLIO</li>
             <li>ESG</li>
@@ -57,7 +66,7 @@ function Header() {
       </div>
       <div className={`${styles.sideBar} ${sideIsOpen ? styles.isOpen : ''}`}>
         <ul>
-          <li>ABOUT</li>
+          <li onClick={() => navigate('/about')}>ABOUT</li>
           <li>TEAM</li>
           <li>PORTFOLIO</li>
           <li>ESG</li>
