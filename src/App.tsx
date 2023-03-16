@@ -4,6 +4,8 @@ import Header from './components/Header/Header';
 import ScrollTop from './components/ScrollTop/ScrollTop';
 import About from './pages/About/About';
 import Main from './pages/Main/Main';
+import Portfolio from './pages/Portfolio/Portfolio';
+import Team from './pages/Team/Team';
 
 function App() {
   function appHeight() {
@@ -23,6 +25,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Main />} />
           <Route path="/about" element={<About />} />
+          <Route path="/team" element={<Team />} />
+          <Route path="/portfolio" element={<Portfolio />} />
         </Routes>
       </BrowserRouter>
     </div>

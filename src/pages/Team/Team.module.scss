@@ -1,0 +1,126 @@
+.container {
+}
+.banner {
+  padding: 163px 0;
+  background-image: url('../../assets/team/banner.png');
+  background-size: cover;
+  background-position: center;
+  .contentArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    h3 {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 58px;
+      color: #ffffff;
+      padding: 50px 0;
+    }
+    h2 {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 48px;
+      color: #ffffff;
+      padding: 10px;
+      margin-bottom: 22px;
+    }
+    p {
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 29px;
+      color: #ffffff;
+      padding: 10px;
+      text-align: center;
+      padding: 0 15%;
+      word-break: keep-all;
+    }
+  }
+}
+
+.contentArea {
+  max-width: 1312px;
+  margin: 0 auto;
+}
+section.contentArea {
+  padding: 0 16px 207px;
+  @media screen and (max-width: 767px) {
+    padding-bottom: 80px;
+  }
+}
+
+.leadershipWrap,
+.investmentWrap,
+.operationWrap {
+  h3 {
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 43px;
+    color: #090b0f;
+    padding: 100px 0;
+  }
+  @media screen and (max-width: 767px) {
+    margin-top: 40px;
+    h3 {
+      padding: 20px 0;
+      font-size: 24px;
+      line-height: 29px;
+    }
+  }
+  ul {
+    display: flex;
+    justify-content: space-between;
+    // gap: 32px;
+    flex-wrap: wrap;
+    row-gap: 24px;
+    li {
+      width: calc((100% - 96px) / 4);
+      // flex-grow: 1;
+      .imageWrap {
+        width: 100%;
+        aspect-ratio: 1/1.273;
+        background-color: #d9d9d9;
+      }
+      .detailWrap {
+        height: 137px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .position {
+          display: inline-block;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 24px;
+          color: #090b0f;
+          padding: 20px 0;
+        }
+        .name {
+          display: inline-block;
+          padding: 10px 0;
+          font-weight: 300;
+          font-size: 24px;
+          line-height: 29px;
+          color: #090b0f;
+        }
+      }
+      @media screen and (max-width: 1023px) {
+        width: calc((100% - 64px) / 3);
+      }
+      @media screen and (max-width: 767px) {
+        width: calc((100% - 20px) / 2);
+        .detailWrap {
+          height: 73px;
+          .position {
+            font-size: 14px;
+            line-height: 17px;
+            padding: 4px 0;
+          }
+          .name {
+            font-size: 16px;
+            line-height: 19px;
+            padding: 6px 0;
+          }
+        }
+      }
+    }
+  }
+}

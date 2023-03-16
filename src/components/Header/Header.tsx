@@ -31,8 +31,22 @@ function Header() {
             >
               ABOUT
             </li>
-            <li>TEAM</li>
-            <li>PORTFOLIO</li>
+            <li
+              onClick={() => {
+                if (!sideIsOpen) return;
+                navigate('/team');
+              }}
+            >
+              TEAM
+            </li>
+            <li
+              onClick={() => {
+                if (!sideIsOpen) return;
+                navigate('/portfolio');
+              }}
+            >
+              PORTFOLIO
+            </li>
             <li>ESG</li>
             <li>IR</li>
           </ul>
@@ -67,8 +81,8 @@ function Header() {
       <div className={`${styles.sideBar} ${sideIsOpen ? styles.isOpen : ''}`}>
         <ul>
           <li onClick={() => navigate('/about')}>ABOUT</li>
-          <li>TEAM</li>
-          <li>PORTFOLIO</li>
+          <li onClick={() => navigate('/team')}>TEAM</li>
+          <li onClick={() => navigate('/portfolio')}>PORTFOLIO</li>
           <li>ESG</li>
           <li>IR</li>
         </ul>
