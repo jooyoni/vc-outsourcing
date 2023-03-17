@@ -1,0 +1,123 @@
+.content {
+  padding: 0 16px;
+}
+.contentArea {
+  max-width: 1312px;
+  margin: 0 auto;
+  padding: 100px 0 207px;
+}
+.boardWrap {
+  .title {
+    padding: 10px 20px;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    color: #090b0f;
+    border-bottom: 1px solid #000000;
+  }
+  .boardInfo {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 0;
+    gap: 10px;
+    span {
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 19px;
+      color: #090b0f;
+    }
+  }
+  .content {
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 32px;
+    color: #090b0f;
+    padding: 20px;
+    height: 619px;
+    box-sizing: border-box;
+    border-bottom: 1px solid #000000;
+  }
+}
+.otherBoard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+  .before,
+  .after {
+    cursor: pointer;
+    width: calc(50% - 50px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    box-sizing: border-box;
+    .detail {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      span {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 32px;
+        color: rgba(9, 11, 15, 1);
+        transition: all 0.15s linear;
+      }
+      h3 {
+        font-weight: 300;
+        font-size: 20px;
+        line-height: 32px;
+        color: rgba(9, 11, 15, 0.5);
+        transition: all 0.15s linear;
+      }
+    }
+    svg {
+      width: 32px;
+      height: 32px;
+      path {
+        transition: all 0.15s linear;
+        stroke: rgba(9, 11, 15, 1);
+      }
+    }
+    &:hover {
+      .detail {
+        span {
+          color: rgba(90, 216, 239, 1);
+        }
+        h3 {
+          color: rgba(9, 11, 15, 1);
+        }
+      }
+      svg path {
+        stroke: rgba(90, 216, 239, 1);
+      }
+    }
+  }
+  .before {
+    padding-right: 15%;
+  }
+  .after {
+    padding-left: 15%;
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+  .return {
+    cursor: pointer;
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 6px;
+    background: #5ad8ef;
+    div {
+      background: #090b0f;
+      width: 20px;
+      height: 2px;
+    }
+  }
+}

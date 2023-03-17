@@ -1,0 +1,171 @@
+.banner {
+  // padding-top: 80px;
+  background-image: url('../../assets/IR/banner.png');
+  background-size: cover;
+  background-position: center;
+  height: 652px;
+  padding: 0 18px;
+  .contentArea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    max-width: 1312px;
+    margin: 0 auto;
+    h3 {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 58px;
+      color: #ffffff;
+      padding: 50px 0;
+    }
+    h4 {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 48px;
+      color: #ffffff;
+      padding: 60px 0;
+    }
+    nav {
+      display: flex;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      .homeBtn {
+        background: rgba(58, 188, 212, 0.6);
+        width: 80px;
+        height: 80px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-shrink: 0;
+        img {
+          width: 32px;
+          height: 32px;
+        }
+      }
+      .category {
+        display: flex;
+        position: relative;
+        .nowPageWrap,
+        .nowTabWrap {
+          width: 256px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          position: relative;
+          padding: 0 10px;
+          box-sizing: border-box;
+          background: rgba(0, 0, 0, 0.7);
+          border-right: 1px solid rgba(255, 255, 255, 0.6);
+          flex-basis: 50%;
+          flex-shrink: 1;
+          &.isOpen {
+            background: rgba(58, 188, 212, 0.6);
+            .subList {
+              display: block;
+            }
+          }
+          span {
+            font-weight: 500;
+            font-size: 20px;
+            line-height: 24px;
+            color: #ffffff;
+          }
+          img {
+            width: 24px;
+            height: 24px;
+          }
+          .subList {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            transform: translateY(100%);
+            display: none;
+            z-index: 1;
+            li {
+              width: 100%;
+              height: 60px;
+              background: rgba(34, 34, 34, 0.7);
+              border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+              box-sizing: border-box;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              font-weight: 500;
+              font-size: 20px;
+              line-height: 24px;
+              color: #ffffff;
+              padding: 0 10px;
+              cursor: pointer;
+            }
+          }
+        }
+      }
+      .shadow {
+        background: rgba(34, 34, 34, 0.7);
+        flex-grow: 1;
+      }
+      @media screen and (max-width: 600px) {
+        transform: translateY(30px);
+        .homeBtn {
+          width: 60px;
+          height: 60px;
+        }
+        .category {
+          width: calc(100% - 60px);
+          .nowPageWrap,
+          .nowTabWrap {
+            position: unset;
+            span {
+              font-size: 14px;
+              line-height: 17px;
+            }
+            .subList {
+              li {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    height: 509px;
+    .contentArea {
+      h3 {
+        font-size: 36px;
+        line-height: 44px;
+        padding: 32px 0;
+      }
+      h4 {
+        font-size: 31px;
+        line-height: 39px;
+        padding: 37px 0;
+      }
+    }
+  }
+  @media screen and (max-width: 600px) {
+    height: 366px;
+    .contentArea {
+      justify-content: flex-start;
+      padding-top: 100px;
+      box-sizing: border-box;
+      h3 {
+        font-size: 24px;
+        line-height: 29px;
+        padding: 15px 0;
+      }
+      h4 {
+        font-size: 24px;
+        line-height: 29px;
+        padding: 15px 0;
+      }
+    }
+  }
+}

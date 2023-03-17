@@ -9,6 +9,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+
     // height: 100px;
     @media screen and (max-width: 767px) {
       flex-direction: column;
@@ -77,6 +81,10 @@
     height: 100px;
     display: flex;
     align-items: center;
+    width: 100%;
+
+    max-width: 1920px;
+    margin: 0 auto;
     @media screen and (max-width: 767px) {
       align-items: flex-start;
     }
