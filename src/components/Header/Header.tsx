@@ -53,8 +53,22 @@ function Header() {
             >
               PORTFOLIO
             </li>
-            <li>ESG</li>
-            <li>IR</li>
+            <li
+              onClick={() => {
+                if (!sideIsOpen) return;
+                navigate('/ir');
+              }}
+            >
+              IR
+            </li>
+            <li
+              onClick={() => {
+                if (!sideIsOpen) return;
+                navigate('/family');
+              }}
+            >
+              FAMILY
+            </li>
           </ul>
           <div
             className={`${styles.translationWrap} ${
@@ -89,8 +103,8 @@ function Header() {
           <li onClick={() => navigate('/about')}>ABOUT</li>
           <li onClick={() => navigate('/team')}>TEAM</li>
           <li onClick={() => navigate('/portfolio')}>PORTFOLIO</li>
-          <li>ESG</li>
-          <li>IR</li>
+          <li onClick={() => navigate('/ir')}>IR</li>
+          <li onClick={() => navigate('/family')}>FAMILY</li>
         </ul>
         <div>
           <span

@@ -35,6 +35,42 @@
       word-break: keep-all;
     }
   }
+  @media screen and (max-width: 1023px) {
+    padding: 134px 0 129px;
+    .contentArea {
+      h3 {
+        font-size: 36px;
+        line-height: 43px;
+        padding: 30px 0;
+      }
+      h2 {
+        font-size: 24px;
+        line-height: 29px;
+      }
+      p {
+        font-size: 19px;
+        line-height: 23px;
+      }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    padding: 105px 0 95px;
+    .contentArea {
+      h3 {
+        font-size: 24px;
+        line-height: 29px;
+        padding: 10px 0;
+        margin-bottom: 29px;
+      }
+      h2 {
+        display: none;
+      }
+      p {
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+  }
 }
 
 .contentArea {
