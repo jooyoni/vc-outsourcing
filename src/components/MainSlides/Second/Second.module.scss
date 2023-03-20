@@ -1,3 +1,27 @@
+.containerWrap {
+  height: 100%;
+  position: relative;
+}
+.containerWrap .intersecter {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  @media screen and (max-width: 767px) {
+    bottom: unset;
+    top: 50%;
+    left: 50%;
+  }
+}
+@keyframes intersectAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .container.pc {
   height: 100%;
   display: flex;
@@ -177,7 +201,11 @@
         }
       }
     }
+    & > * {
+      opacity: 0;
+    }
   }
+
   .right {
     position: absolute;
     top: 0;
@@ -217,6 +245,9 @@
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    & > * {
+      opacity: 0;
+    }
     h3 {
       font-family: 'Spoqa Han Sans Neo';
       font-weight: 700;
@@ -317,4 +348,11 @@
       }
     }
   }
+  &.isIntersected .content > * {
+    animation: intersectAnimation 1s ease forwards;
+  }
+}
+.container.pc.isIntersected .contentWrap > *,
+.container.mobile.isIntersected .content > * {
+  animation: intersectAnimation 1s ease forwards;
 }

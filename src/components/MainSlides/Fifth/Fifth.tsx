@@ -1,7 +1,22 @@
+import { useEffect, useRef, useState } from 'react';
 import styles from './Fifth.module.scss';
 function Fifth() {
+  const intersectRef = useRef<HTMLDivElement>(null);
+  const [isShowing, setIsShowing] = useState(false);
+  useEffect(() => {
+    if (!intersectRef.current) return;
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setIsShowing(true);
+      }
+    });
+    io.observe(intersectRef.current);
+    return () => io.disconnect();
+  }, []);
   return (
-    <div className={styles.container}>
+    <div
+      className={`${styles.container} ${isShowing ? styles.isIntersected : ''}`}
+    >
       <div className={styles.text}>
         <h3>i SQUARE VENTURES</h3>
         <span>함께 성장하는 Partnership</span>
@@ -12,6 +27,7 @@ function Fifth() {
         </p>
       </div>
       <div className={styles.logoListWrap}>로고영역</div>
+      <div className={styles.intersecter} ref={intersectRef}></div>
     </div>
   );
 }

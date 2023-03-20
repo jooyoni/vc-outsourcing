@@ -1,6 +1,6 @@
 import styles from './Second.module.scss';
 import arrow from '../../../assets/arrowWhite.png';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import 'swiper/css';
@@ -43,110 +43,135 @@ function Second() {
   const [swiperPC, setSwiperPC] = useState<SwiperCore>();
   const [activeIdx, setActiveIdx] = useState(0);
   const [pcActiveIdx, setPcActiveIdx] = useState(0);
-
-  console.log(activeIdx);
+  const intersectRef = useRef<HTMLDivElement>(null);
+  const [isShowing, setIsShowing] = useState(false);
+  useEffect(() => {
+    if (!intersectRef.current) return;
+    const io = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        // alert('test');
+        setIsShowing(true);
+      }
+    });
+    io.observe(intersectRef.current);
+    return () => io.disconnect();
+  }, []);
   return (
     <>
-      <div className={`${styles.container} ${styles.pc}`}>
-        <div className={styles.contentWrap}>
-          <div>
+      <div className={styles.containerWrap}>
+        <div
+          className={`${styles.container} ${styles.pc} ${
+            isShowing ? styles.isIntersected : ''
+          }`}
+        >
+          <div className={styles.contentWrap}>
+            <div>
+              <h3>Our Business</h3>
+              <div className={styles.contentArea}>
+                {slideContent.map((slide, idx) => (
+                  <div
+                    className={`${styles.content} ${
+                      idx == pcActiveIdx ? styles.hit : ''
+                    }`}
+                    key={idx}
+                  >
+                    <h4
+                      dangerouslySetInnerHTML={{ __html: slide.title + idx }}
+                    ></h4>
+                    <p dangerouslySetInnerHTML={{ __html: slide.content }}></p>
+                    <p dangerouslySetInnerHTML={{ __html: slide.content2 }}></p>
+                  </div>
+                ))}
+              </div>
+              <div
+                className={styles.slideNextBtn}
+                onClick={() => swiperPC?.slideNext()}
+              >
+                <img src={arrow} />
+              </div>
+            </div>
+            <div className={styles.sliderWrap}>
+              <Swiper
+                onSwiper={setSwiperPC}
+                slidesPerView={'auto'}
+                loop={true}
+                speed={800}
+                onSlideChangeTransitionEnd={(swiper) => {
+                  setPcActiveIdx(swiper.activeIndex % 4);
+                }}
+                // slideToClickedSlide={true}
+                // loopedSlides={20}
+                spaceBetween={32}
+              >
+                {slideContent.map((val, idx) => (
+                  <SwiperSlide
+                    key={idx}
+                    className={`${styles.slideWrap} ${'slide' + idx}`}
+                  >
+                    <div
+                      className={styles.slideTitle}
+                      dangerouslySetInnerHTML={{ __html: val.title }}
+                    ></div>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
+          </div>
+          <div className={styles.right}></div>
+        </div>
+        <div
+          className={`${styles.container} ${styles.mobile} ${
+            isShowing ? styles.isIntersected : ''
+          }`}
+        >
+          <div className={styles.bg}></div>
+          <div className={styles.content}>
             <h3>Our Business</h3>
-            <div className={styles.contentArea}>
-              {slideContent.map((slide, idx) => (
-                <div
-                  className={`${styles.content} ${
-                    idx == pcActiveIdx ? styles.hit : ''
-                  }`}
-                  key={idx}
-                >
+            <div className={styles.sliderWrap}>
+              <Swiper
+                className={styles.slider}
+                loop={true}
+                onSwiper={setSwiper}
+                speed={800}
+                onSlideChangeTransitionEnd={(swiper) => {
+                  console.log(swiper.activeIndex % 4);
+                  setActiveIdx(swiper.activeIndex % 4);
+                }}
+              >
+                {slideContent.map((content, idx) => (
+                  <SwiperSlide
+                    key={idx}
+                    className={`${styles.slide} ${'slide' + idx}`}
+                  >
+                    <span
+                      dangerouslySetInnerHTML={{ __html: content.title + idx }}
+                    ></span>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+              <div
+                className={styles.nextBtn}
+                onClick={() => swiper?.slideNext()}
+              >
+                <img src={arrow} />
+              </div>
+            </div>
+            <div className={styles.contentDetail}>
+              {slideContent.map((content, idx) => (
+                <div key={idx} className={idx == activeIdx ? styles.hit : ''}>
                   <h4
-                    dangerouslySetInnerHTML={{ __html: slide.title + idx }}
+                    dangerouslySetInnerHTML={{
+                      __html: content.title.replace('<br />', ' '),
+                    }}
                   ></h4>
-                  <p dangerouslySetInnerHTML={{ __html: slide.content }}></p>
-                  <p dangerouslySetInnerHTML={{ __html: slide.content2 }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: content.content }}></p>
+                  <p dangerouslySetInnerHTML={{ __html: content.content2 }}></p>
                 </div>
               ))}
             </div>
-            <div
-              className={styles.slideNextBtn}
-              onClick={() => swiperPC?.slideNext()}
-            >
-              <img src={arrow} />
-            </div>
-          </div>
-          <div className={styles.sliderWrap}>
-            <Swiper
-              onSwiper={setSwiperPC}
-              slidesPerView={'auto'}
-              loop={true}
-              speed={800}
-              onSlideChangeTransitionEnd={(swiper) => {
-                setPcActiveIdx(swiper.activeIndex % 4);
-              }}
-              // slideToClickedSlide={true}
-              // loopedSlides={20}
-              spaceBetween={32}
-            >
-              {slideContent.map((val, idx) => (
-                <SwiperSlide
-                  key={idx}
-                  className={`${styles.slideWrap} ${'slide' + idx}`}
-                >
-                  <div
-                    className={styles.slideTitle}
-                    dangerouslySetInnerHTML={{ __html: val.title }}
-                  ></div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
           </div>
         </div>
-        <div className={styles.right}></div>
-      </div>
-      <div className={`${styles.container} ${styles.mobile}`}>
-        <div className={styles.bg}></div>
-        <div className={styles.content}>
-          <h3>Our Business</h3>
-          <div className={styles.sliderWrap}>
-            <Swiper
-              className={styles.slider}
-              loop={true}
-              onSwiper={setSwiper}
-              speed={800}
-              onSlideChangeTransitionEnd={(swiper) => {
-                console.log(swiper.activeIndex % 4);
-                setActiveIdx(swiper.activeIndex % 4);
-              }}
-            >
-              {slideContent.map((content, idx) => (
-                <SwiperSlide
-                  key={idx}
-                  className={`${styles.slide} ${'slide' + idx}`}
-                >
-                  <span
-                    dangerouslySetInnerHTML={{ __html: content.title + idx }}
-                  ></span>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-            <div className={styles.nextBtn} onClick={() => swiper?.slideNext()}>
-              <img src={arrow} />
-            </div>
-          </div>
-          <div className={styles.contentDetail}>
-            {slideContent.map((content, idx) => (
-              <div key={idx} className={idx == activeIdx ? styles.hit : ''}>
-                <h4
-                  dangerouslySetInnerHTML={{
-                    __html: content.title.replace('<br />', ' '),
-                  }}
-                ></h4>
-                <p dangerouslySetInnerHTML={{ __html: content.content }}></p>
-                <p dangerouslySetInnerHTML={{ __html: content.content2 }}></p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <div className={styles.intersecter} ref={intersectRef}></div>
       </div>
     </>
   );

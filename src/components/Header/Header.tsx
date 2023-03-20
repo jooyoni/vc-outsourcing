@@ -1,9 +1,10 @@
 import styles from './Header.module.scss';
 import arrow from '../../assets/arrowWhite.png';
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [sideIsOpen, setSideIsOpen] = useState(false);
   const [language, setLanguage] = useState('kor');
   useEffect(() => {
@@ -15,10 +16,15 @@ function Header() {
       document.body.style.overflow = 'unset';
     };
   }, [sideIsOpen]);
+  useEffect(() => {
+    if (window.innerWidth <= 1023) setSideIsOpen(false);
+  }, [location]);
   return (
     <>
       <div className={styles.container}>
-        <div className={styles.logoWrap}>i SQUARE VENTURES</div>
+        <div className={styles.logoWrap} onClick={() => navigate('/')}>
+          i SQUARE VENTURES
+        </div>
         <div className={styles.right}>
           <ul
             className={`${styles.navigation} ${sideIsOpen ? styles.hit : ''}`}

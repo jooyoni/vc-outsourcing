@@ -5,6 +5,12 @@
   max-width: 1312px;
   margin: 0 auto;
   padding: 100px 0 207px;
+  @media screen and (max-width: 1023px) {
+    padding: 90px 0 143px;
+  }
+  @media screen and (max-width: 767px) {
+    padding: 80px 0;
+  }
 }
 .boardWrap {
   .title {
@@ -33,9 +39,48 @@
     line-height: 32px;
     color: #090b0f;
     padding: 20px;
-    height: 619px;
+    height: 487px;
     box-sizing: border-box;
     border-bottom: 1px solid #000000;
+    overflow: scroll;
+  }
+  @media screen and (max-width: 1023px) {
+    .title {
+      padding: 10px;
+      font-size: 30px;
+      line-height: 36px;
+    }
+    .boardInfo {
+      span {
+        font-size: 14px;
+        line-height: 17px;
+      }
+    }
+    .content {
+      padding: 10px;
+      font-size: 17px;
+      line-height: 26px;
+      height: 487px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .title {
+      padding: 10px;
+      font-size: 20px;
+      line-height: 24px;
+    }
+    .boardInfo {
+      span {
+        font-size: 12px;
+        line-height: 14px;
+      }
+    }
+    .content {
+      padding: 10px;
+      font-size: 14px;
+      line-height: 20px;
+      height: 356px;
+    }
   }
 }
 .otherBoard {
@@ -57,6 +102,7 @@
       flex-direction: column;
       align-items: center;
       gap: 10px;
+      width: 100%;
       span {
         font-weight: 700;
         font-size: 20px;
@@ -68,8 +114,14 @@
         font-weight: 300;
         font-size: 20px;
         line-height: 32px;
+        width: 100%;
+        text-align: center;
         color: rgba(9, 11, 15, 0.5);
         transition: all 0.15s linear;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        word-break: break-all;
       }
     }
     svg {
@@ -94,11 +146,8 @@
       }
     }
   }
-  .before {
-    padding-right: 15%;
-  }
+
   .after {
-    padding-left: 15%;
     svg {
       transform: rotate(180deg);
     }
@@ -118,6 +167,62 @@
       background: #090b0f;
       width: 20px;
       height: 2px;
+    }
+  }
+  @media screen and (max-width: 1023px) {
+    .before,
+    .after {
+      width: calc(50% - 41px);
+      padding: 0 24px;
+      .detail {
+        gap: 10px;
+        span {
+          font-size: 16px;
+          line-height: 23px;
+        }
+        h3 {
+          font-size: 16px;
+          line-height: 23px;
+        }
+      }
+      svg {
+        width: 24px;
+        height: 24px;
+      }
+    }
+    .return {
+      width: 82px;
+      height: 82px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .before,
+    .after {
+      cursor: pointer;
+      width: calc(50% - 32px);
+      padding: 0px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .detail {
+        gap: 10px;
+        span {
+          font-size: 12px;
+          line-height: 14px;
+        }
+        h3 {
+          font-size: 12px;
+          line-height: 14px;
+        }
+      }
+      svg {
+        display: none;
+      }
+    }
+
+    .return {
+      width: 64px;
+      height: 64px;
     }
   }
 }
