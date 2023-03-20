@@ -2,7 +2,7 @@
   width: 100%;
   height: calc(var(--vh, 1vh) * 100);
   & > div {
-    transition-timing-function: ease-in;
+    transition-timing-function: ease;
   }
   & > div > div {
     -webkit-backface-visibility: hidden;
