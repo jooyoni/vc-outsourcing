@@ -13,13 +13,11 @@
   }
   .intersecter {
     position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     bottom: 0;
-    left: 50%;
-    @media screen and (max-width: 767px) {
-      bottom: unset;
-      top: 50%;
-      left: 50%;
-    }
+    z-index: -1;
   }
 }
 .text {
@@ -28,6 +26,8 @@
   flex-direction: column;
   margin: 0 auto;
   opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.7s ease;
   h3 {
     display: inline-block;
     padding: 10px;
@@ -102,19 +102,12 @@
   font-size: 100px;
   color: white;
   opacity: 0;
+  transform: translateY(100px);
+  transition: all 0.7s ease;
 }
 
-@keyframes intersectAnimation {
-  0% {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 .container.isIntersected .text,
 .container.isIntersected .logoListWrap {
-  animation: intersectAnimation 1s ease forwards;
+  opacity: 1;
+  transform: translateY(0);
 }

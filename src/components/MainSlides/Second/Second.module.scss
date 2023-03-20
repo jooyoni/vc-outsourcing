@@ -4,24 +4,22 @@
 }
 .containerWrap .intersecter {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  left: 50%;
-  @media screen and (max-width: 767px) {
-    bottom: unset;
-    top: 50%;
-    left: 50%;
-  }
+  z-index: -1;
 }
-@keyframes intersectAnimation {
-  0% {
-    opacity: 0;
-    transform: translateY(100px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+// @keyframes intersectAnimation {
+//   0% {
+//     opacity: 0;
+//     transform: translateY(100px);
+//   }
+//   100% {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+// }
 .container.pc {
   height: 100%;
   display: flex;
@@ -33,6 +31,7 @@
     display: flex;
     align-items: center;
     width: 100%;
+    transition: all 2s linear;
     & > div:first-child {
       // box-sizing: border-box;
       display: flex;
@@ -40,6 +39,9 @@
       flex-shrink: 0;
       padding-left: 17.7vw;
       min-width: 352px;
+      opacity: 0;
+      transform: translateY(100px);
+      transition: all 0.7s ease;
       @media screen and (max-width: 1023px) {
         padding-left: 10vw;
       }
@@ -140,6 +142,9 @@
       z-index: 10;
       width: 100%;
       overflow: hidden;
+      opacity: 0;
+      transform: translate(100px, 0);
+      transition: all 0.7s ease;
       @media screen and (max-width: 1920px) {
         padding-top: 14vw;
       }
@@ -201,11 +206,7 @@
         }
       }
     }
-    & > * {
-      opacity: 0;
-    }
   }
-
   .right {
     position: absolute;
     top: 0;
@@ -247,6 +248,8 @@
     flex-direction: column;
     & > * {
       opacity: 0;
+      transform: translateY(100px);
+      transition: all 0.7s ease;
     }
     h3 {
       font-family: 'Spoqa Han Sans Neo';
@@ -348,11 +351,17 @@
       }
     }
   }
-  &.isIntersected .content > * {
-    animation: intersectAnimation 1s ease forwards;
-  }
 }
-.container.pc.isIntersected .contentWrap > *,
+
 .container.mobile.isIntersected .content > * {
-  animation: intersectAnimation 1s ease forwards;
+  opacity: 1;
+  transform: translateY(0);
+}
+.container.pc.isIntersected .contentWrap > div:first-child {
+  opacity: 1;
+  transform: translateY(0);
+}
+.container.pc.isIntersected .contentWrap .sliderWrap {
+  opacity: 1;
+  transform: translate(0, 0);
 }

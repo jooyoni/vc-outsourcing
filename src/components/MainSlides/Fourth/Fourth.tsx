@@ -32,14 +32,19 @@ function Fourth() {
   const [isShowing, setIsShowing] = useState(false);
   useEffect(() => {
     if (!intersectRef.current) return;
-    const io = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setIsShowing(true);
-      }
-    });
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries[0].isIntersecting) {
+          setIsShowing(true);
+        } else {
+          setIsShowing(false);
+        }
+      },
+      { threshold: isShowing ? 0.2 : 0.5 },
+    );
     io.observe(intersectRef.current);
     return () => io.disconnect();
-  }, []);
+  }, [isShowing]);
   return (
     <>
       <div className={styles.containerWrap}>

@@ -4,13 +4,11 @@
 }
 .containerWrap .intersecter {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  left: 50%;
-  @media screen and (max-width: 767px) {
-    bottom: unset;
-    top: 50%;
-    left: 50%;
-  }
+  z-index: -1;
 }
 @keyframes intersectAnimation {
   0% {
@@ -47,6 +45,8 @@
     .contentWrap {
       padding-right: 48px;
       opacity: 0;
+      transform: translateY(100px);
+      transition: all 0.7s ease;
       @media screen and (max-width: 1480px) {
         padding-right: 24px;
       }
@@ -123,10 +123,11 @@
       position: absolute;
       top: 50%;
       left: 0;
-      transform: translateY(-50%);
       right: 0;
       padding-left: 32px;
       opacity: 0;
+      transform: translate(100px, -50%);
+      transition: all 0.7s ease;
       .slide {
         width: 416px;
         aspect-ratio: 1/1.219;
@@ -295,13 +296,17 @@
   }
   & > * {
     opacity: 0;
+    transition: all 0.7s ease;
+    transform: translateY(100px);
   }
 }
 
 .container.pc.isIntersected .left .contentWrap,
 .container.mobile.isIntersected > * {
-  animation: intersectAnimation 1s ease forwards;
+  opacity: 1;
+  transform: translateY(0);
 }
 .container.pc.isIntersected .right .slider {
-  animation: intersectAnimation2 1s ease forwards;
+  opacity: 1;
+  transform: translate(0px, -50%);
 }

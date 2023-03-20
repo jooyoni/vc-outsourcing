@@ -4,13 +4,11 @@
 }
 .containerWrap .intersecter {
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
   bottom: 0;
-  left: 50%;
-  @media screen and (max-width: 767px) {
-    bottom: unset;
-    top: 50%;
-    left: 50%;
-  }
+  z-index: -1;
 }
 @keyframes intersectAnimation {
   0% {
@@ -42,6 +40,8 @@
       position: relative;
       top: -30px;
       opacity: 0;
+      transform: translateY(100px);
+      transition: all 0.7s ease;
       span {
         font-family: 'Spoqa Han Sans Neo';
         font-weight: 700;
@@ -141,6 +141,8 @@
       flex-direction: column;
       width: 528px;
       opacity: 0;
+      transform: translate(100px, 0);
+      transition: all 0.7s ease;
       li {
         display: flex;
         flex-direction: column;
@@ -294,11 +296,20 @@
   }
   & > * {
     opacity: 0;
+    transform: translateY(100px);
+    transition: all 0.7s ease;
   }
 }
 
-.container.pc.isIntersected .left > .textWrap,
-.container.pc.isIntersected .right > ul,
 .container.mobile.isIntersected > * {
-  animation: intersectAnimation 1s ease forwards;
+  opacity: 1;
+  transform: translateY(0);
+}
+.container.pc.isIntersected .left > .textWrap {
+  opacity: 1;
+  transform: translateY(0);
+}
+.container.pc.isIntersected .right > ul {
+  opacity: 1;
+  transform: translateY(0);
 }
