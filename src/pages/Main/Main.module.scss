@@ -1,6 +1,9 @@
 .mainSlider {
   width: 100%;
   height: calc(var(--vh, 1vh) * 100);
+  & > div {
+    transition-timing-function: ease-in;
+  }
   & > div > div {
     -webkit-backface-visibility: hidden;
     -webkit-transform: translate3d(0, 0, 0);

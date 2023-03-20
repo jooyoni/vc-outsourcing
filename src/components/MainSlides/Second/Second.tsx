@@ -103,8 +103,9 @@ function Second() {
                 onSlideChangeTransitionEnd={(swiper) => {
                   setPcActiveIdx(swiper.activeIndex % 4);
                 }}
+                loopAdditionalSlides={1}
                 // slideToClickedSlide={true}
-                // loopedSlides={20}
+                // loopedSlides={21}
                 spaceBetween={32}
               >
                 {slideContent.map((val, idx) => (

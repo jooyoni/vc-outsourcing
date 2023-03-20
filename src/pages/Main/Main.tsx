@@ -55,7 +55,7 @@ function Main() {
         <Swiper
           direction={'vertical'}
           slidesPerView={'auto'}
-          speed={1500}
+          speed={1000}
           spaceBetween={-1}
           mousewheel={{
             thresholdDelta: 30,
