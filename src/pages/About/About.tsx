@@ -1,7 +1,39 @@
 import styles from './About.module.scss';
 import sign from '../../assets/about/chairmanSign.png';
 import Footer from '../../components/Footer/Footer';
+import { useEffect, useState } from 'react';
+import axiosClient from '../../libs/axiosClient';
+import arrow from '../../assets/arrowWhite.png';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { FreeMode } from 'swiper';
+import 'swiper/css';
+import SwiperCore from 'swiper';
+interface ICompanyHistoryType {
+  english_title: string;
+  m: number;
+  title: string;
+  y: number;
+}
 function About() {
+  const [companyHistory, setCompanyHistory] = useState<ICompanyHistoryType[]>(
+    [],
+  );
+  const [historyYear, setHistoryYear] = useState<number[]>([]);
+  useEffect(() => {
+    axiosClient
+      .get('/api/company_history')
+      .then((res) => setCompanyHistory(res.data));
+  }, []);
+  useEffect(() => {
+    if (!companyHistory) return;
+    let list: number[] = [];
+    companyHistory.reverse().map((history) => {
+      if (!list.includes(history.y)) list.push(history.y);
+    });
+    setHistoryYear(list);
+  }, [companyHistory]);
+  const [swiper, setSwiper] = useState<SwiperCore>();
+  console.log(companyHistory);
   return (
     <div className={styles.container}>
       <section>
@@ -125,7 +157,61 @@ function About() {
           </div>
         </div>
       </section>
-      <section>연혁 api완성되면 작업 예정</section>
+      <section>
+        <div className={styles.contentArea}>
+          <h1>아이스퀘어가 걸어온 길</h1>
+          <div className={styles.nextBtn} onClick={() => swiper?.slideNext()}>
+            <img src={arrow} />
+          </div>
+          <Swiper
+            className={styles.historySlider}
+            slidesPerView={'auto'}
+            freeMode={true}
+            modules={[FreeMode]}
+            onSwiper={setSwiper}
+          >
+            {historyYear.map((year) => (
+              <SwiperSlide key={year}>
+                <div className={styles.slideWrap}>
+                  <h2
+                    className={`${styles.year} ${
+                      new Date().getFullYear() == year ? styles.hit : ''
+                    }`}
+                  >
+                    {year}
+                  </h2>
+                  <ul>
+                    {(() => {
+                      let monthList: number[] = [];
+                      companyHistory
+                        .filter((history) => history.y == year)
+                        .map((history) => {
+                          if (!monthList.includes(history.m))
+                            monthList.push(history.m);
+                        });
+                      return monthList;
+                    })().map((month) => (
+                      <li key={month}>
+                        <span className={styles.month}>{month}</span>
+                        <ul>
+                          {companyHistory
+                            .filter(
+                              (history) =>
+                                history.y == year && history.m == month,
+                            )
+                            .map((history) => (
+                              <li>· {history.title}</li>
+                            ))}
+                        </ul>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </section>
       <section>
         <div className={styles.contentArea}>
           <h4>주요 투자대상</h4>

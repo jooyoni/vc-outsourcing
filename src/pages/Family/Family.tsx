@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Footer from '../../components/Footer/Footer';
 import styles from './Family.module.scss';
 function Family() {

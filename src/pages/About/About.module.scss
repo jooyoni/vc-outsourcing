@@ -429,6 +429,109 @@
   }
 }
 .container > section:nth-child(5) {
+  .contentArea {
+    max-width: 1312px;
+    margin: 0 auto;
+    padding: 137px 0 207px;
+    h1 {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 48px;
+      color: #090b0f;
+      border-bottom: 1px solid #090b0f;
+      padding: 30px 0;
+    }
+    .nextBtn {
+      width: 79px;
+      height: 79px;
+      margin-left: auto;
+      margin-top: 200px;
+      margin: 200px 0 38px auto;
+      background-color: #090b0f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      cursor: pointer;
+      img {
+        width: 24px;
+        height: 24px;
+        transform: rotate(180deg);
+      }
+    }
+    .historySlider {
+      & > div > div {
+        width: fit-content;
+      }
+      .slideWrap {
+        display: flex;
+        align-items: flex-end;
+        height: 240px;
+        position: relative;
+        padding-bottom: 42px;
+        width: fit-content;
+        // background-color: red;
+        &::after {
+          content: '';
+          display: block;
+          position: absolute;
+          bottom: 0;
+          left: 38px;
+          // right: 0;
+          width: 100%;
+          height: 42px;
+          border-left: 1px solid #090b0f;
+          border-bottom: 1px solid #090b0f;
+        }
+        h2.year {
+          font-weight: 400;
+          font-size: 64px;
+          line-height: 77px;
+          color: #0b174b;
+          transform: rotate(-90deg);
+          width: 77px;
+          margin-right: 15px;
+          padding-left: 34px;
+          box-sizing: border-box;
+          &.hit {
+            color: #3abcd4;
+          }
+        }
+        & > ul {
+          display: flex;
+          li {
+            display: flex;
+            flex-direction: column;
+            .month {
+              font-weight: 700;
+              font-size: 24px;
+              line-height: 29px;
+              color: #090b0f;
+              padding: 4px 10px;
+            }
+            & > ul {
+              display: flex;
+              flex-direction: column;
+              gap: 10px;
+              padding: 10px;
+              width: 283px;
+              height: 102px;
+              min-height: 102px;
+              box-sizing: border-box;
+              li {
+                font-weight: 300;
+                font-size: 20px;
+                line-height: 24px;
+                color: #090b0f;
+                // word-break: keep-all;
+                // width: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 .container > section:nth-child(6) {
   padding: 0 16px 207px;
