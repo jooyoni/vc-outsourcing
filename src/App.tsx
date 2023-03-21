@@ -4,6 +4,7 @@ import Header from './components/Header/Header';
 import ScrollTop from './components/ScrollTop/ScrollTop';
 import About from './pages/About/About';
 import Board from './pages/Board/Board';
+import Family from './pages/Family/Family';
 import IR from './pages/IR/IR';
 import Main from './pages/Main/Main';
 import Portfolio from './pages/Portfolio/Portfolio';
@@ -31,6 +32,7 @@ function App() {
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/ir" element={<IR />} />
           <Route path="/board" element={<Board />} />
+          <Route path="/family" element={<Family />} />
         </Routes>
       </BrowserRouter>
     </div>
