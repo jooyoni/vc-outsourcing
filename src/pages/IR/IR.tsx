@@ -7,6 +7,36 @@ import search from '../../assets/search.png';
 import { useEffect, useState } from 'react';
 import Footer from '../../components/Footer/Footer';
 import IRBanner from '../../components/IRBanner/IRBanner';
+import axiosClient from '../../libs/axiosClient';
+interface IFundDataType {
+  admin_user_id: null | number;
+  category_id: number;
+  created_at: string;
+  end_at: string;
+  english_title: string;
+  fund_size: number;
+  id: number;
+  sort_order: number;
+  start_at: string;
+  status: number;
+  title: string;
+  updated_at: string;
+}
+interface IInvestDataType {
+  category_id: number;
+  created_at: string;
+  description: string;
+  english_name: string;
+  id: number;
+  logo_image: string;
+  name: string;
+  region_id: number;
+  sort_order: number;
+  status: number;
+  type: number;
+  updated_at: string;
+  url: string;
+}
 const limit = 7;
 const imsiSearch = [
   {
@@ -62,6 +92,41 @@ function IR() {
   useEffect(() => {
     if (tabOpen) setSubPageOpen(false);
   }, [tabOpen]);
+  const [investData, setInvestData] = useState<IInvestDataType[]>([]);
+  const [fundData, setFundData] = useState<IFundDataType[]>([]);
+  useEffect(() => {
+    let tab = new URL(document.URL).searchParams.get('tab');
+    let page = Number(new URL(document.URL).searchParams.get('page') || 1);
+    if (!tab || tab == '0') tab = 'post';
+    else if (tab == '1') tab = 'advertise';
+    axiosClient.get(`/api/${tab}?page=${page}&perpage=${limit}`).then((res) => {
+      console.log(res.data.data);
+      let page = Number(new URL(document.URL).searchParams.get('page') || 1);
+      let paginationList: number[] = [];
+      if (tab == 'post') {
+        setFundData([]);
+        setInvestData(res.data.data);
+      } else if (tab == 'advertise') {
+        setInvestData([]);
+        setFundData(res.data.data);
+      }
+      let last =
+        Math.floor(res.data.total / limit) +
+        (res.data.total % limit > 0 ? 1 : 0);
+      if (last <= 5 || page < 3) {
+        //5페이지 미만시 1~마지막 페이지까지
+        for (let i = 1; i <= (5 < last ? 5 : last); i++) paginationList.push(i);
+      } else {
+        if (last - 2 > page)
+          paginationList = [page - 2, page - 1, page, page + 1, page + 2];
+        else paginationList = [last - 4, last - 3, last - 2, last - 1, last];
+      }
+      setPagination(
+        Number(new URL(document.URL).searchParams.get('page') || 1),
+      );
+      setPaginationList(paginationList);
+    });
+  }, [location]);
   return (
     <div className={styles.container}>
       <IRBanner />

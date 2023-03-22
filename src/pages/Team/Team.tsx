@@ -1,6 +1,30 @@
+import { useEffect, useState } from 'react';
 import Footer from '../../components/Footer/Footer';
+import axiosClient from '../../libs/axiosClient';
 import styles from './Team.module.scss';
+interface IEmployeeDataType {
+  created_at: string;
+  english_title: string;
+  id: number;
+  sort_order: number;
+  title: string;
+  updated_at: string;
+  users: {
+    avatar: null | string;
+    department_id: number;
+    email: string;
+    gender: string;
+    id: number;
+    name: number;
+    position: { title: string; english_title: string };
+    position_id: 1;
+  }[];
+}
 function Team() {
+  const [employeeData, setEmployeeData] = useState<IEmployeeDataType[]>([]);
+  useEffect(() => {
+    axiosClient.get('/api/teams').then((res) => setEmployeeData(res.data));
+  }, []);
   return (
     <div className={styles.container}>
       <section className={styles.banner}>
@@ -18,79 +42,59 @@ function Team() {
         <div className={styles.leadershipWrap}>
           <h3>- LEADERSHIP</h3>
           <ul>
-            <li>
-              <div className={styles.imageWrap}></div>
-              <div className={styles.detailWrap}>
-                <span className={styles.position}>CEO 대표이사</span>
-                <span className={styles.name}>이재훈</span>
-              </div>
-            </li>
-            <li>
-              <div className={styles.imageWrap}></div>
-              <div className={styles.detailWrap}>
-                <span className={styles.position}>CEO 대표이사</span>
-                <span className={styles.name}>이재훈</span>
-              </div>
-            </li>
-            <li>
-              <div className={styles.imageWrap}></div>
-              <div className={styles.detailWrap}>
-                <span className={styles.position}>CEO 대표이사</span>
-                <span className={styles.name}>이재훈</span>
-              </div>
-            </li>
-            <li>
-              <div className={styles.imageWrap}></div>
-              <div className={styles.detailWrap}>
-                <span className={styles.position}>CEO 대표이사</span>
-                <span className={styles.name}>이재훈</span>
-              </div>
-            </li>
+            {employeeData[0] &&
+              employeeData[0].users.map((employee) => (
+                <li key={employee.id}>
+                  <div className={styles.imageWrap}>
+                    <img src={employee.avatar || ''} />
+                  </div>
+                  <div className={styles.detailWrap}>
+                    <span className={styles.position}>
+                      {employee.position.english_title}{' '}
+                      {employee.position.title}
+                    </span>
+                    <span className={styles.name}>{employee.name}</span>
+                  </div>
+                </li>
+              ))}
           </ul>
         </div>
         <div className={styles.investmentWrap}>
           <h3>- INVESTMENT</h3>
           <ul>
-            <li>
-              <div className={styles.imageWrap}></div>
-              <div className={styles.detailWrap}>
-                <span className={styles.position}>CEO 대표이사</span>
-                <span className={styles.name}>이재훈</span>
-              </div>
-            </li>
-            <li>
-              <div className={styles.imageWrap}></div>
-              <div className={styles.detailWrap}>
-                <span className={styles.position}>CEO 대표이사</span>
-                <span className={styles.name}>이재훈</span>
-              </div>
-            </li>
-            <li>
-              <div className={styles.imageWrap}></div>
-              <div className={styles.detailWrap}>
-                <span className={styles.position}>CEO 대표이사</span>
-                <span className={styles.name}>이재훈</span>
-              </div>
-            </li>
-            <li>
-              <div className={styles.imageWrap}></div>
-              <div className={styles.detailWrap}>
-                <span className={styles.position}>CEO 대표이사</span>
-                <span className={styles.name}>이재훈</span>
-              </div>
-            </li>
+            {employeeData[1] &&
+              employeeData[1].users.map((employee) => (
+                <li key={employee.id}>
+                  <div className={styles.imageWrap}>
+                    <img src={employee.avatar || ''} />
+                  </div>
+                  <div className={styles.detailWrap}>
+                    <span className={styles.position}>
+                      {employee.position.english_title}{' '}
+                      {employee.position.title}
+                    </span>
+                    <span className={styles.name}>{employee.name}</span>
+                  </div>
+                </li>
+              ))}
           </ul>
         </div>
         <div className={styles.operationWrap}>
           <h3>- OPERATION</h3>
           <ul>
-            <li>
-              <div className={styles.imageWrap}></div>
-              <div className={styles.detailWrap}>
-                <span className={styles.position}>CEO 대표이사</span>
-                <span className={styles.name}>이재훈</span>
-              </div>
-            </li>
+            {employeeData[2] &&
+              employeeData[2].users.map((employee) => (
+                <li key={employee.id}>
+                  <div className={styles.imageWrap}></div>
+                  <div className={styles.detailWrap}>
+                    <span className={styles.position}>
+                      {employee.position.english_title}{' '}
+                      {employee.position.title}
+                    </span>
+                    <span className={styles.name}>{employee.name}</span>
+                  </div>
+                </li>
+              ))}
           </ul>
         </div>
       </section>

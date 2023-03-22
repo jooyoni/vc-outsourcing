@@ -420,6 +420,13 @@ section.content {
       color: #090b0f;
       padding: 10px;
     }
+    &.onePage {
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+      &::after {
+        display: none;
+      }
+    }
   }
   @media screen and (max-width: 1023px) {
     padding: 60px 0 143px;
