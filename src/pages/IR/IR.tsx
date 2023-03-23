@@ -28,20 +28,13 @@ function IR() {
   //페이지네이션 관련 상태
   const [pagination, setPagination] = useState(1);
   const [paginationList, setPaginationList] = useState<number[]>([]);
+  const [tab, setTab] = useState<number>();
   function handlePagination(page: number) {
     let tab = new URL(document.URL).searchParams.get('tab') || '0';
     navigate(`/ir?tab=${tab}&page=${page}`);
   }
   //페이지네이션 관련 상태
-  useEffect(() => {
-    let tab = new URL(document.URL).searchParams.get('tab') || '0';
-    if (!tab || tab == '0') setTitle('소식알림');
-    else if (tab == '1') setTitle('홍보자료');
 
-    let page = new URL(document.URL).searchParams.get('page') || 1;
-    page = Number(page);
-    setPagination(page);
-  }, [location]);
   useEffect(() => {
     if (subPageOpen) setTabOpen(false);
   }, [subPageOpen]);
@@ -51,13 +44,19 @@ function IR() {
   const [boardData, setBoardData] = useState<IBoardType[]>([]);
   useEffect(() => {
     let tab = new URL(document.URL).searchParams.get('tab');
+    setTab(Number(tab || 0));
+  }, [location]);
+  useEffect(() => {
+    setBoardData([]);
+  }, [tab]);
+  useEffect(() => {
+    let tab = new URL(document.URL).searchParams.get('tab');
     let page = Number(new URL(document.URL).searchParams.get('page') || 1);
     if (!tab || tab == '0') tab = 'post';
     else if (tab == '1') tab = 'advertise';
     axiosClient.get(`/api/${tab}?page=${page}&perpage=${limit}`).then((res) => {
       let page = Number(new URL(document.URL).searchParams.get('page') || 1);
       let paginationList: number[] = [];
-      setBoardData(res.data.data);
       let last =
         Math.floor(res.data.total / limit) +
         (res.data.total % limit > 0 ? 1 : 0);
@@ -69,6 +68,8 @@ function IR() {
           paginationList = [page - 2, page - 1, page, page + 1, page + 2];
         else paginationList = [last - 4, last - 3, last - 2, last - 1, last];
       }
+
+      setBoardData(res.data.data);
       setPagination(
         Number(new URL(document.URL).searchParams.get('page') || 1),
       );
