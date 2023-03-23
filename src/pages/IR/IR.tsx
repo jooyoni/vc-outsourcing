@@ -8,61 +8,17 @@ import { useEffect, useState } from 'react';
 import Footer from '../../components/Footer/Footer';
 import IRBanner from '../../components/IRBanner/IRBanner';
 import axiosClient from '../../libs/axiosClient';
-interface IFundDataType {
-  admin_user_id: null | number;
-  category_id: number;
+interface IBoardType {
+  content: string;
   created_at: string;
-  end_at: string;
-  english_title: string;
-  fund_size: number;
   id: number;
-  sort_order: number;
-  start_at: string;
-  status: number;
+  is_notice: number;
+  is_secret: number;
   title: string;
+  type: string;
   updated_at: string;
-}
-interface IInvestDataType {
-  category_id: number;
-  created_at: string;
-  description: string;
-  english_name: string;
-  id: number;
-  logo_image: string;
-  name: string;
-  region_id: number;
-  sort_order: number;
-  status: number;
-  type: number;
-  updated_at: string;
-  url: string;
 }
 const limit = 7;
-const imsiSearch = [
-  {
-    title: '마우스 오버시 백그라운드 색 변경',
-    date: new Date().toISOString(),
-    hit: 861,
-  },
-  {
-    title: '코스닥시장 상장 공모 안내',
-    date: new Date().toISOString(),
-    hit: 8261,
-  },
-  {
-    title: '임시주주총회 소집통지공고',
-    date: new Date().toISOString(),
-    hit: 8261,
-  },
-  { title: '22기 재무상태표', date: new Date().toISOString(), hit: 8261 },
-  { title: '21기 재무상태표', date: new Date().toISOString(), hit: 8261 },
-  { title: '신입및경력사원 모집', date: new Date().toISOString(), hit: 8261 },
-  {
-    title: '스마트 데이터센터 & 스마트 컴퓨팅 컨퍼런스 2014',
-    date: new Date().toISOString(),
-    hit: 8261,
-  },
-];
 function IR() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -71,7 +27,7 @@ function IR() {
   const [tabOpen, setTabOpen] = useState(false);
   //페이지네이션 관련 상태
   const [pagination, setPagination] = useState(1);
-  const [paginationList, setPaginationList] = useState([1, 2, 3, 4, 5]);
+  const [paginationList, setPaginationList] = useState<number[]>([]);
   function handlePagination(page: number) {
     let tab = new URL(document.URL).searchParams.get('tab') || '0';
     navigate(`/ir?tab=${tab}&page=${page}`);
@@ -92,24 +48,16 @@ function IR() {
   useEffect(() => {
     if (tabOpen) setSubPageOpen(false);
   }, [tabOpen]);
-  const [investData, setInvestData] = useState<IInvestDataType[]>([]);
-  const [fundData, setFundData] = useState<IFundDataType[]>([]);
+  const [boardData, setBoardData] = useState<IBoardType[]>([]);
   useEffect(() => {
     let tab = new URL(document.URL).searchParams.get('tab');
     let page = Number(new URL(document.URL).searchParams.get('page') || 1);
     if (!tab || tab == '0') tab = 'post';
     else if (tab == '1') tab = 'advertise';
     axiosClient.get(`/api/${tab}?page=${page}&perpage=${limit}`).then((res) => {
-      console.log(res.data.data);
       let page = Number(new URL(document.URL).searchParams.get('page') || 1);
       let paginationList: number[] = [];
-      if (tab == 'post') {
-        setFundData([]);
-        setInvestData(res.data.data);
-      } else if (tab == 'advertise') {
-        setInvestData([]);
-        setFundData(res.data.data);
-      }
+      setBoardData(res.data.data);
       let last =
         Math.floor(res.data.total / limit) +
         (res.data.total % limit > 0 ? 1 : 0);
@@ -145,8 +93,8 @@ function IR() {
             </form>
           </div>
           <ul className={styles.searchResultList}>
-            {imsiSearch.map((data, idx) => (
-              <li key={data.title} onClick={() => navigate('/board')}>
+            {boardData.map((data, idx) => (
+              <li key={data.id} onClick={() => navigate('/board')}>
                 <span className={styles.order}>
                   {limit * (pagination - 1) + idx + 1}
                 </span>
@@ -154,19 +102,21 @@ function IR() {
                   <h3 className={styles.title}>{data.title}</h3>
                   <div className={styles.boardInfo}>
                     <span>
-                      {data.date.substring(0, 10).replaceAll('-', '.')}
+                      {data.created_at.substring(0, 10).replaceAll('-', '.')}
                     </span>
-                    <span>hit : {data.hit}</span>
+                    {/* <span>hit : {data.}</span> */}
                   </div>
                 </div>
               </li>
             ))}
           </ul>
           <ul className={styles.paginationList}>
-            {paginationList.map((number) => (
+            {paginationList.map((number, idx, arr) => (
               <li
                 key={number}
-                className={number == pagination ? styles.hit : ''}
+                className={`${number == pagination ? styles.hit : ''} ${
+                  arr.length == 1 ? styles.onePage : ''
+                }`}
                 onClick={() => handlePagination(number)}
               >
                 <span>{number}</span>

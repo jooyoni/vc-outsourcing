@@ -13,7 +13,7 @@ function Family() {
           <div className={styles.circle}>배터리 소재 사업</div>
         </div>
       </div>
-      <section>
+      <section className={styles.contentWrap}>
         <div className={styles.contentArea}>
           <div className={styles.left}>
             <div className={styles.title}>환경·투자사업</div>
