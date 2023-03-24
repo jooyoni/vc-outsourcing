@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 import Footer from '../../components/Footer/Footer';
+import Spinner from '../../components/Spinner/Spinner';
 import axiosClient from '../../libs/axiosClient';
 import styles from './Team.module.scss';
 interface IEmployeeDataType {
@@ -25,10 +27,17 @@ function Team() {
   useEffect(() => {
     axiosClient.get('/api/teams').then((res) => setEmployeeData(res.data));
   }, []);
+  const [ref1, inView1] = useInView();
+  const [ref2, inView2] = useInView();
+  const [ref3, inView3] = useInView();
+  const [ref4, inView4] = useInView();
+  // const;
   return (
     <div className={styles.container}>
       <section className={styles.banner}>
-        <div className={styles.contentArea}>
+        <div
+          className={`${styles.contentArea} ${inView1 ? styles.isShowing : ''}`}
+        >
           <h3>TEAM</h3>
           <h2>아이스퀘어벤처스</h2>
           <p>
@@ -37,14 +46,22 @@ function Team() {
             설립한 중소기업창업투자회사입니다.
           </p>
         </div>
+        <div ref={ref1} className={styles.observer}></div>
       </section>
       <section className={styles.contentArea}>
         <div className={styles.leadershipWrap}>
           <h3>- LEADERSHIP</h3>
-          <ul>
-            {employeeData[0] &&
-              employeeData[0].users.map((employee) => (
-                <li key={employee.id}>
+          <ul
+            className={`${styles.employeeList} ${
+              inView2 ? styles.isShowing : ''
+            }`}
+          >
+            {employeeData[0] ? (
+              employeeData[0].users.map((employee, idx) => (
+                <li
+                  key={employee.id}
+                  style={{ transitionDelay: `${idx * 0.1}s` }}
+                >
                   <div className={styles.imageWrap}>
                     <img src={employee.avatar || ''} />
                   </div>
@@ -56,15 +73,28 @@ function Team() {
                     <span className={styles.name}>{employee.name}</span>
                   </div>
                 </li>
-              ))}
+              ))
+            ) : (
+              <Spinner />
+            )}
+            {employeeData[0] && (
+              <div ref={ref2} className={styles.observer}></div>
+            )}
           </ul>
         </div>
         <div className={styles.investmentWrap}>
           <h3>- INVESTMENT</h3>
-          <ul>
-            {employeeData[1] &&
-              employeeData[1].users.map((employee) => (
-                <li key={employee.id}>
+          <ul
+            className={`${styles.employeeList} ${
+              inView3 ? styles.isShowing : ''
+            }`}
+          >
+            {employeeData[1] ? (
+              employeeData[1].users.map((employee, idx) => (
+                <li
+                  key={employee.id}
+                  style={{ transitionDelay: `${idx * 0.1}s` }}
+                >
                   <div className={styles.imageWrap}>
                     <img src={employee.avatar || ''} />
                   </div>
@@ -76,15 +106,28 @@ function Team() {
                     <span className={styles.name}>{employee.name}</span>
                   </div>
                 </li>
-              ))}
+              ))
+            ) : (
+              <Spinner />
+            )}
+            {employeeData[1] && (
+              <div ref={ref3} className={styles.observer}></div>
+            )}
           </ul>
         </div>
         <div className={styles.operationWrap}>
           <h3>- OPERATION</h3>
-          <ul>
-            {employeeData[2] &&
-              employeeData[2].users.map((employee) => (
-                <li key={employee.id}>
+          <ul
+            className={`${styles.employeeList} ${
+              inView4 ? styles.isShowing : ''
+            }`}
+          >
+            {employeeData[2] ? (
+              employeeData[2].users.map((employee, idx) => (
+                <li
+                  key={employee.id}
+                  style={{ transitionDelay: `${idx * 0.1}s` }}
+                >
                   <div className={styles.imageWrap}></div>
                   <div className={styles.detailWrap}>
                     <span className={styles.position}>
@@ -94,7 +137,13 @@ function Team() {
                     <span className={styles.name}>{employee.name}</span>
                   </div>
                 </li>
-              ))}
+              ))
+            ) : (
+              <Spinner />
+            )}
+            {employeeData[2] && (
+              <div ref={ref4} className={styles.observer}></div>
+            )}
           </ul>
         </div>
       </section>

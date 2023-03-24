@@ -1,19 +1,37 @@
 import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import Footer from '../../components/Footer/Footer';
 import styles from './Family.module.scss';
 function Family() {
+  const [ref1, inView1] = useInView();
+  const [ref2, inView2] = useInView();
+  console.log(inView1, inView2);
   return (
     <div>
-      <div className={styles.bannerWrap}>
+      <div
+        className={`${styles.bannerWrap} ${inView1 ? styles.isShowing : ''}`}
+      >
         <div>
-          <div className={styles.circle}>아이스퀘어 벤처스</div>
+          <div className={styles.circleWrap}>
+            <div className={styles.circle}></div>
+            <span>아이스퀘어 벤처스</span>
+          </div>
         </div>
+        <div ref={ref1} className={styles.observer}></div>
         <div>
-          <div className={styles.circle}>환경·투자사업</div>
-          <div className={styles.circle}>배터리 소재 사업</div>
+          <div className={styles.circleWrap}>
+            <div className={styles.circle}></div>
+            <span>환경·투자사업</span>
+          </div>
+          <div className={styles.circleWrap}>
+            <div className={styles.circle}></div>
+            <span>배터리 소재 사업</span>
+          </div>
         </div>
       </div>
-      <section className={styles.contentWrap}>
+      <section
+        className={`${styles.contentWrap} ${inView2 ? styles.isShowing : ''}`}
+      >
         <div className={styles.contentArea}>
           <div className={styles.left}>
             <div className={styles.title}>환경·투자사업</div>
@@ -71,6 +89,7 @@ function Family() {
             </ul>
           </div>
         </div>
+        <div ref={ref2} className={styles.observer}></div>
       </section>
       <Footer />
     </div>

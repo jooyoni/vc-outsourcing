@@ -1,13 +1,14 @@
 import styles from './About.module.scss';
 import sign from '../../assets/about/chairmanSign.png';
 import Footer from '../../components/Footer/Footer';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axiosClient from '../../libs/axiosClient';
 import arrow from '../../assets/arrowWhite.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode } from 'swiper';
 import 'swiper/css';
 import SwiperCore from 'swiper';
+import { useInView } from 'react-intersection-observer';
 interface ICompanyHistoryType {
   english_title: string;
   m: number;
@@ -33,11 +34,18 @@ function About() {
     setHistoryYear(list);
   }, [companyHistory]);
   const [swiper, setSwiper] = useState<SwiperCore>();
-  console.log(companyHistory);
+  const [ref, inView] = useInView();
+  const [ref2, inView2] = useInView();
+  const [ref3, inView3] = useInView();
+  const [ref4, inView4] = useInView();
+  const [ref5, inView5] = useInView();
+  const [ref6, inView6] = useInView();
   return (
     <div className={styles.container}>
       <section>
-        <div className={styles.contentArea}>
+        <div
+          className={`${styles.contentArea} ${inView ? styles.isShowing : ''}`}
+        >
           <span>ABOUT</span>
           <div>LOGO</div>
           <h1>아이스퀘어벤처스</h1>
@@ -47,9 +55,12 @@ function About() {
             설립한 중소기업창업투자회사입니다.
           </p>
         </div>
+        <div ref={ref} className={styles.observer}></div>
       </section>
       <section>
-        <div className={styles.contentArea}>
+        <div
+          className={`${styles.contentArea} ${inView2 ? styles.isShowing : ''}`}
+        >
           <div className={styles.left}>
             <span>CEO 인사말</span>
             <h3>Ecopro Philosophy</h3>
@@ -75,9 +86,12 @@ function About() {
           </div>
           <div className={styles.right}></div>
         </div>
+        <div ref={ref2} className={styles.observer}></div>
       </section>
       <section>
-        <div className={styles.contentArea}>
+        <div
+          className={`${styles.contentArea} ${inView3 ? styles.isShowing : ''}`}
+        >
           <h4>ECOPRO PARTNER</h4>
           <ul>
             <li>
@@ -94,9 +108,12 @@ function About() {
             </li>
           </ul>
         </div>
+        <div ref={ref3} className={styles.observer}></div>
       </section>
       <section>
-        <div className={styles.contentArea}>
+        <div
+          className={`${styles.contentArea} ${inView4 ? styles.isShowing : ''}`}
+        >
           <div className={styles.left}>
             <p>
               아이스퀘어벤처스는 지역 기반 벤처투자생태계 조성으로 지속가능한
@@ -156,9 +173,12 @@ function About() {
             </ul>
           </div>
         </div>
+        <div ref={ref4} className={styles.observer}></div>
       </section>
       <section>
-        <div className={styles.contentArea}>
+        <div
+          className={`${styles.contentArea} ${inView5 ? styles.isShowing : ''}`}
+        >
           <h1>아이스퀘어가 걸어온 길</h1>
           <div className={styles.nextBtn} onClick={() => swiper?.slideNext()}>
             <img src={arrow} />
@@ -211,9 +231,12 @@ function About() {
             ))}
           </Swiper>
         </div>
+        <div ref={ref5} className={styles.observer}></div>
       </section>
       <section>
-        <div className={styles.contentArea}>
+        <div
+          className={`${styles.contentArea} ${inView6 ? styles.isShowing : ''}`}
+        >
           <h4>주요 투자대상</h4>
           <p>
             초기단계 기업 투자지원경험과 에코프로 그룹의 환경 및 이차전지 분야
@@ -262,6 +285,7 @@ function About() {
             </tr>
           </table>
         </div>
+        <div ref={ref6} className={styles.observer}></div>
       </section>
       <Footer />
     </div>

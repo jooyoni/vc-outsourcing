@@ -169,3 +169,26 @@
     }
   }
 }
+.banner {
+  position: relative;
+  .contentArea {
+    h3,
+    h4 {
+      opacity: 0;
+      transform: translate(0, 100px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    &.isShowing {
+      h3,
+      h4 {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+  }
+}
+.observer {
+  position: absolute;
+  top: 20%;
+  bottom: 20%;
+}

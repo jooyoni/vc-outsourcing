@@ -5,6 +5,8 @@ import arrow from '../../assets/arrowBottom.png';
 import { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axiosClient from '../../libs/axiosClient';
+import Spinner from '../../components/Spinner/Spinner';
+import { useInView } from 'react-intersection-observer';
 interface IFundDataType {
   admin_user_id: null | number;
   category_id: number;
@@ -68,8 +70,11 @@ function Portfolio() {
   const [investData, setInvestData] = useState<IInvestDataType[]>([]);
   const [fundData, setFundData] = useState<IFundDataType[]>([]);
   useEffect(() => {
+    setInvestData([]);
+    setFundData([]);
     let tab = new URL(document.URL).searchParams.get('tab');
     let page = Number(new URL(document.URL).searchParams.get('page') || 1);
+    setPagination(page);
     if (!tab || tab == '0') tab = 'fund';
     else if (tab == '1') tab = 'portfolio';
     axiosClient.get(`/api/${tab}?page=${page}&perpage=12`).then((res) => {
@@ -98,10 +103,14 @@ function Portfolio() {
       setPaginationList(paginationList);
     });
   }, [location]);
+  const [ref1, inView1] = useInView();
+  const [ref2, inView2] = useInView();
   return (
     <div className={styles.container}>
       <section className={styles.banner}>
-        <div className={styles.contentArea}>
+        <div
+          className={`${styles.contentArea} ${inView1 ? styles.isShowing : ''}`}
+        >
           <h3>Portfolio</h3>
           <h4>{title}</h4>
           <nav>
@@ -147,40 +156,69 @@ function Portfolio() {
             <div className={styles.shadow}></div>
           </nav>
         </div>
+        <div ref={ref1} className={styles.observer}></div>
       </section>
       <section className={styles.content}>
         <div className={styles.contentArea}>
           {title == '펀드운용' && (
-            <ul className={styles.fund}>
-              {fundData.map((fund) => (
-                <li key={fund.id}>
-                  <h2>{fund.title}</h2>
-                  <ul className={styles.detail}>
-                    <li>
-                      결성일 :{' '}
-                      {fund.start_at.substring(0, 10).replaceAll('-', '.')}
+            <ul
+              className={`${styles.fund} ${styles.animationList} ${
+                inView2 ? styles.isShowing : ''
+              }`}
+            >
+              {fundData.length ? (
+                <>
+                  {fundData.map((fund, idx) => (
+                    <li
+                      key={fund.id}
+                      style={{ transitionDelay: `${idx * 0.1}s` }}
+                    >
+                      <h2>{fund.title}</h2>
+                      <ul className={styles.detail}>
+                        <li>
+                          결성일 :{' '}
+                          {fund.start_at.substring(0, 10).replaceAll('-', '.')}
+                        </li>
+                        <li>
+                          청산일 :{' '}
+                          {fund.end_at.substring(0, 10).replaceAll('-', '.')}
+                        </li>
+                        <li>펀드규모 : {fund.fund_size}억원</li>
+                      </ul>
                     </li>
-                    <li>
-                      청산일 :{' '}
-                      {fund.end_at.substring(0, 10).replaceAll('-', '.')}
-                    </li>
-                    <li>펀드규모 : {fund.fund_size}억원</li>
-                  </ul>
-                </li>
-              ))}
+                  ))}
+                  <div ref={ref2} className={styles.observer}></div>
+                </>
+              ) : (
+                <Spinner />
+              )}
             </ul>
           )}
           {title == '투자현황' && (
-            <ul className={styles.invest}>
-              {investData.map((invest) => (
-                <li key={invest.id}>
-                  <img src={invest.logo_image} alt="로고" />
-                  <div className={styles.detailBox}>
-                    <h2>{invest.name}</h2>
-                    <span>{invest.url}</span>
-                  </div>
-                </li>
-              ))}
+            <ul
+              className={`${styles.invest} ${styles.animationList} ${
+                inView2 ? styles.isShowing : ''
+              }`}
+            >
+              {investData.length ? (
+                <>
+                  {investData.map((invest, idx) => (
+                    <li
+                      key={invest.id}
+                      style={{ transitionDelay: `${idx * 0.1}s` }}
+                    >
+                      <img src={invest.logo_image} alt="로고" />
+                      <div className={styles.detailBox}>
+                        <h2>{invest.name}</h2>
+                        <span>{invest.url}</span>
+                      </div>
+                    </li>
+                  ))}
+                  <div ref={ref2} className={styles.observer}></div>
+                </>
+              ) : (
+                <Spinner />
+              )}
             </ul>
           )}
         </div>

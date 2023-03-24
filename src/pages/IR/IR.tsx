@@ -8,6 +8,8 @@ import { useEffect, useState } from 'react';
 import Footer from '../../components/Footer/Footer';
 import IRBanner from '../../components/IRBanner/IRBanner';
 import axiosClient from '../../libs/axiosClient';
+import { useInView } from 'react-intersection-observer';
+import Spinner from '../../components/Spinner/Spinner';
 interface IBoardType {
   content: string;
   created_at: string;
@@ -48,10 +50,12 @@ function IR() {
   }, [location]);
   useEffect(() => {
     setBoardData([]);
-  }, [tab]);
+  }, [location]);
   useEffect(() => {
     let tab = new URL(document.URL).searchParams.get('tab');
     let page = Number(new URL(document.URL).searchParams.get('page') || 1);
+    setPagination(page);
+
     if (!tab || tab == '0') tab = 'post';
     else if (tab == '1') tab = 'advertise';
     axiosClient.get(`/api/${tab}?page=${page}&perpage=${limit}`).then((res) => {
@@ -76,6 +80,7 @@ function IR() {
       setPaginationList(paginationList);
     });
   }, [location]);
+  const [ref1, inView1] = useInView();
   return (
     <div className={styles.container}>
       <IRBanner />
@@ -93,23 +98,40 @@ function IR() {
               </div>
             </form>
           </div>
-          <ul className={styles.searchResultList}>
-            {boardData.map((data, idx) => (
-              <li key={data.id} onClick={() => navigate('/board')}>
-                <span className={styles.order}>
-                  {limit * (pagination - 1) + idx + 1}
-                </span>
-                <div className={styles.boardDetailWrap}>
-                  <h3 className={styles.title}>{data.title}</h3>
-                  <div className={styles.boardInfo}>
-                    <span>
-                      {data.created_at.substring(0, 10).replaceAll('-', '.')}
+          <ul
+            className={`${styles.searchResultList} ${
+              inView1 ? styles.isShowing : ''
+            }`}
+          >
+            {boardData.length ? (
+              <>
+                {boardData.map((data, idx) => (
+                  <li
+                    key={data.id}
+                    onClick={() => navigate(`/board?tab=${tab}&id=${data.id}`)}
+                    style={{ transitionDelay: `${idx * 0.1}s` }}
+                  >
+                    <span className={styles.order}>
+                      {limit * (pagination - 1) + idx + 1}
                     </span>
-                    {/* <span>hit : {data.}</span> */}
-                  </div>
-                </div>
-              </li>
-            ))}
+                    <div className={styles.boardDetailWrap}>
+                      <h3 className={styles.title}>{data.title}</h3>
+                      <div className={styles.boardInfo}>
+                        <span>
+                          {data.created_at
+                            .substring(0, 10)
+                            .replaceAll('-', '.')}
+                        </span>
+                        {/* <span>hit : {data.}</span> */}
+                      </div>
+                    </div>
+                  </li>
+                ))}
+                <div ref={ref1} className={styles.observer}></div>
+              </>
+            ) : (
+              <Spinner />
+            )}
           </ul>
           <ul className={styles.paginationList}>
             {paginationList.map((number, idx, arr) => (

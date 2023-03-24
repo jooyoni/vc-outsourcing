@@ -6,13 +6,39 @@ import arrowBlack from '../../assets/arrowBlack.png';
 import IRBanner from '../../components/IRBanner/IRBanner';
 import Footer from '../../components/Footer/Footer';
 import { ReactComponent as Arrow } from '../../assets/arrow.svg';
+import axiosClient from '../../libs/axiosClient';
+import Spinner from '../../components/Spinner/Spinner';
 
+interface ICurrentBoardType {
+  attached_files: [];
+  content: string;
+  created_at: string;
+  id: number;
+  is_notice: number;
+  is_secret: number;
+  title: string;
+  type: string;
+  updated_at: string;
+}
+interface IOtherBoardType {
+  content: string;
+  created_at: string;
+  id: number;
+  is_notice: number;
+  is_secret: number;
+  title: string;
+  type: string;
+  updated_at: string;
+}
 function Board() {
   const navigate = useNavigate();
   const location = useLocation();
   const [title, setTitle] = useState('');
   const [subPageOpen, setSubPageOpen] = useState(false);
   const [tabOpen, setTabOpen] = useState(false);
+  const [currentBoard, setCurrentBoard] = useState<ICurrentBoardType | null>();
+  const [prevBoard, setPrevBoard] = useState<IOtherBoardType | null>();
+  const [nextBoard, setNextBoard] = useState<IOtherBoardType | null>();
   useEffect(() => {
     let tab = new URL(document.URL).searchParams.get('tab') || '0';
     if (!tab || tab == '0') setTitle('소식알림');
@@ -24,55 +50,81 @@ function Board() {
   useEffect(() => {
     if (tabOpen) setSubPageOpen(false);
   }, [tabOpen]);
-
+  const [tab, setTab] = useState<number>();
+  useEffect(() => {
+    setCurrentBoard(null);
+    let boardType = new URL(document.URL).searchParams.get('tab') || '0';
+    setTab(Number(boardType));
+    const id = new URL(document.URL).searchParams.get('id');
+    if (boardType == '0') boardType = 'post-detail';
+    else boardType = 'advertise-detail';
+    axiosClient.get(`/api/${boardType}?id=${id}`).then((res) => {
+      setCurrentBoard(res.data.current);
+      setPrevBoard(res.data.prev);
+      setNextBoard(res.data.next);
+    });
+  }, [location]);
   return (
     <div className={styles.container}>
       <IRBanner />
       <section className={styles.content}>
         <div className={styles.contentArea}>
-          <div className={styles.boardWrap}>
-            <h2 className={styles.title}>이곳은 제목</h2>
-            <div className={styles.boardInfo}>
-              <span>2023.03.16</span>
-              <span>hit : 861</span>
-            </div>
-            <p
-              className={styles.content}
-              dangerouslySetInnerHTML={{
-                __html: `기부금품 모집 및 사용에 관한 법률 시행령 제19조에 따라 기부금품 모집 및 사용내역을 아래와 같이 공개합니다.
-1.모집자: 사회복지법인 한국노인복지회(등록번호 제2022-78호)
-2. 모집목적: 국내 저소득 노인지원 사업을 위한 기금 마련
-3. 모집기간: 2022년 6월 1일~2022년 12월 31일
-4. 모집등록금액: 71,000,000원
-5. 모집금품의 총액 및 수량: 35,392,792원(모집등록금액 대비 50%)
-가. 현금: 35,391,000원(온라인 모금)
-나. 물품: 0원
-다.기타수입: 1,792원
-6. 기부금품의 사용명세`,
-              }}
-            ></p>
-          </div>
-          <div className={styles.otherBoard}>
-            <div className={styles.before}>
-              <Arrow />
-              <div className={styles.detail}>
-                <span>이전</span>
-                <h3>코스닥 시장 공모 안내</h3>
+          {currentBoard ? (
+            <>
+              <div className={styles.boardWrap}>
+                <h2 className={styles.title}>{currentBoard?.title}</h2>
+                <div className={styles.boardInfo}>
+                  <span>
+                    {currentBoard?.created_at
+                      .substring(0, 10)
+                      .replaceAll('-', '.')}
+                  </span>
+                  {/* <span>hit : 861</span> */}
+                </div>
+                <p
+                  className={styles.content}
+                  dangerouslySetInnerHTML={{
+                    __html: currentBoard?.content || '',
+                  }}
+                ></p>
               </div>
-            </div>
-            <div className={styles.return}>
-              <div></div>
-              <div></div>
-              <div></div>
-            </div>
-            <div className={styles.after}>
-              <div className={styles.detail}>
-                <span>다음</span>
-                <h3>다음 글이 없습니다.</h3>
+              <div className={styles.otherBoard}>
+                <div
+                  className={styles.before}
+                  onClick={() => {
+                    if (prevBoard)
+                      navigate(`/board?tab=${tab}&id=${prevBoard?.id}`);
+                  }}
+                >
+                  <Arrow />
+                  <div className={styles.detail}>
+                    <span>이전</span>
+                    <h3>{prevBoard?.title || '이전 글이 없습니다.'}</h3>
+                  </div>
+                </div>
+                <div className={styles.return}>
+                  <div></div>
+                  <div></div>
+                  <div></div>
+                </div>
+                <div
+                  className={styles.after}
+                  onClick={() => {
+                    if (nextBoard)
+                      navigate(`/board?tab=${tab}&id=${nextBoard?.id}`);
+                  }}
+                >
+                  <div className={styles.detail}>
+                    <span>다음</span>
+                    <h3>{nextBoard?.title || '다음 글이 없습니다.'}</h3>
+                  </div>
+                  <Arrow />
+                </div>
               </div>
-              <Arrow />
-            </div>
-          </div>
+            </>
+          ) : (
+            <Spinner />
+          )}
         </div>
       </section>
       <Footer />

@@ -10,6 +10,7 @@
     align-items: center;
     max-width: 1312px;
     margin: 0 auto;
+
     span {
       font-family: 'Inter';
       font-weight: 700;
@@ -725,5 +726,24 @@
         }
       }
     }
+  }
+}
+
+.container section {
+  position: relative;
+  .observer {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    bottom: 20%;
+  }
+}
+.contentArea {
+  transition: all 1s ease;
+  opacity: 0;
+  transform: translate(0, 100px);
+  &.isShowing {
+    opacity: 1 !important;
+    transform: translate(0, 0) !important;
   }
 }

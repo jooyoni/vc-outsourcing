@@ -3,6 +3,7 @@ import home from '../../assets/home.png';
 import arrow from '../../assets/arrowBottom.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useInView } from 'react-intersection-observer';
 function IRBanner() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -20,9 +21,13 @@ function IRBanner() {
   useEffect(() => {
     if (tabOpen) setSubPageOpen(false);
   }, [tabOpen]);
+  const [ref1, inView1] = useInView();
+
   return (
     <section className={styles.banner}>
-      <div className={styles.contentArea}>
+      <div
+        className={`${styles.contentArea} ${inView1 ? styles.isShowing : ''}`}
+      >
         <h3>IR</h3>
         <h4>{title}</h4>
         <nav>
@@ -60,6 +65,7 @@ function IRBanner() {
           <div className={styles.shadow}></div>
         </nav>
       </div>
+      <div ref={ref1} className={styles.observer}></div>
     </section>
   );
 }

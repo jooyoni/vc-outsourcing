@@ -189,7 +189,7 @@ section.content {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
-  padding: 80px 0 207px;
+  padding: 80px 0 150px;
   & > li {
     background: #ffffff;
     border: 1px solid #dddfe2;
@@ -199,6 +199,16 @@ section.content {
     flex-direction: column;
     justify-content: space-between;
     box-sizing: border-box;
+    & > * {
+      transform-origin: left;
+      transition: all 0.3s ease;
+    }
+    &:hover,
+    &:active {
+      & > * {
+        transform: scale(1.1) !important;
+      }
+    }
     @media screen and (max-width: 767px) {
       padding: 20px 0 32px;
     }
@@ -240,6 +250,7 @@ section.content {
     gap: 0;
   }
   @media screen and (max-width: 1023px) {
+    padding-bottom: 115px;
     li {
       h2 {
         font-size: 19px;
@@ -275,7 +286,7 @@ section.content {
 .invest {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  padding: 80px 0 0;
+  padding: 80px 0 150px;
   & > li {
     background: #ffffff;
     border: 1px solid #dddfe2;
@@ -400,7 +411,7 @@ section.content {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 150px 0 207px;
+  padding: 0px 0 207px;
   gap: 10px;
   li {
     cursor: pointer;
@@ -454,7 +465,7 @@ section.content {
     }
   }
   @media screen and (max-width: 1023px) {
-    padding: 60px 0 143px;
+    padding: 0px 0 143px;
     li {
       span {
         font-size: 20px;
@@ -478,7 +489,7 @@ section.content {
     }
   }
   @media screen and (max-width: 767px) {
-    padding: 40px 0 80px;
+    padding: 0px 0 80px;
     li {
       span {
         font-size: 16px;
@@ -501,4 +512,41 @@ section.content {
       }
     }
   }
+}
+
+.animationList {
+  position: relative;
+  & > li {
+    opacity: 0;
+    transform: translate(0, 100px);
+    transition: opacity 1s ease, transform 1s ease;
+  }
+  &.isShowing {
+    & > li {
+      opacity: 1;
+      transform: translate(0, 0);
+    }
+  }
+}
+.banner {
+  .contentArea {
+    h3,
+    h4 {
+      opacity: 0;
+      transform: translate(0, 100px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    &.isShowing {
+      h3,
+      h4 {
+        opacity: 1;
+        transform: translate(0, 0);
+      }
+    }
+  }
+}
+.observer {
+  position: absolute;
+  top: 20%;
+  bottom: 20%;
 }
