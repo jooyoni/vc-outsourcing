@@ -31,7 +31,7 @@ function IRBanner() {
         <h3>IR</h3>
         <h4>{title}</h4>
         <nav>
-          <div className={styles.homeBtn}>
+          <div className={styles.homeBtn} onClick={() => navigate('/')}>
             <img src={home} />
           </div>
           <div className={styles.category}>
@@ -40,7 +40,6 @@ function IRBanner() {
                 subPageOpen ? styles.isOpen : ''
               }`}
               onClick={() => setSubPageOpen((prev) => !prev)}
-              onBlur={() => setSubPageOpen(false)}
             >
               <span>IR</span>
               <img src={arrow} />

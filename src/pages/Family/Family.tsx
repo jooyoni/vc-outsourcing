@@ -5,7 +5,6 @@ import styles from './Family.module.scss';
 function Family() {
   const [ref1, inView1] = useInView();
   const [ref2, inView2] = useInView();
-  console.log(inView1, inView2);
   return (
     <div>
       <div

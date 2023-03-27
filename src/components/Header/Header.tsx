@@ -1,6 +1,6 @@
 import styles from './Header.module.scss';
 import arrow from '../../assets/arrowWhite.png';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 function Header() {
   const navigate = useNavigate();
@@ -19,6 +19,30 @@ function Header() {
   useEffect(() => {
     if (window.innerWidth <= 1023) setSideIsOpen(false);
   }, [location]);
+
+  const navListRef = useRef<HTMLUListElement>(null);
+  const [borderLeft, setBorderLeft] = useState(0);
+  const [borderWidth, setBorderWidth] = useState(0);
+  useEffect(() => {
+    if (!navListRef.current) return;
+    let idx: number | undefined = undefined;
+    if (location.pathname == '/') {
+      setBorderLeft(0);
+      setBorderWidth(0);
+    }
+    if (location.pathname.includes('/about')) idx = 0;
+    else if (location.pathname.includes('/team')) idx = 1;
+    else if (location.pathname.includes('/portfolio')) idx = 2;
+    else if (location.pathname.includes('/ir')) idx = 3;
+    else if (location.pathname.includes('/family')) idx = 4;
+    if (!idx && idx !== 0) return;
+    let li = navListRef.current.childNodes[idx] as HTMLLIElement;
+    setBorderLeft(li.offsetLeft);
+    setBorderWidth(li.offsetWidth);
+  }, [location]);
+
+  //portfolio hover시 하위 메뉴 보이게
+  const [portfolioHovered, setPortfolioHovered] = useState(false);
   return (
     <>
       <div className={styles.container}>
@@ -28,47 +52,76 @@ function Header() {
         <div className={styles.right}>
           <ul
             className={`${styles.navigation} ${sideIsOpen ? styles.hit : ''}`}
+            ref={navListRef}
           >
             <li
               onClick={() => {
-                if (!sideIsOpen) return;
                 navigate('/about');
               }}
             >
-              ABOUT
+              <span>ABOUT</span>
             </li>
             <li
               onClick={() => {
-                if (!sideIsOpen) return;
                 navigate('/team');
               }}
             >
-              TEAM
+              <span>TEAM</span>
             </li>
             <li
-              onClick={() => {
-                if (!sideIsOpen) return;
+              onClick={(e) => {
+                e.stopPropagation();
                 navigate('/portfolio');
               }}
             >
-              PORTFOLIO
+              <span>PORTFOLIO</span>
+              <nav className={`${styles.subMenuWrap}`}>
+                <ul>
+                  <li
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/portfolio?tab=0');
+                    }}
+                  >
+                    <span>펀드운용</span>
+                  </li>
+                  <li
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/portfolio?tab=1');
+                    }}
+                  >
+                    <span>투자현황</span>
+                  </li>
+                  <li
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      navigate('/portfolio?tab=2');
+                    }}
+                  >
+                    <span>펀드운용현황</span>
+                  </li>
+                </ul>
+              </nav>
             </li>
             <li
               onClick={() => {
-                if (!sideIsOpen) return;
                 navigate('/ir');
               }}
             >
-              IR
+              <span>IR</span>
             </li>
             <li
               onClick={() => {
-                if (!sideIsOpen) return;
                 navigate('/family');
               }}
             >
-              FAMILY
+              <span>FAMILY</span>
             </li>
+            <div
+              className={styles.borderBottom}
+              style={{ left: borderLeft, width: borderWidth }}
+            ></div>
           </ul>
           <div
             className={`${styles.translationWrap} ${
