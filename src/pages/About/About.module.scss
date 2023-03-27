@@ -92,9 +92,9 @@
     margin: 0 auto;
     padding: 80px 0;
     display: flex;
-
+    gap: 32px;
     .left {
-      width: 51.3%;
+      width: 50%;
       box-sizing: border-box;
       & > span:first-child {
         font-weight: 700;
@@ -103,41 +103,26 @@
         color: #090b0f;
         display: inline-block;
         padding: 20px 0;
-        margin-bottom: 45px;
       }
-      & > h3 {
-        font-weight: 700;
-        font-size: 32px;
-        line-height: 38px;
-        color: #090b0f;
-        padding: 20px 0;
-      }
-      & > h2 {
-        font-weight: 700;
-        font-size: 48px;
-        line-height: 75px;
-        color: #0b174b;
-        padding: 23px 0;
-        word-break: keep-all;
-      }
+
       & > p {
         font-weight: 300;
-        font-size: 24px;
+        font-size: 22px;
         line-height: 40px;
+        letter-spacing: 0.005em;
         color: rgba(9, 11, 15, 0.8);
         padding: 10px 0;
-        margin-bottom: 62px;
         word-break: keep-all;
       }
       .chairmanInfo {
         display: flex;
         align-items: center;
+        padding: 10px 0;
         span:first-child {
           font-weight: 300;
           font-size: 24px;
           line-height: 29px;
           color: #090b0f;
-          padding: 0 9.5px;
         }
         span:nth-child(2) {
           font-size: 24px;
@@ -147,14 +132,10 @@
           padding: 20px;
           font-weight: 700;
         }
-        img {
-          width: 152px;
-          height: 39px;
-        }
       }
     }
     .right {
-      width: 48.7%;
+      width: 50%;
       background-image: url('../../assets/about/aboutBg02.png');
       background-size: cover;
     }
@@ -163,58 +144,49 @@
         & > span:first-child {
           font-size: 1.829vw;
           line-height: 2.21vw;
-          margin-bottom: 3.429vw;
-        }
-        & > h3 {
-          font-size: 1.829vw;
-          line-height: 2.21vw;
-        }
-        & > h2 {
-          padding: 10px 0;
-          font-size: 32px;
-          line-height: 50px;
         }
         & > p {
           font-size: 20px;
           line-height: 32px;
         }
         .chairmanInfo {
-          flex-wrap: wrap;
           span:first-child {
-            width: 100%;
-            font-size: 16px;
-            line-height: 19px;
+            font-size: 19px;
+            line-height: 23px;
           }
           span:nth-child(2) {
-            padding: 20px 10px;
+            padding: 10px;
+            font-size: 22px;
+            line-height: 26px;
           }
         }
       }
     }
-    @media screen and (max-width: 744px) {
+    @media screen and (max-width: 920px) {
       flex-direction: column;
       padding: 40px 0px;
       flex-flow: wrap-reverse;
+      gap: 30px;
       .left {
         width: 100%;
         & > span:first-child {
-          font-size: 32px;
-          line-height: 38px;
-          margin: 0;
-        }
-        & > h3 {
           font-size: 24px;
           line-height: 29px;
-        }
-        & > h2 {
-          padding: 10px 0;
-          font-size: 32px;
-          line-height: 50px;
         }
         & > p {
           font-size: 16px;
           line-height: 24px;
-          margin-bottom: 40px;
+        }
+        .chairmanInfo {
+          span:first-child {
+            font-size: 15px;
+            line-height: 18px;
+          }
+          span:nth-child(2) {
+            font-size: 20px;
+            line-height: 24px;
+            padding: 10px;
+          }
         }
       }
       .right {
@@ -225,7 +197,7 @@
   }
 }
 .container > section:nth-child(3) {
-  padding: 0 10px;
+  padding: 0 16px;
   padding-bottom: 135px;
   @media screen and (max-width: 767px) {
     padding-bottom: 40px;
@@ -750,6 +722,8 @@
 
 .container section {
   position: relative;
+  padding-left: 16px;
+  padding-right: 16px;
   .observer {
     position: absolute;
     top: 20%;

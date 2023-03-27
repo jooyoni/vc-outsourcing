@@ -153,6 +153,15 @@ section.content {
       background: #f5f7f9;
       padding: 0 8px 0 20px;
       box-sizing: border-box;
+      position: relative;
+      select {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+      }
       span {
         font-weight: 500;
         font-size: 20px;

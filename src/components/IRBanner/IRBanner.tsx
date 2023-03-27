@@ -40,6 +40,7 @@ function IRBanner() {
                 subPageOpen ? styles.isOpen : ''
               }`}
               onClick={() => setSubPageOpen((prev) => !prev)}
+              onBlur={() => setSubPageOpen(false)}
             >
               <span>IR</span>
               <img src={arrow} />

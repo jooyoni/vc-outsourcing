@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import styles from './Board.module.scss';
 import arrowBlue from '../../assets/arrowBlue.png';
 import arrowBlack from '../../assets/arrowBlack.png';
@@ -58,11 +58,15 @@ function Board() {
     const id = new URL(document.URL).searchParams.get('id');
     if (boardType == '0') boardType = 'post-detail';
     else boardType = 'advertise-detail';
-    axiosClient.get(`/api/${boardType}?id=${id}`).then((res) => {
-      setCurrentBoard(res.data.current);
-      setPrevBoard(res.data.prev);
-      setNextBoard(res.data.next);
-    });
+    let keyword = new URL(document.URL).searchParams.get('keyword') || '';
+    let search = new URL(document.URL).searchParams.get('search') || 'title';
+    axiosClient
+      .get(`/api/${boardType}?id=${id}&search=${search}&keyword=${keyword}`)
+      .then((res) => {
+        setCurrentBoard(res.data.current);
+        setPrevBoard(res.data.prev);
+        setNextBoard(res.data.next);
+      });
   }, [location]);
   return (
     <div className={styles.container}>
@@ -102,7 +106,21 @@ function Board() {
                     <h3>{prevBoard?.title || '이전 글이 없습니다.'}</h3>
                   </div>
                 </div>
-                <div className={styles.return}>
+                <div
+                  className={styles.return}
+                  onClick={() =>
+                    navigate(
+                      `/ir?tab=${
+                        new URL(document.URL).searchParams.get('tab') || '0'
+                      }&search=${
+                        new URL(document.URL).searchParams.get('search') ||
+                        'title'
+                      }&keyword=${
+                        new URL(document.URL).searchParams.get('keyword') || ''
+                      }`,
+                    )
+                  }
+                >
                   <div></div>
                   <div></div>
                   <div></div>

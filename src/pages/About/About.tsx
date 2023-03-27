@@ -1,5 +1,4 @@
 import styles from './About.module.scss';
-import sign from '../../assets/about/chairmanSign.png';
 import Footer from '../../components/Footer/Footer';
 import { useEffect, useRef, useState } from 'react';
 import axiosClient from '../../libs/axiosClient';
@@ -49,7 +48,6 @@ function About() {
           className={`${styles.contentArea} ${inView ? styles.isShowing : ''}`}
         >
           <span>ABOUT</span>
-          <div>LOGO</div>
           <h1>아이스퀘어벤처스</h1>
           <p>
             아이스퀘어벤처스는 지역 기반 벤처투자생태계 조성으로 지속가능한
@@ -65,25 +63,32 @@ function About() {
         >
           <div className={styles.left}>
             <span>CEO 인사말</span>
-            <h3>Ecopro Philosophy</h3>
-            <h2>
-              인류의 삶의 질을 개선하고
+            <p className={styles.greetingWrap}>
+              안녕하십니까?
               <br />
-              편리하게 한다.
-            </h2>
-            <p>
-              에코프로 이념을 계승하여 혁신적인 방법으로
+              ㈜에코프로 파트너스 대표이사 이재훈입니다.
               <br />
-              인류의 삶을 윤택하게 만드는 기업을 발굴
               <br />
-              투자와 시장확보(전략적 비즈니스 교류 지원 등)를
+              우리 회사는 ‘20년 7월 설립된 신생 투자회사로 투자와 보육이라는
+              핵심 목표를 가지고 기업과의 상생을 위해 장기적인 안목으로
+              “가까이에서, 그리고 빈번히 상호작용”하도록 지원 하겠습니다. 이를
+              위해 유망 기술기업이 겪는 다양한 경영 등 애로사항을 해결 할 수
+              있도록 투자지원 뿐만 아니라 보육서비스도 병행해서 지원할
+              계획입니다.
               <br />
-              동시 지원하여 동반성장 하고자 합니다.
+              <br />
+              또한, 에코프로 가족회사의 일원으로서 모기업이 추구하는 “인류의
+              삶의 질을 개선하고 편리하게 한다.”는 철학에 따라 우리 사회
+              대기환경 및 친환경에너지 등 관련 유망한 기술 기업에 투자할
+              예정입니다.
+              <br />
+              <br />
+              신생 투자회사 이지만 지속적인 성장과 사회 기여를 통해 신뢰받는
+              투자회사로 성장할 수 있도록 하겠습니다. 감사합니다.
             </p>
             <div className={styles.chairmanInfo}>
-              <span>아이스퀘어 그룹 회 장</span>
+              <span>아이스퀘어 대표이사</span>
               <span>이재훈</span>
-              <img src={sign} alt="서명" />
             </div>
           </div>
           <div className={styles.right}></div>
