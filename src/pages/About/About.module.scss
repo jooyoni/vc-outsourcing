@@ -442,22 +442,35 @@
       border-bottom: 1px solid #090b0f;
       padding: 30px 0;
     }
-    .nextBtn {
-      width: 79px;
-      height: 79px;
-      margin-left: auto;
-      margin-top: 200px;
-      margin: 200px 0 38px auto;
-      background-color: #090b0f;
+    .btnsWrap {
+      margin: 200px 0 38px;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      border-radius: 50%;
-      cursor: pointer;
-      img {
-        width: 24px;
-        height: 24px;
-        transform: rotate(180deg);
+      justify-content: space-between;
+      .nextBtn,
+      .prevBtn {
+        width: 79px;
+        height: 79px;
+        background-color: #090b0f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: opacity 0.3s ease;
+        opacity: 0;
+        &.hit {
+          opacity: 1;
+        }
+        img {
+          width: 24px;
+          height: 24px;
+          transform: rotate(180deg);
+        }
+      }
+      .prevBtn {
+        img {
+          transform: rotate(0deg);
+        }
       }
     }
     .historySlider {
@@ -587,10 +600,13 @@
         padding: 10px;
         margin: 0 auto;
       }
-      .nextBtn {
-        margin: 80px 0 40px auto;
-        width: 75px;
-        height: 75px;
+      .btnsWrap {
+        margin: 80px 0 40px;
+        .nextBtn,
+        .prevBtn {
+          width: 75px;
+          height: 75px;
+        }
       }
     }
     @media screen and (max-width: 767px) {
@@ -602,10 +618,13 @@
         padding: 10px;
         margin: 0 auto;
       }
-      .nextBtn {
-        margin: 40px 0 20px auto;
-        width: 71px;
-        height: 71px;
+      .btnsWrap {
+        margin: 40px 0 20px;
+        .nextBtn,
+        .prevBtn {
+          width: 71px;
+          height: 71px;
+        }
       }
     }
   }

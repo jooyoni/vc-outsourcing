@@ -203,6 +203,9 @@ section.contentWrap {
       ul li {
         border: 2px solid #52a1ff;
       }
+      &::after {
+        background: #52a1ff;
+      }
     }
     @media screen and (max-width: 1023px) {
       padding: 86px 0 144px;

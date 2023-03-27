@@ -34,6 +34,8 @@ function About() {
     setHistoryYear(list);
   }, [companyHistory]);
   const [swiper, setSwiper] = useState<SwiperCore>();
+  const [prevBtnShowing, setPrevBtnShowing] = useState(false);
+  const [nextBtnShowing, setNextBtnShowing] = useState(true);
   const [ref, inView] = useInView();
   const [ref2, inView2] = useInView();
   const [ref3, inView3] = useInView();
@@ -180,8 +182,25 @@ function About() {
           className={`${styles.contentArea} ${inView5 ? styles.isShowing : ''}`}
         >
           <h1>아이스퀘어가 걸어온 길</h1>
-          <div className={styles.nextBtn} onClick={() => swiper?.slideNext()}>
-            <img src={arrow} />
+          <div className={styles.btnsWrap}>
+            {
+              <div
+                className={`${styles.prevBtn} ${
+                  prevBtnShowing ? styles.hit : ''
+                }`}
+                onClick={() => swiper?.slidePrev()}
+              >
+                <img src={arrow} />
+              </div>
+            }
+            <div
+              className={`${styles.nextBtn} ${
+                nextBtnShowing ? styles.hit : ''
+              }`}
+              onClick={() => swiper?.slideNext()}
+            >
+              <img src={arrow} />
+            </div>
           </div>
           <Swiper
             className={styles.historySlider}
@@ -189,6 +208,20 @@ function About() {
             freeMode={true}
             modules={[FreeMode]}
             onSwiper={setSwiper}
+            onSlideChangeTransitionEnd={(swiper: any) => {
+              if (!(swiper.translate * -1 + swiper.width >= swiper.virtualSize))
+                setNextBtnShowing(true);
+              else setNextBtnShowing(false);
+              if (swiper.translate < 0) setPrevBtnShowing(true);
+              else setPrevBtnShowing(false);
+            }}
+            onTransitionEnd={(swiper: any) => {
+              if (!(swiper.translate * -1 + swiper.width >= swiper.virtualSize))
+                setNextBtnShowing(true);
+              else setNextBtnShowing(false);
+              if (swiper.translate < 0) setPrevBtnShowing(true);
+              else setPrevBtnShowing(false);
+            }}
           >
             {historyYear.map((year) => (
               <SwiperSlide key={year}>
