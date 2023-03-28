@@ -69,7 +69,9 @@ function Portfolio() {
 
   const [investData, setInvestData] = useState<IInvestDataType[]>([]);
   const [fundData, setFundData] = useState<IFundDataType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    setIsLoading(true);
     setInvestData([]);
     setFundData([]);
     let tab = new URL(document.URL).searchParams.get('tab');
@@ -101,10 +103,12 @@ function Portfolio() {
         Number(new URL(document.URL).searchParams.get('page') || 1),
       );
       setPaginationList(paginationList);
+      setIsLoading(false);
     });
   }, [location]);
   const [ref1, inView1] = useInView();
   const [ref2, inView2] = useInView();
+  console.log(investData);
   return (
     <div className={styles.container}>
       <section className={styles.banner}>
@@ -166,7 +170,7 @@ function Portfolio() {
                 inView2 ? styles.isShowing : ''
               }`}
             >
-              {fundData.length ? (
+              {fundData.length || !isLoading ? (
                 <>
                   {fundData.map((fund, idx) => (
                     <li
@@ -200,14 +204,20 @@ function Portfolio() {
                 inView2 ? styles.isShowing : ''
               }`}
             >
-              {investData.length ? (
+              {investData.length || !isLoading ? (
                 <>
                   {investData.map((invest, idx) => (
                     <li
                       key={invest.id}
                       style={{ transitionDelay: `${idx * 0.1}s` }}
                     >
-                      <img src={invest.logo_image} alt="로고" />
+                      <img
+                        src={
+                          'https://67cc-112-169-5-244.jp.ngrok.io/' +
+                          invest.logo_image
+                        }
+                        alt="로고"
+                      />
                       <div className={styles.detailBox}>
                         <h2>{invest.name}</h2>
                         <span>{invest.url}</span>

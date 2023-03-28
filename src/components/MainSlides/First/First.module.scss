@@ -1,5 +1,5 @@
 .container {
-  background: url('../../../assets/background/mainBg.png');
+  // background: url('../../../assets/background/test.mp4');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 40%;
@@ -10,4 +10,9 @@
   }
   // height: 100%;
   // aspect-ratio: 1/2.16;
+}
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

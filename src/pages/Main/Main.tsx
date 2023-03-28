@@ -45,7 +45,7 @@ function Main() {
             <div className={styles.circle}></div>
             <span>Portfolio</span>
           </li>
-          <li className={activeIdx == 3 ? styles.hit : ''}>
+          <li className={activeIdx >= 3 ? styles.hit : ''}>
             <div className={styles.circle}></div>
             <span>IR</span>
           </li>
@@ -56,7 +56,7 @@ function Main() {
           direction={'vertical'}
           slidesPerView={'auto'}
           speed={1000}
-          spaceBetween={-1}
+          spaceBetween={0}
           mousewheel={{
             thresholdDelta: 30,
           }}

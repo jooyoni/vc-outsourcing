@@ -31,7 +31,7 @@ function Fifth() {
           글로벌 수준의 투자역량을 갖춘 회사로 끊임없이 발전해 나갈 것입니다.
         </p>
       </div>
-      <div className={styles.logoListWrap}>로고영역</div>
+      {/* <div className={styles.logoListWrap}>로고영역</div> */}
       <div className={styles.intersecter} ref={intersectRef}></div>
     </div>
   );

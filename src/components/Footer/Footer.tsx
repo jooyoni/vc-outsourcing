@@ -28,10 +28,22 @@ function Footer(props: IPropsType) {
         </div>
         <div className={styles.bottom}>
           <ul className={styles.companyInfo}>
-            <li>서울특별시 강남구 테헤란로 314 금성빌딩 12층</li>
-            <li>Tel.02-0000-0000</li>
-            <li>Fax.02-000-0000</li>
+            <li>
+              <span>본사</span>
+              <span>
+                {' '}
+                (28126) 충북 청주시 청원구 오창읍 각리1길 97 충북SW융합센터
+                405호
+              </span>
+            </li>
+            <li>
+              <span>지사</span>
+              <span>(06775) 서울특별시 서초구 마방로 68 동원산업빌딩 25층</span>
+            </li>
           </ul>
+          <span className={styles.copyright}>
+            Copyright@2023 i SQUARE VENTURES Co. Ltd.
+          </span>
         </div>
       </div>
     </>
