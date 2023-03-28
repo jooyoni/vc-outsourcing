@@ -4,7 +4,7 @@ const video = require('../../../assets/background/test.mp4');
 function First() {
   return (
     <div className={styles.container}>
-      <video src={video} autoPlay muted loop></video>
+      <video src={video} autoPlay muted loop playsInline></video>
     </div>
   );
 }

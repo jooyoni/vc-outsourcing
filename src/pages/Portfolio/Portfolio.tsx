@@ -147,9 +147,9 @@ function Portfolio() {
                 <ul className={styles.subList}>
                   <li onClick={() => navigate('/portfolio?tab=0')}>펀드운용</li>
                   <li onClick={() => navigate('/portfolio?tab=1')}>투자현황</li>
-                  <li onClick={() => navigate('/portfolio?tab=2')}>
+                  {/* <li onClick={() => navigate('/portfolio?tab=2')}>
                     esg 투자 실천
-                  </li>
+                  </li> */}
                   {/* <li onClick={() => navigate('/portfolio?tab=3')}>
                     펀드 운용 현황
                   </li> */}

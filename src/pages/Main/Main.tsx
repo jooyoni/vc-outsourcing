@@ -35,19 +35,19 @@ function Main() {
         <ul>
           <li className={activeIdx == 0 ? styles.hit : ''}>
             <div className={styles.circle}></div>
-            <span>Main</span>
+            <span>01</span>
           </li>
           <li className={activeIdx == 1 ? styles.hit : ''}>
             <div className={styles.circle}></div>
-            <span>About</span>
+            <span>02</span>
           </li>
           <li className={activeIdx == 2 ? styles.hit : ''}>
             <div className={styles.circle}></div>
-            <span>Portfolio</span>
+            <span>03</span>
           </li>
           <li className={activeIdx >= 3 ? styles.hit : ''}>
             <div className={styles.circle}></div>
-            <span>IR</span>
+            <span>04</span>
           </li>
         </ul>
       </div>

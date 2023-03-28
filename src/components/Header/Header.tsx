@@ -95,14 +95,14 @@ function Header() {
                   >
                     <span>투자현황</span>
                   </li>
-                  <li
+                  {/* <li
                     onClick={(e) => {
                       e.stopPropagation();
                       navigate('/portfolio?tab=2');
                     }}
                   >
                     <span>펀드운용현황</span>
-                  </li>
+                  </li> */}
                 </ul>
               </nav>
             </li>
