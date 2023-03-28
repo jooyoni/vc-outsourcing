@@ -42,8 +42,6 @@ function Header() {
     setBorderWidth(li.offsetWidth);
   }, [location]);
 
-  //portfolio hover시 하위 메뉴 보이게
-  const [portfolioHovered, setPortfolioHovered] = useState(false);
   const { t, i18n } = useTranslation();
   const changelanguageToKo = () => i18n.changeLanguage('ko');
   const changelanguageToEn = () => i18n.changeLanguage('en');

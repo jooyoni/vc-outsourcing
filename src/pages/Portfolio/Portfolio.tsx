@@ -108,7 +108,6 @@ function Portfolio() {
   }, [location]);
   const [ref1, inView1] = useInView();
   const [ref2, inView2] = useInView();
-  console.log(investData);
   return (
     <div className={styles.container}>
       <section className={styles.banner}>
@@ -210,6 +209,7 @@ function Portfolio() {
                     <li
                       key={invest.id}
                       style={{ transitionDelay: `${idx * 0.1}s` }}
+                      onClick={() => (window.location.href = invest.url)}
                     >
                       <img
                         src={

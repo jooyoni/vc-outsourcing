@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import Footer from '../../components/Footer/Footer';
 import Spinner from '../../components/Spinner/Spinner';
@@ -17,7 +18,8 @@ interface IEmployeeDataType {
     email: string;
     gender: string;
     id: number;
-    name: number;
+    name: string | null;
+    english_name: string | null;
     position: { title: string; english_title: string };
     position_id: 1;
   }[];
@@ -31,7 +33,7 @@ function Team() {
   const [ref2, inView2] = useInView();
   const [ref3, inView3] = useInView();
   const [ref4, inView4] = useInView();
-  // const;
+  const { t, i18n } = useTranslation();
   return (
     <div className={styles.container}>
       <section className={styles.banner}>
@@ -67,10 +69,15 @@ function Team() {
                   </div>
                   <div className={styles.detailWrap}>
                     <span className={styles.position}>
-                      {employee.position.english_title}{' '}
-                      {employee.position.title}
+                      {i18n.resolvedLanguage == 'ko'
+                        ? employee.position.title
+                        : employee.position.english_title}
                     </span>
-                    <span className={styles.name}>{employee.name}</span>
+                    <span className={styles.name}>
+                      {i18n.resolvedLanguage == 'ko' || !employee.english_name
+                        ? employee.name
+                        : employee.english_name}
+                    </span>
                   </div>
                 </li>
               ))
@@ -100,10 +107,15 @@ function Team() {
                   </div>
                   <div className={styles.detailWrap}>
                     <span className={styles.position}>
-                      {employee.position.english_title}{' '}
-                      {employee.position.title}
+                      {i18n.resolvedLanguage == 'ko'
+                        ? employee.position.title
+                        : employee.position.english_title}
                     </span>
-                    <span className={styles.name}>{employee.name}</span>
+                    <span className={styles.name}>
+                      {i18n.resolvedLanguage == 'ko' || !employee.english_name
+                        ? employee.name
+                        : employee.english_name}
+                    </span>
                   </div>
                 </li>
               ))
@@ -131,10 +143,15 @@ function Team() {
                   <div className={styles.imageWrap}></div>
                   <div className={styles.detailWrap}>
                     <span className={styles.position}>
-                      {employee.position.english_title}{' '}
-                      {employee.position.title}
+                      {i18n.resolvedLanguage == 'ko'
+                        ? employee.position.title
+                        : employee.position.english_title}
                     </span>
-                    <span className={styles.name}>{employee.name}</span>
+                    <span className={styles.name}>
+                      {i18n.resolvedLanguage == 'ko' || !employee.english_name
+                        ? employee.name
+                        : employee.english_name}
+                    </span>
                   </div>
                 </li>
               ))
