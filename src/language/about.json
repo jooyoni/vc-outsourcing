@@ -1,0 +1,10 @@
+{
+  "en": {
+    "test": "testsentence1",
+    "test2": "testsentence2"
+  },
+  "ko": {
+    "test": "테스트문장1ddfdf",
+    "test2": "테스트문장2"
+  }
+}

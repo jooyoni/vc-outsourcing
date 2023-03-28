@@ -8,6 +8,7 @@ import { FreeMode } from 'swiper';
 import 'swiper/css';
 import SwiperCore from 'swiper';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 interface ICompanyHistoryType {
   english_title: string;
   m: number;
@@ -41,6 +42,8 @@ function About() {
   const [ref4, inView4] = useInView();
   const [ref5, inView5] = useInView();
   const [ref6, inView6] = useInView();
+  const [ref7, inView7] = useInView();
+  const { t, i18n } = useTranslation();
   return (
     <div className={styles.container}>
       <section>
@@ -48,6 +51,7 @@ function About() {
           className={`${styles.contentArea} ${inView ? styles.isShowing : ''}`}
         >
           <span>ABOUT</span>
+          {/* <span>{t('about.test')}</span> */}
           <h1>아이스퀘어벤처스</h1>
           <p>
             아이스퀘어벤처스는 지역 기반 벤처투자생태계 조성으로 지속가능한
@@ -275,6 +279,20 @@ function About() {
         <div
           className={`${styles.contentArea} ${inView6 ? styles.isShowing : ''}`}
         >
+          <h2>에코프로 철학</h2>
+          <p>
+            “인류의 삶의 질을 개선하고 편리하게 한다"는 에코프로 이념을 계승하여
+            혁신적인 방법으로 인류의 삶을 윤택하게 만드는 기업을 발굴,투자와
+            시장확보(전략적 비즈니스 교류 지원 등)를 동시 지원하여 동반성장
+            하고자 합니다.
+          </p>
+        </div>
+        <div ref={ref6} className={styles.observer}></div>
+      </section>
+      <section>
+        <div
+          className={`${styles.contentArea} ${inView7 ? styles.isShowing : ''}`}
+        >
           <h4>주요 투자대상</h4>
           <p>
             초기단계 기업 투자지원경험과 에코프로 그룹의 환경 및 이차전지 분야
@@ -323,7 +341,7 @@ function About() {
             </tr>
           </table>
         </div>
-        <div ref={ref6} className={styles.observer}></div>
+        <div ref={ref7} className={styles.observer}></div>
       </section>
       <Footer />
     </div>

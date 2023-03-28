@@ -9,7 +9,11 @@ import { useEffect, useRef, useState } from 'react';
 import arrow from '../../../assets/arrowWhiteThin.png';
 const slideData = [
   {
-    title: '현재운용자산',
+    title: '누적포트폴리오',
+    content: '+ 485건',
+  },
+  {
+    title: '펀드운용',
     content: '1조 3,902억 +',
   },
   {
@@ -17,12 +21,8 @@ const slideData = [
     content: '40명 +',
   },
   {
-    title: '운용인력',
-    content: '40명 +',
-  },
-  {
-    title: '운용인력',
-    content: '40명 +',
+    title: '에코프로 파트너',
+    content: '20팀 +',
   },
 ];
 function Fourth() {

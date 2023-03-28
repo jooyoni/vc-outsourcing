@@ -2,6 +2,7 @@ import styles from './Header.module.scss';
 import arrow from '../../assets/arrowWhite.png';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -43,11 +44,14 @@ function Header() {
 
   //portfolio hover시 하위 메뉴 보이게
   const [portfolioHovered, setPortfolioHovered] = useState(false);
+  const { t, i18n } = useTranslation();
+  const changelanguageToKo = () => i18n.changeLanguage('ko');
+  const changelanguageToEn = () => i18n.changeLanguage('en');
   return (
     <>
       <div className={styles.container}>
         <div className={styles.logoWrap} onClick={() => navigate('/')}>
-          i SQUARE VENTURES
+          Ecopro Partners
         </div>
         <div className={styles.right}>
           <ul
@@ -129,13 +133,19 @@ function Header() {
             }`}
           >
             <span
-              onClick={() => setLanguage('kor')}
+              onClick={() => {
+                setLanguage('kor');
+                changelanguageToKo();
+              }}
               className={language == 'kor' ? styles.hit : ''}
             >
               KOR
             </span>
             <span
-              onClick={() => setLanguage('eng')}
+              onClick={() => {
+                setLanguage('eng');
+                changelanguageToEn();
+              }}
               className={language == 'eng' ? styles.hit : ''}
             >
               ENG
@@ -161,13 +171,19 @@ function Header() {
         </ul>
         <div>
           <span
-            onClick={() => setLanguage('kor')}
+            onClick={() => {
+              setLanguage('kor');
+              changelanguageToKo();
+            }}
             className={language == 'kor' ? styles.hit : ''}
           >
             KOR
           </span>
           <span
-            onClick={() => setLanguage('eng')}
+            onClick={() => {
+              setLanguage('eng');
+              changelanguageToEn();
+            }}
             className={language == 'eng' ? styles.hit : ''}
           >
             ENG
