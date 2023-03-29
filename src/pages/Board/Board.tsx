@@ -10,7 +10,13 @@ import axiosClient from '../../libs/axiosClient';
 import Spinner from '../../components/Spinner/Spinner';
 
 interface ICurrentBoardType {
-  attached_files: [];
+  attached_files: {
+    created_at: string;
+    id: number;
+    image: string;
+    original_name: string;
+    updated_at: string;
+  }[];
   content: string;
   created_at: string;
   id: number;
@@ -68,6 +74,7 @@ function Board() {
         setNextBoard(res.data.next);
       });
   }, [location]);
+  console.log(location);
   return (
     <div className={styles.container}>
       <IRBanner />
@@ -85,6 +92,15 @@ function Board() {
                   </span>
                   {/* <span>hit : 861</span> */}
                 </div>
+                {currentBoard?.attached_files.map((file) => (
+                  <a
+                    href={`https://67cc-112-169-5-244.jp.ngrok.io/api/file_download?post_id=${new URL(
+                      document.URL,
+                    ).searchParams.get('id')}&file_id=${file.id}`}
+                  >
+                    {file.original_name}(임시디자인)
+                  </a>
+                ))}
                 <p
                   className={styles.content}
                   dangerouslySetInnerHTML={{

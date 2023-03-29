@@ -45,6 +45,7 @@ function IR() {
     if (tabOpen) setSubPageOpen(false);
   }, [tabOpen]);
   const [boardData, setBoardData] = useState<IBoardType[]>([]);
+  const [boardCount, setBoardCount] = useState<number>(0);
   useEffect(() => {
     let tab = new URL(document.URL).searchParams.get('tab');
     setTab(Number(tab || 0));
@@ -84,7 +85,7 @@ function IR() {
             paginationList = [page - 2, page - 1, page, page + 1, page + 2];
           else paginationList = [last - 4, last - 3, last - 2, last - 1, last];
         }
-
+        setBoardCount(res.data.total);
         setBoardData(res.data.data);
         setPagination(
           Number(new URL(document.URL).searchParams.get('page') || 1),
@@ -161,32 +162,37 @@ function IR() {
           >
             {boardData.length || !isLoading ? (
               <>
-                {boardData.map((data, idx) => (
-                  <li
-                    key={data.id}
-                    onClick={() =>
-                      navigate(
-                        `/board?tab=${tab}&id=${data.id}&search=${searchOption}&keyword=${keyword}`,
-                      )
-                    }
-                    style={{ transitionDelay: `${idx * 0.1}s` }}
-                  >
-                    <span className={styles.order}>
-                      {limit * (pagination - 1) + idx + 1}
-                    </span>
-                    <div className={styles.boardDetailWrap}>
-                      <h3 className={styles.title}>{data.title}</h3>
-                      <div className={styles.boardInfo}>
-                        <span>
-                          {data.created_at
-                            .substring(0, 10)
-                            .replaceAll('-', '.')}
-                        </span>
-                        {/* <span>hit : {data.}</span> */}
+                {boardData //일반글
+                  .map((data, idx) => (
+                    <li
+                      key={data.id}
+                      onClick={() =>
+                        navigate(
+                          `/board?tab=${tab}&id=${data.id}&search=${searchOption}&keyword=${keyword}`,
+                        )
+                      }
+                      style={{
+                        transitionDelay: `${idx * 0.1}s`,
+                      }}
+                    >
+                      <span className={styles.order}>
+                        {data.is_notice == 1
+                          ? '공지'
+                          : boardCount - (pagination - 1) * limit - idx}
+                      </span>
+                      <div className={styles.boardDetailWrap}>
+                        <h3 className={styles.title}>{data.title}</h3>
+                        <div className={styles.boardInfo}>
+                          <span>
+                            {data.created_at
+                              .substring(0, 10)
+                              .replaceAll('-', '.')}
+                          </span>
+                          {/* <span>hit : {data.}</span> */}
+                        </div>
                       </div>
-                    </div>
-                  </li>
-                ))}
+                    </li>
+                  ))}
                 <div ref={ref1} className={styles.observer}></div>
               </>
             ) : (
