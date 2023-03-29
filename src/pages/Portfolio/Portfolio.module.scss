@@ -330,7 +330,14 @@ section.content {
         font-weight: 300;
         font-size: 20px;
         line-height: 24px;
-        color: #090b0f;
+        color: white;
+      }
+      h2 {
+        font-weight: bold;
+      }
+      span {
+        font-size: 16px;
+        line-height: 20px;
       }
     }
     @media screen and (max-width: 1023px) {
@@ -339,17 +346,20 @@ section.content {
         line-height: 23px;
       }
       .detailBox {
-        h2,
+        h2 {
+          font-size: 18px;
+          line-height: 22px;
+        }
         span {
-          font-size: 17px;
-          line-height: 20px;
+          font-size: 14px;
+          line-height: 17px;
         }
       }
     }
     @media screen and (max-width: 767px) {
       & > h2 {
-        font-size: 14px;
-        line-height: 17px;
+        font-size: 16px;
+        line-height: 20px;
       }
       .detailBox {
         h2,

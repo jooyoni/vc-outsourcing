@@ -215,7 +215,7 @@ function Portfolio() {
                     <li
                       key={invest.id}
                       style={{ transitionDelay: `${idx * 0.1}s` }}
-                      onClick={() => (window.location.href = invest.url)}
+                      onClick={() => window.open(invest.url, '_blank')}
                     >
                       <img
                         src={
