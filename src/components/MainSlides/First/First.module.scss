@@ -6,14 +6,56 @@
   width: 100%;
   height: 100%;
   font-size: 0px;
+  position: relative;
   @media screen and (max-width: 750px) {
     height: 750px;
   }
   // height: 100%;
   // aspect-ratio: 1/2.16;
-}
-video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .textWrap {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    padding-left: 21.666%;
+    h1 {
+      font-weight: 700;
+      font-size: 48px;
+      line-height: 58px;
+      color: #ffffff;
+      padding: 10px 0;
+    }
+    p {
+      font-weight: 300;
+      font-size: 20px;
+      line-height: 24px;
+      color: #ffffff;
+    }
+    @media screen and (max-width: 1023px) {
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h1 {
+        font-size: 40px;
+        line-height: 48px;
+      }
+      p {
+        padding: 10px 37.5px;
+        text-align: center;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      h1 {
+        font-size: 32px;
+        line-height: 39px;
+      }
+    }
+  }
 }

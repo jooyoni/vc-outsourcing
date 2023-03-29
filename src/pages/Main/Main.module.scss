@@ -44,6 +44,14 @@
         span {
           opacity: 1;
         }
+        &.dark {
+          .circle::after {
+            background-color: #000000;
+          }
+          span {
+            color: #1e1e1e;
+          }
+        }
       }
       .circle {
         width: 16px;

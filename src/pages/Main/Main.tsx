@@ -37,7 +37,7 @@ function Main() {
             <div className={styles.circle}></div>
             <span>01</span>
           </li>
-          <li className={activeIdx == 1 ? styles.hit : ''}>
+          <li className={`${activeIdx == 1 ? styles.hit : ''} ${styles.dark}`}>
             <div className={styles.circle}></div>
             <span>02</span>
           </li>

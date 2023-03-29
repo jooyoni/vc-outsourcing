@@ -103,7 +103,7 @@ function About() {
         <div
           className={`${styles.contentArea} ${inView3 ? styles.isShowing : ''}`}
         >
-          <h4>ECOPRO PARTNER</h4>
+          <h4>ECOPRO PARTNERS</h4>
           <ul>
             <li>
               <span>01</span>
