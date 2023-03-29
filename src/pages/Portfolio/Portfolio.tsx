@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import axiosClient from '../../libs/axiosClient';
 import Spinner from '../../components/Spinner/Spinner';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 interface IFundDataType {
   admin_user_id: null | number;
   category_id: number;
@@ -108,6 +109,7 @@ function Portfolio() {
   }, [location]);
   const [ref1, inView1] = useInView();
   const [ref2, inView2] = useInView();
+  const { t, i18n } = useTranslation();
   return (
     <div className={styles.container}>
       <section className={styles.banner}>
@@ -176,7 +178,11 @@ function Portfolio() {
                       key={fund.id}
                       style={{ transitionDelay: `${idx * 0.1}s` }}
                     >
-                      <h2>{fund.title}</h2>
+                      <h2>
+                        {i18n.resolvedLanguage == 'ko'
+                          ? fund.title
+                          : fund.english_title}
+                      </h2>
                       <ul className={styles.detail}>
                         <li>
                           결성일 :{' '}

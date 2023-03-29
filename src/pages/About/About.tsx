@@ -262,7 +262,12 @@ function About() {
                                 history.y == year && history.m == month,
                             )
                             .map((history) => (
-                              <li>· {history.title}</li>
+                              <li>
+                                ·{' '}
+                                {i18n.resolvedLanguage == 'ko'
+                                  ? history.title
+                                  : history.english_title}
+                              </li>
                             ))}
                         </ul>
                       </li>
