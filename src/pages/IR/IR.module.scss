@@ -306,6 +306,9 @@ section.content {
       line-height: 38px;
       color: #dfdfdf;
       flex-shrink: 0;
+      &.hit {
+        color: #5ad8ef;
+      }
     }
     .boardDetailWrap {
       display: flex;

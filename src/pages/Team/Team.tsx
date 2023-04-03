@@ -26,8 +26,13 @@ interface IEmployeeDataType {
 }
 function Team() {
   const [employeeData, setEmployeeData] = useState<IEmployeeDataType[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
-    axiosClient.get('/api/teams').then((res) => setEmployeeData(res.data));
+    setIsLoading(true);
+    axiosClient.get('/api/teams').then((res) => {
+      setEmployeeData(res.data);
+      setIsLoading(false);
+    });
   }, []);
   const [ref1, inView1] = useInView();
   const [ref2, inView2] = useInView();
@@ -41,9 +46,9 @@ function Team() {
           className={`${styles.contentArea} ${inView1 ? styles.isShowing : ''}`}
         >
           <h3>TEAM</h3>
-          <h2>아이스퀘어벤처스</h2>
+          <h2>에코프로 파트너스</h2>
           <p>
-            아이스퀘어벤처스는 지역 기반 벤처투자생태계 조성으로 지속가능한
+            에코프로 파트너스는 지역 기반 벤처투자생태계 조성으로 지속가능한
             기업생태계 구축을 위해 환경 및 전지재료 사업 기업인 ㈜에코프로가
             설립한 중소기업창업투자회사입니다.
           </p>
@@ -58,7 +63,7 @@ function Team() {
               inView2 ? styles.isShowing : ''
             }`}
           >
-            {employeeData[0] ? (
+            {employeeData[0] && !isLoading ? (
               employeeData[0].users.map((employee, idx) => (
                 <li
                   key={employee.id}
@@ -96,7 +101,7 @@ function Team() {
               inView3 ? styles.isShowing : ''
             }`}
           >
-            {employeeData[1] ? (
+            {employeeData[1] && !isLoading ? (
               employeeData[1].users.map((employee, idx) => (
                 <li
                   key={employee.id}
@@ -134,7 +139,7 @@ function Team() {
               inView4 ? styles.isShowing : ''
             }`}
           >
-            {employeeData[2] ? (
+            {employeeData[2] && !isLoading ? (
               employeeData[2].users.map((employee, idx) => (
                 <li
                   key={employee.id}

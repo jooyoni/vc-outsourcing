@@ -52,9 +52,9 @@ function About() {
         >
           <span>ABOUT</span>
           {/* <span>{t('about.test')}</span> */}
-          <h1>아이스퀘어벤처스</h1>
+          <h1>에코프로 파트너스</h1>
           <p>
-            아이스퀘어벤처스는 지역 기반 벤처투자생태계 조성으로 지속가능한
+            에코프로 파트너스는 지역 기반 벤처투자생태계 조성으로 지속가능한
             기업생태계 구축을 위해 환경 및 전지재료 사업 기업인 ㈜에코프로가
             설립한 중소기업창업투자회사입니다.
           </p>
@@ -91,7 +91,7 @@ function About() {
               투자회사로 성장할 수 있도록 하겠습니다. 감사합니다.
             </p>
             <div className={styles.chairmanInfo}>
-              <span>아이스퀘어 대표이사</span>
+              <span>에코프로 파트너스 대표이사</span>
               <span>이재훈</span>
             </div>
           </div>
@@ -127,7 +127,7 @@ function About() {
         >
           <div className={styles.left}>
             <p>
-              아이스퀘어벤처스는 지역 기반 벤처투자생태계 조성으로 지속가능한
+              에코프로 파트너스는 지역 기반 벤처투자생태계 조성으로 지속가능한
               기업생태계 구축을 위해 환경 및 전지재료 사업 기업인 ㈜에코프로가
               설립한 중소기업창업투자회사입니다.
             </p>
@@ -138,7 +138,7 @@ function About() {
               <li>
                 <span className={styles.title}>회사명</span>
                 <div>
-                  <span>아이스퀘어벤처스</span>
+                  <span>에코프로 파트너스</span>
                 </div>
               </li>
               <li>
@@ -178,7 +178,9 @@ function About() {
                     (본 사) 충북 청주시 청원구 오창읍 각리1길 97 충북SW융합센터
                     405호
                   </span>
-                  <span>(사무소) 서울시 강남구 테헤란로 314 금성빌딩 12층</span>
+                  <span>
+                    (사무소) 서울특별시 서초구 마방로 68 동원산업빌딩 25층
+                  </span>
                 </div>
               </li>
             </ul>
@@ -190,7 +192,7 @@ function About() {
         <div
           className={`${styles.contentArea} ${inView5 ? styles.isShowing : ''}`}
         >
-          <h1>아이스퀘어가 걸어온 길</h1>
+          <h1>에코프로 파트너스가 걸어온 길</h1>
           <div className={styles.btnsWrap}>
             {
               <div

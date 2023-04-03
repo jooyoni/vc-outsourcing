@@ -14,7 +14,7 @@ const slideData = [
   },
   {
     title: '펀드운용',
-    content: '1조 3,902억 +',
+    content: '132b +',
   },
   {
     title: '운용인력',

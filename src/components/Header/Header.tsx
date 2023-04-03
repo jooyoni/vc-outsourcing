@@ -3,6 +3,7 @@ import arrow from '../../assets/arrowWhite.png';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import logo from '../../assets/logo.png';
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();

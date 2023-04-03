@@ -10,8 +10,8 @@ function Footer(props: IPropsType) {
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.left}>
-            <h1>i SQUARE VENTURES</h1>
-            <span>Copyright@2023 i SQUARE VENTURES Co. Ltd.</span>
+            <h1>Ecopro Partners</h1>
+            <span>Copyright@2023 Ecopro Partners Co. Ltd.</span>
           </div>
           <ul className={styles.right}>
             <li
@@ -21,9 +21,9 @@ function Footer(props: IPropsType) {
             >
               스튜어드십코드
             </li>
-            <li>개인정보처리방침</li>
+            {/* <li>개인정보처리방침</li>
             <li>고객정보 취급방침</li>
-            <li>사이버신고센터</li>
+            <li>사이버신고센터</li> */}
           </ul>
         </div>
         <div className={styles.bottom}>
@@ -42,7 +42,7 @@ function Footer(props: IPropsType) {
             </li>
           </ul>
           <span className={styles.copyright}>
-            Copyright@2023 i SQUARE VENTURES Co. Ltd.
+            Copyright@2023 Ecopro Partners Co. Ltd.
           </span>
         </div>
       </div>

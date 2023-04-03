@@ -20,7 +20,7 @@ function Fifth() {
       className={`${styles.container} ${isShowing ? styles.isIntersected : ''}`}
     >
       <div className={styles.text}>
-        <h3>i SQUARE VENTURES</h3>
+        <h3>Ecopro Partners</h3>
         <span>함께 성장하는 Partnership</span>
         <p>
           보다 믿음직한 파트너가 되기 위해 업계 최고의 전문가 그룹과

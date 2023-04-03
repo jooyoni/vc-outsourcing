@@ -8,7 +8,8 @@ import Footer from '../../components/Footer/Footer';
 import { ReactComponent as Arrow } from '../../assets/arrow.svg';
 import axiosClient from '../../libs/axiosClient';
 import Spinner from '../../components/Spinner/Spinner';
-
+import fileDownload from '../../assets/fileDownload.png';
+import clip from '../../assets/clip.png';
 interface ICurrentBoardType {
   attached_files: {
     created_at: string;
@@ -92,21 +93,29 @@ function Board() {
                   </span>
                   {/* <span>hit : 861</span> */}
                 </div>
-                {currentBoard?.attached_files.map((file) => (
-                  <a
-                    href={`https://67cc-112-169-5-244.jp.ngrok.io/api/file_download?post_id=${new URL(
-                      document.URL,
-                    ).searchParams.get('id')}&file_id=${file.id}`}
-                  >
-                    {file.original_name}(임시디자인)
-                  </a>
-                ))}
                 <p
                   className={styles.content}
                   dangerouslySetInnerHTML={{
                     __html: currentBoard?.content || '',
                   }}
                 ></p>
+              </div>
+              <div className={styles.fileListWrap}>
+                <ul>
+                  {currentBoard?.attached_files.map((file) => (
+                    <li>
+                      <a
+                        href={`https://67cc-112-169-5-244.jp.ngrok.io/api/file_download?post_id=${new URL(
+                          document.URL,
+                        ).searchParams.get('id')}&file_id=${file.id}`}
+                      >
+                        <img src={clip} />
+                        <span>{file.original_name}</span>
+                        <img src={fileDownload} />
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
               <div className={styles.otherBoard}>
                 <div

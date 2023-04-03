@@ -175,7 +175,11 @@ function IR() {
                         transitionDelay: `${idx * 0.1}s`,
                       }}
                     >
-                      <span className={styles.order}>
+                      <span
+                        className={`${styles.order} ${
+                          data.is_notice == 1 ? styles.hit : ''
+                        }`}
+                      >
                         {data.is_notice == 1
                           ? '공지'
                           : boardCount - (pagination - 1) * limit - idx}

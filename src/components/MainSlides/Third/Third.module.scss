@@ -242,12 +242,13 @@
     ul {
       display: flex;
       flex-direction: column;
-      background-color: white;
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(10px);
       li {
-        border-bottom: 1px solid #000000;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.45);
         &.isOpen {
           .detail {
-            max-height: 87px;
+            max-height: 200px;
           }
           .title img {
             transform: rotate(45deg);
@@ -265,7 +266,7 @@
             font-weight: 700;
             font-size: 24px;
             line-height: 30px;
-            color: #1e1e1e;
+            color: white;
             padding: 10px;
           }
           img {
@@ -275,19 +276,21 @@
           }
         }
         .detail {
-          height: 87px;
+          height: 116px;
           max-height: 0;
           overflow: hidden;
           transition: all 0.5s;
           transform-origin: top;
+          padding: 0 10px;
           p {
             font-weight: 400;
             font-size: 14px;
             line-height: 24px;
             letter-spacing: -0.03em;
-            color: #1e1e1e;
-            padding: 10px;
+            color: white;
+            padding: 10px 8.5px;
             align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.4);
             // padding-right: 20%;
           }
         }

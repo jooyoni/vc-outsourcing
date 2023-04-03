@@ -27,8 +27,7 @@ function Modal(props: IPropsType) {
             10. 개인정보 침해 등 피해구제에 관한 사항회사는 개인정보의 유출 및 권리 침해시 그 피해구제와 권익을 보장하기 위하여 최선을 다하겠습니다.개인정보 침해로 인한 신고, 상담 및 보다 자세한 도움이 필요하실 경우 아래의 기관에 문의하실 수 있습니다.개인정보분쟁조정위원회(www.kopico.go.kr / 국번없이 1833-6972)한국인터넷진흥원 개인정보침해신고센터(privacy.kisa.or.kr / 국번없이 118)대검찰청 사이버수사과(www.spo.go.kr/ 국번없이 1301)경찰청 사이버안전국(cyberbureau.police.go.kr / 국번없이 182)
             11. 개인정보보호 책임자에 관한 사항개인정보보호법 제31조에 따른 KB인베스트먼트의 개인정보보호 책임자는 다음과 같습니다.
             ▶ 개인정보 보호 책임자 : 전무 명현식 (02-3015-4709)
-            ▶ 개인정보 보호 담당부서 : 경영지원그룹 (02-3015-4775)
-            fdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsffdfsdfdsfdsfsdfsdfdsf`,
+            ▶ 개인정보 보호 담당부서 : 경영지원그룹 (02-3015-4775)`,
             }}
           ></p>
           <button onClick={() => props.setModalType(0)}>닫기</button>

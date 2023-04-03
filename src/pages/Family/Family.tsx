@@ -13,7 +13,7 @@ function Family() {
         <div>
           <div className={styles.circleWrap}>
             <div className={styles.circle}></div>
-            <span>아이스퀘어 벤처스</span>
+            <span>에코프로 파트너스</span>
           </div>
         </div>
         <div ref={ref1} className={styles.observer}></div>

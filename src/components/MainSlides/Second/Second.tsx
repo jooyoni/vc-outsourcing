@@ -76,9 +76,7 @@ function Second() {
                     }`}
                     key={idx}
                   >
-                    <h4
-                      dangerouslySetInnerHTML={{ __html: slide.title + idx }}
-                    ></h4>
+                    <h4 dangerouslySetInnerHTML={{ __html: slide.title }}></h4>
                     <p dangerouslySetInnerHTML={{ __html: slide.content }}></p>
                     <p dangerouslySetInnerHTML={{ __html: slide.content2 }}></p>
                   </div>
@@ -136,7 +134,6 @@ function Second() {
                 onSwiper={setSwiper}
                 speed={800}
                 onSlideChangeTransitionEnd={(swiper) => {
-                  console.log(swiper.activeIndex % 4);
                   setActiveIdx(swiper.activeIndex % 4);
                 }}
               >
@@ -146,7 +143,7 @@ function Second() {
                     className={`${styles.slide} ${'slide' + idx}`}
                   >
                     <span
-                      dangerouslySetInnerHTML={{ __html: content.title + idx }}
+                      dangerouslySetInnerHTML={{ __html: content.title }}
                     ></span>
                   </SwiperSlide>
                 ))}
