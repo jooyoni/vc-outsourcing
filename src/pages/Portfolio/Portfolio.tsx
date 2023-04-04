@@ -240,7 +240,7 @@ function Portfolio() {
                     >
                       <img
                         src={
-                          'https://67cc-112-169-5-244.jp.ngrok.io/storage/' +
+                          'https://b213-112-169-5-244.jp.ngrok.io/storage/' +
                           invest.logo_image
                         }
                         alt="로고"
