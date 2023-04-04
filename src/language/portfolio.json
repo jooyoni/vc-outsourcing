@@ -1,0 +1,18 @@
+{
+  "en": {
+    "펀드운용": "Fund Management",
+    "투자현황": "Investment Status",
+    "1": "Inception Date",
+    "2": "Liquidation Date",
+    "3": "Fund Size",
+    "4": "00 million KRW"
+  },
+  "ko": {
+    "펀드운용": "펀드운용",
+    "투자현황": "투자현황",
+    "1": "결성일",
+    "2": "청산일",
+    "3": "펀드규모",
+    "4": "억원"
+  }
+}

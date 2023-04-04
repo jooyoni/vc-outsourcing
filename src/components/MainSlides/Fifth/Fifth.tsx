@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import styles from './Fifth.module.scss';
 function Fifth() {
   const intersectRef = useRef<HTMLDivElement>(null);
@@ -15,18 +16,16 @@ function Fifth() {
     io.observe(intersectRef.current);
     return () => io.disconnect();
   }, [isShowing]);
+  const { t, i18n } = useTranslation();
+
   return (
     <div
       className={`${styles.container} ${isShowing ? styles.isIntersected : ''}`}
     >
       <div className={styles.text}>
         <h3>Ecopro Partners</h3>
-        <span>함께 성장하는 Partnership</span>
-        <p>
-          보다 믿음직한 파트너가 되기 위해 업계 최고의 전문가 그룹과
-          <br />
-          글로벌 수준의 투자역량을 갖춘 회사로 끊임없이 발전해 나갈 것입니다.
-        </p>
+        <span>{t('fifth.1')}</span>
+        <p>{t('fifth.2')}</p>
       </div>
       {/* <div className={styles.logoListWrap}>로고영역</div> */}
       <div className={styles.intersecter} ref={intersectRef}></div>

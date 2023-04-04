@@ -47,6 +47,7 @@
       opacity: 0;
       transform: translateY(100px);
       transition: all 0.7s ease;
+      max-width: 310px;
       @media screen and (max-width: 1480px) {
         padding-right: 24px;
       }
@@ -241,6 +242,7 @@
     line-height: 18px;
     color: #ffffff;
     padding: 10px;
+    max-width: 310px;
   }
   .slider {
     width: 100%;

@@ -1,0 +1,38 @@
+{
+  "en": {
+    "1": "Improving and facilitating the quality of human life.",
+    "2": "By discovering and investing in companies that embrace the EcoPro philosophy and innovate to improve human life, we aim to foster co-growth. We also provide support such as market expansion and mutual investment.",
+    "3": [
+      {
+        "title": "Specialized VC in the environment and energy sector.",
+        "content": "Ecopro Partners is an SME startup investment firm created by EcoPro to establish a sustainable business ecosystem by developing a regional venture investment network."
+      },
+      {
+        "title": "Growth-Oriented Partnership VC",
+        "content": "We support companies to grow together with a long-term vision for mutual growth by interacting frequently and closely with them."
+      },
+      {
+        "title": "Helping to Realize Dreams",
+        "content": "In addition to investment support, we plan to provide incubation services to solve various management and other difficulties faced by promising technology companies."
+      }
+    ]
+  },
+  "ko": {
+    "1": "인류의 삶의 질을<br />개선하고 편리하게 한다.",
+    "2": "에코프로 이념을 계승하여 혁신적인 방법으로 인류의 삶을 윤택하게 만드는 기업을 발굴, 투자와 시장확보(전략적 비즈니스 교류 지원 등)를 동시 지원하여 동반성장 하고자 합니다.",
+    "3": [
+      {
+        "title": "환경 & 에너지 분야특화 VC",
+        "content": "에코프로 파트너스는 지역 기반 벤처투자생태계 조성으로 지속가능한 기업생태계 구축을 위해 환경 및 전지재료 사업 기업인 ㈜에코프로가 설립한 중소기업창업투자회사입니다."
+      },
+      {
+        "title": "동반성장 지향형 VC",
+        "content": "기업과의 상생을 위해 장기적인 안목으로 “가까이에서, 그리고 빈번히 상호작용”하도록 지원"
+      },
+      {
+        "title": "꿈을 실현하도록",
+        "content": "유망 기술기업이 겪는 다양한 경영 등 애로사항을 해결 할 수 있도록 투자지원 뿐만 아니라 보육서비스 지원예정"
+      }
+    ]
+  }
+}

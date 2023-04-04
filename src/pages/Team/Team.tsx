@@ -46,12 +46,8 @@ function Team() {
           className={`${styles.contentArea} ${inView1 ? styles.isShowing : ''}`}
         >
           <h3>TEAM</h3>
-          <h2>에코프로 파트너스</h2>
-          <p>
-            에코프로 파트너스는 지역 기반 벤처투자생태계 조성으로 지속가능한
-            기업생태계 구축을 위해 환경 및 전지재료 사업 기업인 ㈜에코프로가
-            설립한 중소기업창업투자회사입니다.
-          </p>
+          <h2>{t('about.section1.1')}</h2>
+          <p>{t('about.section1.2')}</p>
         </div>
         <div ref={ref1} className={styles.observer}></div>
       </section>

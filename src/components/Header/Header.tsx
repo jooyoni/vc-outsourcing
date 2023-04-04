@@ -79,14 +79,18 @@ function Header() {
             >
               <span>PORTFOLIO</span>
               <nav className={`${styles.subMenuWrap}`}>
-                <ul>
+                <ul
+                  style={{
+                    marginRight: i18n.language == 'ko' ? '246px' : '155px',
+                  }}
+                >
                   <li
                     onClick={(e) => {
                       e.stopPropagation();
                       navigate('/portfolio?tab=0');
                     }}
                   >
-                    <span>펀드운용</span>
+                    <span>{t('portfolio.펀드운용')}</span>
                   </li>
                   <li
                     onClick={(e) => {
@@ -94,7 +98,7 @@ function Header() {
                       navigate('/portfolio?tab=1');
                     }}
                   >
-                    <span>투자현황</span>
+                    <span>{t('portfolio.투자현황')}</span>
                   </li>
                   {/* <li
                     onClick={(e) => {

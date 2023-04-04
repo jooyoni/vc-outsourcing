@@ -10,6 +10,7 @@ import IRBanner from '../../components/IRBanner/IRBanner';
 import axiosClient from '../../libs/axiosClient';
 import { useInView } from 'react-intersection-observer';
 import Spinner from '../../components/Spinner/Spinner';
+import { useTranslation } from 'react-i18next';
 interface IBoardType {
   content: string;
   created_at: string;
@@ -107,6 +108,7 @@ function IR() {
     );
   }
   //게시판 검색 관련 상태
+  const { t, i18n } = useTranslation();
   return (
     <div className={styles.container}>
       <IRBanner />
@@ -124,22 +126,22 @@ function IR() {
                   onChange={(e) => setSearchOption(e.currentTarget.value)}
                 >
                   <option value="title" selected={searchOption == 'title'}>
-                    제목
+                    {t('ir.제목')}
                   </option>
                   <option value="content" selected={searchOption == 'content'}>
-                    내용
+                    {t('ir.내용')}
                   </option>
                   <option value="all" selected={searchOption == 'all'}>
-                    제목 + 내용
+                    {t('ir.제목+내용')}
                   </option>
                 </select>
                 <span>
                   {searchOption == 'title'
-                    ? '제목'
+                    ? t('ir.제목')
                     : searchOption == 'content'
-                    ? '내용'
+                    ? t('ir.내용')
                     : searchOption == 'all'
-                    ? '제목 + 내용'
+                    ? t('ir.제목+내용')
                     : ''}
                 </span>
                 <img src={arrowBlack} />
@@ -147,7 +149,7 @@ function IR() {
               <div className={styles.inputWrap}>
                 <input
                   type="text"
-                  placeholder="검색"
+                  placeholder={`${t('ir.검색')}`}
                   value={keyword}
                   onChange={(e) => setKeyword(e.currentTarget.value)}
                 />
@@ -181,16 +183,22 @@ function IR() {
                         }`}
                       >
                         {data.is_notice == 1
-                          ? '공지'
+                          ? t('ir.공지')
                           : boardCount - (pagination - 1) * limit - idx}
                       </span>
                       <div className={styles.boardDetailWrap}>
                         <h3 className={styles.title}>{data.title}</h3>
                         <div className={styles.boardInfo}>
                           <span>
-                            {data.created_at
-                              .substring(0, 10)
-                              .replaceAll('-', '.')}
+                            {i18n.language == 'en'
+                              ? data.created_at.substring(0, 10).split('-')[1] +
+                                '.' +
+                                data.created_at.substring(0, 10).split('-')[2] +
+                                '.' +
+                                data.created_at.substring(0, 10).split('-')[0]
+                              : data.created_at
+                                  .substring(0, 10)
+                                  .replaceAll('-', '.')}
                           </span>
                           {/* <span>hit : {data.}</span> */}
                         </div>

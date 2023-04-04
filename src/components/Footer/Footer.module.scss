@@ -122,16 +122,19 @@
           letter-spacing: -0.02em;
           color: #ffffff;
           position: relative;
-          &:first-child::after {
-            content: '';
-            display: block;
-            position: absolute;
-            top: 50%;
-            right: -7px;
-            width: 1px;
-            height: 12px;
-            transform: translateY(-50%);
-            background-color: white;
+
+          &:first-child {
+            white-space: nowrap;
+            &::after {
+              content: '';
+              display: block;
+              position: absolute;
+              top: 3px;
+              right: -7px;
+              width: 1px;
+              height: 12px;
+              background-color: white;
+            }
           }
         }
       }

@@ -4,6 +4,7 @@ import arrow from '../../assets/arrowBottom.png';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 function IRBanner() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -22,14 +23,14 @@ function IRBanner() {
     if (tabOpen) setSubPageOpen(false);
   }, [tabOpen]);
   const [ref1, inView1] = useInView();
-
+  const { t, i18n } = useTranslation();
   return (
     <section className={styles.banner}>
       <div
         className={`${styles.contentArea} ${inView1 ? styles.isShowing : ''}`}
       >
         <h3>IR</h3>
-        <h4>{title}</h4>
+        <h4>{t(`ir.${title}`)}</h4>
         <nav>
           <div className={styles.homeBtn} onClick={() => navigate('/')}>
             <img src={home} />
@@ -54,11 +55,15 @@ function IRBanner() {
               className={`${styles.nowTabWrap} ${tabOpen ? styles.isOpen : ''}`}
               onClick={() => setTabOpen((prev) => !prev)}
             >
-              <span>{title}</span>
+              <span>{t(`ir.${title}`)}</span>
               <img src={arrow} />
               <ul className={styles.subList}>
-                <li onClick={() => navigate('/ir?tab=0')}>소식알림</li>
-                <li onClick={() => navigate('/ir?tab=1')}>홍보자료</li>
+                <li onClick={() => navigate('/ir?tab=0')}>
+                  {t(`ir.소식알림`)}
+                </li>
+                <li onClick={() => navigate('/ir?tab=1')}>
+                  {t(`ir.홍보자료`)}
+                </li>
               </ul>
             </div>
           </div>

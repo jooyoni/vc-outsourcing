@@ -4,40 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 import 'swiper/css';
-let slideContent = [
-  {
-    title: '미래 산업 투자전문가<br />맨파워 구축',
-    content: `대표이사는 지역 산업 육성 거점 기관 TP 원장 역임,<br />
-  다수의 벤처기업 발굴 및 육성 경험 보유`,
-    content2: `반도체, 이차전지 등 4차산업 분야 대기업 출신<br />
-  산업전문가 등기이사 포진,<br />
-  미래 산업군 발굴 조력`,
-  },
-  {
-    title: '미래 산업 투자전문가<br />맨파워 구축',
-    content: `대표이사는 지역 산업 육성 거점 기관 TP 원장 역임,<br />
-  다수의 벤처기업 발굴 및 육성 경험 보유`,
-    content2: `반도체, 이차전지 등 4차산업 분야 대기업 출신<br />
-  산업전문가 등기이사 포진,<br />
-  미래 산업군 발굴 조력`,
-  },
-  {
-    title: '미래 산업 투자전문가<br />맨파워 구축',
-    content: `대표이사는 지역 산업 육성 거점 기관 TP 원장 역임,<br />
-  다수의 벤처기업 발굴 및 육성 경험 보유`,
-    content2: `반도체, 이차전지 등 4차산업 분야 대기업 출신<br />
-  산업전문가 등기이사 포진,<br />
-  미래 산업군 발굴 조력`,
-  },
-  {
-    title: '미래 산업 투자전문가<br />맨파워 구축',
-    content: `대표이사는 지역 산업 육성 거점 기관 TP 원장 역임,<br />
-  다수의 벤처기업 발굴 및 육성 경험 보유`,
-    content2: `반도체, 이차전지 등 4차산업 분야 대기업 출신<br />
-  산업전문가 등기이사 포진,<br />
-  미래 산업군 발굴 조력`,
-  },
-];
+import { useTranslation } from 'react-i18next';
+
 function Second() {
   const [swiper, setSwiper] = useState<SwiperCore>();
   const [swiperPC, setSwiperPC] = useState<SwiperCore>();
@@ -45,6 +13,7 @@ function Second() {
   const [pcActiveIdx, setPcActiveIdx] = useState(0);
   const intersectRef = useRef<HTMLDivElement>(null);
   const [isShowing, setIsShowing] = useState(false);
+  const { t, i18n } = useTranslation();
   useEffect(() => {
     if (!intersectRef.current) return;
     const io = new IntersectionObserver((entries) => {
@@ -69,7 +38,11 @@ function Second() {
             <div>
               <h3>Our Business</h3>
               <div className={styles.contentArea}>
-                {slideContent.map((slide, idx) => (
+                {(
+                  t('second.list', { returnObjects: true }) as {
+                    title: string;
+                  }[]
+                ).map((slide, idx) => (
                   <div
                     className={`${styles.content} ${
                       idx == pcActiveIdx ? styles.hit : ''
@@ -77,8 +50,6 @@ function Second() {
                     key={idx}
                   >
                     <h4 dangerouslySetInnerHTML={{ __html: slide.title }}></h4>
-                    <p dangerouslySetInnerHTML={{ __html: slide.content }}></p>
-                    <p dangerouslySetInnerHTML={{ __html: slide.content2 }}></p>
                   </div>
                 ))}
               </div>
@@ -103,7 +74,11 @@ function Second() {
                 // loopedSlides={21}
                 spaceBetween={32}
               >
-                {slideContent.map((val, idx) => (
+                {(
+                  t('second.list', { returnObjects: true }) as {
+                    title: string;
+                  }[]
+                ).map((val, idx) => (
                   <SwiperSlide
                     key={idx}
                     className={`${styles.slideWrap} ${'slide' + idx}`}
@@ -137,7 +112,11 @@ function Second() {
                   setActiveIdx(swiper.activeIndex % 4);
                 }}
               >
-                {slideContent.map((content, idx) => (
+                {(
+                  t('second.list', { returnObjects: true }) as {
+                    title: string;
+                  }[]
+                ).map((content, idx) => (
                   <SwiperSlide
                     key={idx}
                     className={`${styles.slide} ${'slide' + idx}`}
@@ -156,15 +135,17 @@ function Second() {
               </div>
             </div>
             <div className={styles.contentDetail}>
-              {slideContent.map((content, idx) => (
+              {(
+                t('second.list', { returnObjects: true }) as {
+                  title: string;
+                }[]
+              ).map((content, idx) => (
                 <div key={idx} className={idx == activeIdx ? styles.hit : ''}>
                   <h4
                     dangerouslySetInnerHTML={{
                       __html: content.title.replace('<br />', ' '),
                     }}
                   ></h4>
-                  <p dangerouslySetInnerHTML={{ __html: content.content }}></p>
-                  <p dangerouslySetInnerHTML={{ __html: content.content2 }}></p>
                 </div>
               ))}
             </div>

@@ -117,7 +117,7 @@ function Portfolio() {
           className={`${styles.contentArea} ${inView1 ? styles.isShowing : ''}`}
         >
           <h3>Portfolio</h3>
-          <h4>{title}</h4>
+          <h4>{t(`portfolio.${title}`)}</h4>
           <nav>
             <div className={styles.homeBtn}>
               <img src={home} />
@@ -144,11 +144,15 @@ function Portfolio() {
                 }`}
                 onClick={() => setTabOpen((prev) => !prev)}
               >
-                <span>{title}</span>
+                <span>{t(`portfolio.${title}`)}</span>
                 <img src={arrow} />
                 <ul className={styles.subList}>
-                  <li onClick={() => navigate('/portfolio?tab=0')}>펀드운용</li>
-                  <li onClick={() => navigate('/portfolio?tab=1')}>투자현황</li>
+                  <li onClick={() => navigate('/portfolio?tab=0')}>
+                    {t(`portfolio.펀드운용`)}
+                  </li>
+                  <li onClick={() => navigate('/portfolio?tab=1')}>
+                    {t(`portfolio.투자현황`)}
+                  </li>
                   {/* <li onClick={() => navigate('/portfolio?tab=2')}>
                     esg 투자 실천
                   </li> */}
@@ -185,14 +189,31 @@ function Portfolio() {
                       </h2>
                       <ul className={styles.detail}>
                         <li>
-                          결성일 :{' '}
-                          {fund.start_at.substring(0, 10).replaceAll('-', '.')}
+                          {t(`portfolio.1`)} :{' '}
+                          {i18n.language == 'en'
+                            ? fund.start_at.substring(0, 10).split('-')[1] +
+                              '.' +
+                              fund.start_at.substring(0, 10).split('-')[2] +
+                              '.' +
+                              fund.start_at.substring(0, 10).split('-')[0]
+                            : fund.start_at
+                                .substring(0, 10)
+                                .replaceAll('-', '.')}
                         </li>
                         <li>
-                          청산일 :{' '}
-                          {fund.end_at.substring(0, 10).replaceAll('-', '.')}
+                          {t(`portfolio.2`)} :{' '}
+                          {i18n.language == 'en'
+                            ? fund.end_at.substring(0, 10).split('-')[1] +
+                              '.' +
+                              fund.end_at.substring(0, 10).split('-')[2] +
+                              '.' +
+                              fund.end_at.substring(0, 10).split('-')[0]
+                            : fund.end_at.substring(0, 10).replaceAll('-', '.')}
                         </li>
-                        <li>펀드규모 : {fund.fund_size}억원</li>
+                        <li>
+                          {t(`portfolio.3`)} : {fund.fund_size}
+                          {t(`portfolio.4`)}
+                        </li>
                       </ul>
                     </li>
                   ))}
@@ -225,7 +246,11 @@ function Portfolio() {
                         alt="로고"
                       />
                       <div className={styles.detailBox}>
-                        <h2>{invest.name}</h2>
+                        <h2>
+                          {i18n.language == 'en'
+                            ? invest.english_name
+                            : invest.name}
+                        </h2>
                         <span>{invest.url}</span>
                       </div>
                     </li>

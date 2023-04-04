@@ -2,6 +2,7 @@ import styles from './Third.module.scss';
 import plus from '../../../assets/plus.png';
 import plusWhite from '../../../assets/plusWhite.png';
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 function Third() {
   const [detailOpen, setDetailOpen] = useState([false, false, false]);
   const intersectRef = useRef<HTMLDivElement>(null);
@@ -18,6 +19,7 @@ function Third() {
     io.observe(intersectRef.current);
     return () => io.disconnect();
   }, [isShowing]);
+  const { t, i18n } = useTranslation();
   return (
     <>
       <div className={styles.containerWrap}>
@@ -29,66 +31,36 @@ function Third() {
           <div className={styles.left}>
             <div className={styles.textWrap}>
               <span>“</span>
-              <p>
-                인류의 삶의 질을
-                <br />
-                개선하고 편리하게 한다
-              </p>
-              <p>
-                에코프로 이념을 계승하여 혁신적인 방법으로 인류의 삶을 윤택하게
-                만드는 기업을 발굴, 투자와 시장확보(전략적 비즈니스 교류 지원
-                등)를 동시 지원하여 동반성장 하고자 합니다.
-              </p>
+              <p dangerouslySetInnerHTML={{ __html: t('third.1') }}></p>
+              <p>{t('third.2')}</p>
             </div>
           </div>
           <div className={styles.right}>
             <ul>
-              <li className={detailOpen[0] ? styles.isOpen : ''}>
-                <div
-                  className={styles.title}
-                  onClick={() =>
-                    setDetailOpen((prev) => [!prev[0], false, false])
-                  }
-                >
-                  <h3>환경 & 에너지 분야특화 VC</h3>
-                  <img src={plus} />
-                </div>
-                <p>
-                  에코프로 파트너스는 지역 기반 벤처투자생태계 조성으로
-                  지속가능한 기업생태계 구축을 위해 환경 및 전지재료 사업 기업인
-                  ㈜에코프로가 설립한 중소기업창업투자회사입니다.
-                </p>
-              </li>
-              <li className={detailOpen[1] ? styles.isOpen : ''}>
-                <div
-                  className={styles.title}
-                  onClick={() =>
-                    setDetailOpen((prev) => [false, !prev[1], false])
-                  }
-                >
-                  <h3>동반성장 지향형 VC</h3>
-                  <img src={plus} />
-                </div>
-                <p>
-                  기업과의 상생을 위해 장기적인 안목으로 “가까이에서, 그리고
-                  빈번히 상호작용”하도록 지원
-                </p>
-              </li>
-              <li className={detailOpen[2] ? styles.isOpen : ''}>
-                <div
-                  className={styles.title}
-                  onClick={() =>
-                    setDetailOpen((prev) => [false, false, !prev[2]])
-                  }
-                >
-                  <h3>꿈을 실현하도록</h3>
-                  <img src={plus} />
-                </div>
-                <p>
-                  유망 기술기업이 겪는 다양한 경영 등 애로사항을 해결 할 수
-                  있도록 투자지원 뿐만 아니라 보육서비스 지원예정
-                </p>
-              </li>
+              {(
+                t('third.3', { returnObjects: true }) as {
+                  title: string;
+                  content: string;
+                }[]
+              ).map((data, idx) => (
+                <li className={detailOpen[idx] ? styles.isOpen : ''} key={idx}>
+                  <div
+                    className={styles.title}
+                    onClick={() => {
+                      if (idx == 0)
+                        setDetailOpen((prev) => [!prev[idx], false, false]);
+                      else if (idx == 1)
+                        setDetailOpen((prev) => [false, !prev[idx], false]);
+                      else if (idx == 2)
+                        setDetailOpen((prev) => [false, false, !prev[idx]]);
+                    }}
+                  >
+                    <h3>{data.title}</h3>
+                    <img src={plus} />
+                  </div>
+                  <p>{data.content}</p>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
@@ -98,74 +70,36 @@ function Third() {
           }`}
         >
           <span>“</span>
-          <h2>
-            인류의 삶의 질을
-            <br />
-            개선하고 편리하게 한다
-          </h2>
-          <p>
-            에코프로 이념을 계승하여 혁신적인 방법으로
-            <br />
-            인류의 삶을 윤택하게 만드는 기업을 발굴, 투자와
-            <br />
-            시장확보(전략적 비즈니스 교류 지원 등)를 동시 지원하여
-            <br />
-            동반성장 하고자 합니다.
-          </p>
+          <h2 dangerouslySetInnerHTML={{ __html: t('third.1') }}></h2>
+          <p>{t('third.2')}</p>
           <div className={styles.infomationWrap}>
             <ul>
-              <li className={detailOpen[0] ? styles.isOpen : ''}>
-                <div
-                  className={styles.title}
-                  onClick={() =>
-                    setDetailOpen((prev) => [!prev[0], false, false])
-                  }
-                >
-                  <span>환경 & 에너지 분야특화 VC</span>
-                  <img src={plusWhite} />
-                </div>
-                <div className={styles.detail}>
-                  <p>
-                    에코프로 파트너스는 지역 기반 벤처투자생태계 조성으로
-                    지속가능한 기업생태계 구축을 위해 환경 및 전지재료 사업
-                    기업인 ㈜에코프로가 설립한 중소기업창업투자회사입니다.
-                  </p>
-                </div>
-              </li>
-              <li className={detailOpen[1] ? styles.isOpen : ''}>
-                <div
-                  className={styles.title}
-                  onClick={() =>
-                    setDetailOpen((prev) => [false, !prev[1], false])
-                  }
-                >
-                  <span>동반성장 지향형VC</span>
-                  <img src={plusWhite} />
-                </div>
-                <div className={styles.detail}>
-                  <p>
-                    기업과의 상생을 위해 장기적인 안목으로 “가까이에서, 그리고
-                    빈번히 상호작용”하도록 지원
-                  </p>
-                </div>
-              </li>
-              <li className={detailOpen[2] ? styles.isOpen : ''}>
-                <div
-                  className={styles.title}
-                  onClick={() =>
-                    setDetailOpen((prev) => [false, false, !prev[2]])
-                  }
-                >
-                  <span>꿈을 실현하도록</span>
-                  <img src={plusWhite} />
-                </div>
-                <div className={styles.detail}>
-                  <p>
-                    유망 기술기업이 겪는 다양한 경영 등 애로사항을 해결 할 수
-                    있도록 투자지원 뿐만 아니라 보육서비스 지원예정
-                  </p>
-                </div>
-              </li>
+              {(
+                t('third.3', { returnObjects: true }) as {
+                  title: string;
+                  content: string;
+                }[]
+              ).map((data, idx) => (
+                <li className={detailOpen[idx] ? styles.isOpen : ''} key={idx}>
+                  <div
+                    className={styles.title}
+                    onClick={() => {
+                      if (idx == 0)
+                        setDetailOpen((prev) => [!prev[idx], false, false]);
+                      else if (idx == 1)
+                        setDetailOpen((prev) => [false, !prev[idx], false]);
+                      else if (idx == 2)
+                        setDetailOpen((prev) => [false, false, !prev[idx]]);
+                    }}
+                  >
+                    <span>{data.title}</span>
+                    <img src={plusWhite} />
+                  </div>
+                  <div className={styles.detail}>
+                    <p>{data.content}</p>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
         </div>

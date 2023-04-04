@@ -1,10 +1,12 @@
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import Footer from '../../components/Footer/Footer';
 import styles from './Family.module.scss';
 function Family() {
   const [ref1, inView1] = useInView();
   const [ref2, inView2] = useInView();
+  const { t, i18n } = useTranslation();
   return (
     <div>
       <div
@@ -13,18 +15,18 @@ function Family() {
         <div>
           <div className={styles.circleWrap}>
             <div className={styles.circle}></div>
-            <span>에코프로 파트너스</span>
+            <span>{t('family.1')}</span>
           </div>
         </div>
         <div ref={ref1} className={styles.observer}></div>
         <div>
           <div className={styles.circleWrap}>
             <div className={styles.circle}></div>
-            <span>환경·투자사업</span>
+            <span>{t('family.2')}</span>
           </div>
           <div className={styles.circleWrap}>
             <div className={styles.circle}></div>
-            <span>배터리 소재 사업</span>
+            <span>{t('family.3')}</span>
           </div>
         </div>
       </div>
@@ -33,57 +35,48 @@ function Family() {
       >
         <div className={styles.contentArea}>
           <div className={styles.left}>
-            <div className={styles.title}>환경·투자사업</div>
+            <div className={styles.title}>{t('family.2')}</div>
             <ul>
               <li>
                 <span className={styles.date}>설립일 : 1998.10</span>
                 <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-                <span>자본금 : 50억원</span>
               </li>
               <li>
                 <span className={styles.date}>설립일 : 1998.10</span>
                 <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-                <span>자본금 : 50억원</span>
               </li>
               <li>
                 <span className={styles.date}>설립일 : 1998.10</span>
                 <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-                <span>자본금 : 50억원</span>
               </li>
             </ul>
           </div>
           <div className={styles.right}>
-            <div className={styles.title}>배터리 소재 사업</div>
+            <div className={styles.title}>{t('family.3')}</div>
             <ul>
               <li>
                 <span className={styles.date}>설립일 : 1998.10</span>
                 <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-                <span>매출액 : 6,161억원</span>
               </li>
               <li>
                 <span className={styles.date}>설립일 : 1998.10</span>
                 <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-                <span>매출액 : 6,161억원</span>
               </li>
               <li>
                 <span className={styles.date}>설립일 : 1998.10</span>
                 <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-                <span>매출액 : 6,161억원</span>
               </li>
               <li>
                 <span className={styles.date}>설립일 : 1998.10</span>
                 <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-                <span>매출액 : 6,161억원</span>
               </li>
               <li>
                 <span className={styles.date}>설립일 : 1998.10</span>
                 <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-                <span>매출액 : 6,161억원</span>
               </li>{' '}
               <li>
                 <span className={styles.date}>설립일 : 1998.10</span>
                 <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-                <span>매출액 : 6,161억원</span>
               </li>
             </ul>
           </div>

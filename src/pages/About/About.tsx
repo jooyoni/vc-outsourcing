@@ -44,6 +44,7 @@ function About() {
   const [ref6, inView6] = useInView();
   const [ref7, inView7] = useInView();
   const { t, i18n } = useTranslation();
+  console.log(i18n);
   return (
     <div className={styles.container}>
       <section>
@@ -51,13 +52,8 @@ function About() {
           className={`${styles.contentArea} ${inView ? styles.isShowing : ''}`}
         >
           <span>ABOUT</span>
-          {/* <span>{t('about.test')}</span> */}
-          <h1>에코프로 파트너스</h1>
-          <p>
-            에코프로 파트너스는 지역 기반 벤처투자생태계 조성으로 지속가능한
-            기업생태계 구축을 위해 환경 및 전지재료 사업 기업인 ㈜에코프로가
-            설립한 중소기업창업투자회사입니다.
-          </p>
+          <h1>{t('about.section1.1')}</h1>
+          <p>{t('about.section1.2')}</p>
         </div>
         <div ref={ref} className={styles.observer}></div>
       </section>
@@ -66,33 +62,18 @@ function About() {
           className={`${styles.contentArea} ${inView2 ? styles.isShowing : ''}`}
         >
           <div className={styles.left}>
-            <span>CEO 인사말</span>
-            <p className={styles.greetingWrap}>
-              안녕하십니까?
-              <br />
-              ㈜에코프로 파트너스 대표이사 이재훈입니다.
-              <br />
-              <br />
-              우리 회사는 ‘20년 7월 설립된 신생 투자회사로 투자와 보육이라는
-              핵심 목표를 가지고 기업과의 상생을 위해 장기적인 안목으로
-              “가까이에서, 그리고 빈번히 상호작용”하도록 지원 하겠습니다. 이를
-              위해 유망 기술기업이 겪는 다양한 경영 등 애로사항을 해결 할 수
-              있도록 투자지원 뿐만 아니라 보육서비스도 병행해서 지원할
-              계획입니다.
-              <br />
-              <br />
-              또한, 에코프로 가족회사의 일원으로서 모기업이 추구하는 “인류의
-              삶의 질을 개선하고 편리하게 한다.”는 철학에 따라 우리 사회
-              대기환경 및 친환경에너지 등 관련 유망한 기술 기업에 투자할
-              예정입니다.
-              <br />
-              <br />
-              신생 투자회사 이지만 지속적인 성장과 사회 기여를 통해 신뢰받는
-              투자회사로 성장할 수 있도록 하겠습니다. 감사합니다.
-            </p>
+            <span>{t('about.section2.1')}</span>
+            <p
+              className={styles.greetingWrap}
+              dangerouslySetInnerHTML={{ __html: t('about.section2.2') }}
+            ></p>
             <div className={styles.chairmanInfo}>
-              <span>에코프로 파트너스 대표이사</span>
-              <span>이재훈</span>
+              <span>{t('about.section2.position')}</span>
+              <span
+                style={{ letterSpacing: i18n.language == 'en' ? '0' : '0.6em' }}
+              >
+                {t('about.section2.name')}
+              </span>
             </div>
           </div>
           <div className={styles.right}></div>
@@ -107,15 +88,15 @@ function About() {
           <ul>
             <li>
               <span>01</span>
-              <p>환경 & 에너지 분야 특화 VC</p>
+              <p>{t('about.section3.1')}</p>
             </li>
             <li>
               <span>02</span>
-              <p>가까이에서 빈번히 상호작용하는 동반성장 지향형 VC</p>
+              <p>{t('about.section3.2')}</p>
             </li>
             <li>
               <span>03</span>
-              <p>기업가 정신을 지속하고 꿈을 실현 하도록 돕는 조력자</p>
+              <p>{t('about.section3.3')}</p>
             </li>
           </ul>
         </div>
@@ -126,61 +107,52 @@ function About() {
           className={`${styles.contentArea} ${inView4 ? styles.isShowing : ''}`}
         >
           <div className={styles.left}>
-            <p>
-              에코프로 파트너스는 지역 기반 벤처투자생태계 조성으로 지속가능한
-              기업생태계 구축을 위해 환경 및 전지재료 사업 기업인 ㈜에코프로가
-              설립한 중소기업창업투자회사입니다.
-            </p>
+            <p>{t('about.section4.1')}</p>
           </div>
           <div className={styles.right}>
-            <h4>회사개요</h4>
+            <h4>{t('about.section4.2')}</h4>
             <ul>
               <li>
-                <span className={styles.title}>회사명</span>
+                <span className={styles.title}>{t('about.section4.3')}</span>
                 <div>
-                  <span>에코프로 파트너스</span>
+                  <span>{t('about.section4.4')}</span>
                 </div>
               </li>
               <li>
-                <span className={styles.title}>최대주주</span>
+                <span className={styles.title}>{t('about.section4.5')}</span>
                 <div>
-                  <span>주식회사 에코프로 (KOSDAQ 상장)</span>
+                  <span>{t('about.section4.6')}</span>
                 </div>
               </li>
               <li>
-                <span className={styles.title}>자본금</span>
+                <span className={styles.title}>{t('about.section4.7')}</span>
                 <div>
-                  <span>50억원</span>
+                  <span>{t('about.section4.8')}</span>
                 </div>
               </li>
               <li>
-                <span className={styles.title}>설립일</span>
+                <span className={styles.title}>{t('about.section4.9')}</span>
                 <div>
-                  <span>2020년 7월 20일</span>
+                  <span>{t('about.section4.10')}</span>
                 </div>
               </li>
               <li>
-                <span className={styles.title}>창업투자회사 등록일</span>
+                <span className={styles.title}>{t('about.section4.11')}</span>
                 <div>
-                  <span>2020년 8월 25일</span>
+                  <span>{t('about.section4.12')}</span>
                 </div>
               </li>
               <li>
-                <span className={styles.title}>업종</span>
+                <span className={styles.title}>{t('about.section4.13')}</span>
                 <div>
-                  <span>중소기업창업투자회사, 사업경영 및 관리 자문</span>
+                  <span>{t('about.section4.14')}</span>
                 </div>
               </li>
               <li>
-                <span className={styles.title}>소재지</span>
+                <span className={styles.title}>{t('about.section4.15')}</span>
                 <div>
-                  <span>
-                    (본 사) 충북 청주시 청원구 오창읍 각리1길 97 충북SW융합센터
-                    405호
-                  </span>
-                  <span>
-                    (사무소) 서울특별시 서초구 마방로 68 동원산업빌딩 25층
-                  </span>
+                  <span>{t('about.section4.16')}</span>
+                  <span>{t('about.section4.17')}</span>
                 </div>
               </li>
             </ul>
@@ -192,7 +164,7 @@ function About() {
         <div
           className={`${styles.contentArea} ${inView5 ? styles.isShowing : ''}`}
         >
-          <h1>에코프로 파트너스가 걸어온 길</h1>
+          <h1>{t('about.section5.1')}</h1>
           <div className={styles.btnsWrap}>
             {
               <div
@@ -286,13 +258,8 @@ function About() {
         <div
           className={`${styles.contentArea} ${inView6 ? styles.isShowing : ''}`}
         >
-          <h2>에코프로 철학</h2>
-          <p>
-            “인류의 삶의 질을 개선하고 편리하게 한다"는 에코프로 이념을 계승하여
-            혁신적인 방법으로 인류의 삶을 윤택하게 만드는 기업을 발굴,투자와
-            시장확보(전략적 비즈니스 교류 지원 등)를 동시 지원하여 동반성장
-            하고자 합니다.
-          </p>
+          <h2>{t('about.section6.1')}</h2>
+          <p>{t('about.section6.2')}</p>
         </div>
         <div ref={ref6} className={styles.observer}></div>
       </section>
@@ -300,49 +267,43 @@ function About() {
         <div
           className={`${styles.contentArea} ${inView7 ? styles.isShowing : ''}`}
         >
-          <h4>주요 투자대상</h4>
-          <p>
-            초기단계 기업 투자지원경험과 에코프로 그룹의 환경 및 이차전지 분야
-            네트워크를 바탕으로 환경에너지 분야의 기술력 기반 기업을 집중적으로
-            발굴투자하고자 합니다.
-          </p>
+          <h4>{t('about.section7.1')}</h4>
+          <p>{t('about.section7.2')}</p>
           <table>
-            <th>투자이념</th>
-            <th>중점 투자분야</th>
-            <th>세부 투자분야</th>
+            <th>{t('about.section7.3')}</th>
+            <th>{t('about.section7.4')}</th>
+            <th>{t('about.section7.5')}</th>
             <tr className={styles.row1}>
-              <td rowSpan={3}>
-                혁신적인 방법으로 인류의 삶을 윤택하게 만드는 기업
-              </td>
-              <td>환경</td>
+              <td rowSpan={3}>{t('about.section7.6')}</td>
+              <td>{t('about.section7.7')}</td>
               <td>
                 <ul>
-                  <li>✓ 유해가스 제거</li>
-                  <li>✓ 온실가스 제거</li>
-                  <li>✓ 대기오염 방지</li>
-                  <li>✓ 스마트 그린산단</li>
-                  <li>✓ 폐기물 처리</li>
+                  <li>✓ {t('about.section7.10')}</li>
+                  <li>✓ {t('about.section7.11')}</li>
+                  <li>✓ {t('about.section7.12')}</li>
+                  <li>✓ {t('about.section7.13')}</li>
+                  <li>✓ {t('about.section7.14')}</li>
                 </ul>
               </td>
             </tr>
             <tr className={styles.row2}>
-              <td>에너지</td>
+              <td>{t('about.section7.8')}</td>
               <td>
                 <ul>
-                  <li>✓ 이차전지</li>
-                  <li>✓ 친환경 스마트 모빌리티</li>
-                  <li>✓ 신재생 에너지</li>
+                  <li>✓ {t('about.section7.15')}</li>
+                  <li>✓ {t('about.section7.16')}</li>
+                  <li>✓ {t('about.section7.17')}</li>
                 </ul>
               </td>
             </tr>
             <tr className={styles.row3}>
-              <td>기타</td>
+              <td>{t('about.section7.9')}</td>
               <td>
                 <ul>
-                  <li>✓ 소재</li>
-                  <li>✓ 인공지능</li>
-                  <li>✓ 데이터</li>
-                  <li>✓ 바이오</li>
+                  <li>✓ {t('about.section7.18')}</li>
+                  <li>✓ {t('about.section7.19')}</li>
+                  <li>✓ {t('about.section7.20')}</li>
+                  <li>✓ {t('about.section7.21')}</li>
                 </ul>
               </td>
             </tr>

@@ -7,6 +7,7 @@ import styles from './Fourth.module.scss';
 import irBg from '../../../assets/background/irBg.png';
 import { useEffect, useRef, useState } from 'react';
 import arrow from '../../../assets/arrowWhiteThin.png';
+import { useTranslation } from 'react-i18next';
 const slideData = [
   {
     title: '누적포트폴리오',
@@ -42,6 +43,7 @@ function Fourth() {
     io.observe(intersectRef.current);
     return () => io.disconnect();
   }, [isShowing]);
+  const { t, i18n } = useTranslation();
   return (
     <>
       <div className={styles.containerWrap}>
@@ -52,14 +54,8 @@ function Fourth() {
         >
           <div className={styles.left}>
             <div className={styles.contentWrap}>
-              <h3>i SQUARE VENTURES</h3>
-              <p>
-                최고의 전문인력과 차별화된 가치증대 방식으로
-                <br />
-                대한민국 벤처생태계 육성과
-                <br />
-                펀드운용 수익이라는 목표를 추진해오고 있습니다.
-              </p>
+              <h3>Ecopro Partners</h3>
+              <p dangerouslySetInnerHTML={{ __html: t('fourth.1') }}></p>
               <div className={styles.btns}>
                 <img src={arrow} onClick={() => swiperPC?.slidePrev()} />
                 <img src={arrow} onClick={() => swiperPC?.slideNext()} />
@@ -78,7 +74,7 @@ function Fourth() {
             >
               {slideData.map((data, idx) => (
                 <SwiperSlide className={`${styles.slide} slide${idx}`}>
-                  <h3>{data.title}</h3>
+                  <h3>{t(`fourth.${data.title}`)}</h3>
                   <span>{data.content}</span>
                 </SwiperSlide>
               ))}
@@ -91,14 +87,8 @@ function Fourth() {
           }`}
         >
           <img src={irBg} className={styles.bg} />
-          <h2>i SQUARE VENTURES</h2>
-          <p>
-            최고의 전문인력과 차별화된 가치증대 방식으로
-            <br />
-            대한민국 벤처생태계 육성과
-            <br />
-            펀드운용 수익이라는 목표를 추진해오고 있습니다.
-          </p>
+          <h2>Ecopro Partners</h2>
+          <p>{t('fourth.1')}</p>
           <Swiper
             slidesPerView={'auto'}
             spaceBetween={11}

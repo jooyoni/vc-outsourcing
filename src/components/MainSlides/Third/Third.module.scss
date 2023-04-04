@@ -42,6 +42,7 @@
       opacity: 0;
       transform: translateY(100px);
       transition: all 0.7s ease;
+      max-width: 80%;
       span {
         font-family: 'Spoqa Han Sans Neo';
         font-weight: 700;
@@ -225,6 +226,7 @@
     text-align: center;
     color: #ffffff;
     padding: 10px 0;
+    max-width: 343px;
   }
   & > p:nth-child(3) {
     font-family: 'Spoqa Han Sans Neo';
@@ -234,6 +236,7 @@
     text-align: center;
     color: rgba(255, 255, 255, 0.9);
     padding: 10px 0;
+    max-width: 343px;
   }
   .infomationWrap {
     width: 100%;
