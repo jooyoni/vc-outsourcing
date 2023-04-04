@@ -9,6 +9,7 @@ import portfolio from './portfolio.json';
 import ir from './ir.json';
 import family from './family.json';
 import footer from './footer.json';
+import board from './board.json';
 i18n.use(initReactI18next).init({
   resources: {
     en: {
@@ -22,6 +23,7 @@ i18n.use(initReactI18next).init({
         ir: { ...ir.en },
         family: { ...family.en },
         footer: { ...footer.en },
+        board: { ...board.en },
       },
     },
     ko: {
@@ -35,6 +37,7 @@ i18n.use(initReactI18next).init({
         ir: { ...ir.ko },
         family: { ...family.ko },
         footer: { ...footer.ko },
+        board: { ...board.ko },
       },
     },
   },

@@ -10,6 +10,7 @@ import axiosClient from '../../libs/axiosClient';
 import Spinner from '../../components/Spinner/Spinner';
 import fileDownload from '../../assets/fileDownload.png';
 import clip from '../../assets/clip.png';
+import { useTranslation } from 'react-i18next';
 interface ICurrentBoardType {
   attached_files: {
     created_at: string;
@@ -75,7 +76,7 @@ function Board() {
         setNextBoard(res.data.next);
       });
   }, [location]);
-  console.log(location);
+  const { t, i18n } = useTranslation();
   return (
     <div className={styles.container}>
       <IRBanner />
@@ -87,9 +88,19 @@ function Board() {
                 <h2 className={styles.title}>{currentBoard?.title}</h2>
                 <div className={styles.boardInfo}>
                   <span>
-                    {currentBoard?.created_at
-                      .substring(0, 10)
-                      .replaceAll('-', '.')}
+                    {i18n.language == 'en'
+                      ? currentBoard?.created_at
+                          .substring(0, 10)
+                          .split('-')[1] +
+                        '.' +
+                        currentBoard?.created_at
+                          .substring(0, 10)
+                          .split('-')[2] +
+                        '.' +
+                        currentBoard?.created_at.substring(0, 10).split('-')[0]
+                      : currentBoard?.created_at
+                          .substring(0, 10)
+                          .replaceAll('-', '.')}
                   </span>
                   {/* <span>hit : 861</span> */}
                 </div>
@@ -127,8 +138,8 @@ function Board() {
                 >
                   <Arrow />
                   <div className={styles.detail}>
-                    <span>이전</span>
-                    <h3>{prevBoard?.title || '이전 글이 없습니다.'}</h3>
+                    <span>{t('board.1')}</span>
+                    <h3>{prevBoard?.title || t('board.3')}</h3>
                   </div>
                 </div>
                 <div
@@ -158,8 +169,8 @@ function Board() {
                   }}
                 >
                   <div className={styles.detail}>
-                    <span>다음</span>
-                    <h3>{nextBoard?.title || '다음 글이 없습니다.'}</h3>
+                    <span>{t('board.2')}</span>
+                    <h3>{nextBoard?.title || t('board.4')}</h3>
                   </div>
                   <Arrow />
                 </div>
