@@ -47,8 +47,9 @@
       opacity: 0;
       transform: translateY(100px);
       transition: all 0.7s ease;
-      max-width: 310px;
+      max-width: 500px;
       @media screen and (max-width: 1480px) {
+        max-width: 400px;
         padding-right: 24px;
       }
 
