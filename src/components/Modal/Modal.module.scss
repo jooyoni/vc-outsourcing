@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 1100;
+  z-index: 1101;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,8 +55,10 @@
     overflow: scroll;
     font-family: 'Pretendard';
     font-weight: 400;
-    font-size: 14px;
+    font-size: 15px;
     line-height: 17px;
+    // height: 525px;
+    flex-grow: 1;
     color: #1e1e1e;
     padding: 30px 23px 0;
     box-sizing: border-box;

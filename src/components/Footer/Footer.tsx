@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useDispatch, useSelector } from 'react-redux';
+import { setTrue } from '../../store/stewardshipSlide';
+import { RootState } from '../../store/store';
 import Modal from '../Modal/Modal';
 import styles from './Footer.module.scss';
-interface IPropsType {
-  setModalType?: React.Dispatch<React.SetStateAction<number>>;
-}
-function Footer(props: IPropsType) {
+
+function Footer() {
   const { t, i18n } = useTranslation();
+
+  //dispatch에 action을 전달하면 해당 동작이 실행된다
+  const dispatch = useDispatch();
   return (
     <>
       <div className={styles.container}>
@@ -18,7 +22,7 @@ function Footer(props: IPropsType) {
           <ul className={styles.right}>
             <li
               onClick={() => {
-                if (props.setModalType) props.setModalType(1);
+                dispatch(setTrue());
               }}
             >
               {t('footer.1')}

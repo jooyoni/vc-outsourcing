@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header/Header';
+import Modal from './components/Modal/Modal';
 import ScrollTop from './components/ScrollTop/ScrollTop';
 import About from './pages/About/About';
 import Board from './pages/Board/Board';
@@ -9,6 +11,7 @@ import IR from './pages/IR/IR';
 import Main from './pages/Main/Main';
 import Portfolio from './pages/Portfolio/Portfolio';
 import Team from './pages/Team/Team';
+import { RootState } from './store/store';
 
 function App() {
   function appHeight() {
@@ -20,9 +23,13 @@ function App() {
     appHeight();
     return () => window.removeEventListener('resize', appHeight);
   }, []);
+  const stewardshipIsOpen = useSelector(
+    (state: RootState) => state.stewardship.value,
+  );
   return (
     <div>
       <BrowserRouter>
+        {stewardshipIsOpen && <Modal />}
         <Header />
         <ScrollTop />
         <Routes>

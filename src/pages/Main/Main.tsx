@@ -29,6 +29,7 @@ function Main() {
     if (window.innerWidth > 767) setIsFullpage(1);
     else setIsFullpage(2);
   }, []);
+  console.log(activeIdx);
   return (
     <div className={styles.container}>
       <div className={styles.paginationWrap}>
@@ -60,7 +61,14 @@ function Main() {
           mousewheel={{
             thresholdDelta: 30,
           }}
-          shortSwipes={false}
+          threshold={10}
+          // shortSwipes={false}
+          // longSwipesMs={100}
+          // longSwipesRatio={0.3}
+          // shortSwipes={false}
+          // longSwipes={true}
+          // longSwipesRatio={0}
+
           freeMode={false}
           modules={[Mousewheel, FreeMode]}
           // breakpoints={{
@@ -68,7 +76,7 @@ function Main() {
           //     freeMode: false,
           //   },
           // }}
-          // touchRatio={0}
+          // touchRatio={0.01}
           onSlideChange={(swiper) => setActiveIdx(swiper.activeIndex)}
           allowTouchMove={true}
           className={styles.mainSlider}
@@ -89,7 +97,7 @@ function Main() {
             <Fifth />
           </SwiperSlide>
           <SwiperSlide style={{ height: 'auto', minHeight: 'unset' }}>
-            <Footer setModalType={setModalType} />
+            <Footer />
           </SwiperSlide>
         </Swiper>
       )}
@@ -100,11 +108,8 @@ function Main() {
           <Third />
           <Fourth />
           <Fifth />
-          <Footer setModalType={setModalType} />
+          <Footer />
         </div>
-      )}
-      {modalType !== 0 && (
-        <Modal type={modalType} setModalType={setModalType} />
       )}
     </div>
   );
