@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import Footer from '../../components/Footer/Footer';
 import styles from './Family.module.scss';
+import test from '../../assets/familyLogoTest.png';
 function Family() {
   const [ref1, inView1] = useInView();
   const [ref2, inView2] = useInView();
@@ -38,6 +39,7 @@ function Family() {
             <div className={styles.title}>{t('family.2')}</div>
             <ul>
               <li>
+                <img src={test} alt="" />
                 <span className={styles.date}>설립일 : 1998.10</span>
                 <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
               </li>
