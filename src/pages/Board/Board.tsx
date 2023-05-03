@@ -116,7 +116,7 @@ function Board() {
                   {currentBoard?.attached_files.map((file) => (
                     <li>
                       <a
-                        href={`https://67cc-112-169-5-244.jp.ngrok.io/api/file_download?post_id=${new URL(
+                        href={`https://testapi.onlinedrchina.com/api/file_download?post_id=${new URL(
                           document.URL,
                         ).searchParams.get('id')}&file_id=${file.id}`}
                       >
