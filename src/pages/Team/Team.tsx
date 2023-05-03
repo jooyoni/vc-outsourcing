@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useInView } from 'react-intersection-observer';
+import { useInView, InView } from 'react-intersection-observer';
 import Footer from '../../components/Footer/Footer';
 import Spinner from '../../components/Spinner/Spinner';
 import axiosClient from '../../libs/axiosClient';
@@ -35,9 +35,6 @@ function Team() {
     });
   }, []);
   const [ref1, inView1] = useInView();
-  const [ref2, inView2] = useInView();
-  const [ref3, inView3] = useInView();
-  const [ref4, inView4] = useInView();
   const { t, i18n } = useTranslation();
   return (
     <div className={styles.container}>
@@ -52,7 +49,53 @@ function Team() {
         <div ref={ref1} className={styles.observer}></div>
       </section>
       <section className={styles.contentArea}>
-        <div className={styles.leadershipWrap}>
+        {employeeData.length ? (
+          employeeData.map((level) => (
+            <div className={styles.leadershipWrap}>
+              <h3>- {level.english_title.toUpperCase()}</h3>
+              <InView threshold={0.2}>
+                {({ inView, ref, entry }) => (
+                  <ul
+                    className={`${styles.employeeList} ${
+                      inView ? styles.isShowing : ''
+                    }`}
+                    ref={ref}
+                  >
+                    {level &&
+                      !isLoading &&
+                      level.users.map((employee, idx) => (
+                        <li
+                          key={employee.id}
+                          style={{ transitionDelay: `${idx * 0.1}s` }}
+                        >
+                          <div className={styles.imageWrap}>
+                            <img src={employee.avatar || ''} />
+                          </div>
+                          <div className={styles.detailWrap}>
+                            <span className={styles.position}>
+                              {i18n.resolvedLanguage == 'ko'
+                                ? employee.position.title
+                                : employee.position.english_title}
+                            </span>
+                            <span className={styles.name}>
+                              {i18n.resolvedLanguage == 'ko' ||
+                              !employee.english_name
+                                ? employee.name
+                                : employee.english_name}
+                            </span>
+                          </div>
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </InView>
+            </div>
+          ))
+        ) : (
+          <Spinner />
+        )}
+
+        {/* <div className={styles.leadershipWrap}>
           <h3>- LEADERSHIP</h3>
           <ul
             className={`${styles.employeeList} ${
@@ -163,7 +206,7 @@ function Team() {
               <div ref={ref4} className={styles.observer}></div>
             )}
           </ul>
-        </div>
+        </div> */}
       </section>
       <Footer />
     </div>

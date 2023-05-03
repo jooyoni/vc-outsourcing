@@ -269,7 +269,7 @@ function About() {
         >
           <h4>{t('about.section7.1')}</h4>
           <p>{t('about.section7.2')}</p>
-          <table>
+          {/* <table>
             <th>{t('about.section7.3')}</th>
             <th>{t('about.section7.4')}</th>
             <th>{t('about.section7.5')}</th>
@@ -307,7 +307,7 @@ function About() {
                 </ul>
               </td>
             </tr>
-          </table>
+          </table> */}
         </div>
         <div ref={ref7} className={styles.observer}></div>
       </section>
