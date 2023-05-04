@@ -116,9 +116,12 @@ function Board() {
                   {currentBoard?.attached_files.map((file) => (
                     <li>
                       <a
-                        href={`https://testapi.onlinedrchina.com/api/file_download?post_id=${new URL(
-                          document.URL,
-                        ).searchParams.get('id')}&file_id=${file.id}`}
+                        href={
+                          `${process.env.REACT_APP_API_URL}` +
+                          `/api/file_download?post_id=${new URL(
+                            document.URL,
+                          ).searchParams.get('id')}&file_id=${file.id}`
+                        }
                       >
                         <img src={clip} />
                         <span>{file.original_name}</span>

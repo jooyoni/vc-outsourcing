@@ -9,6 +9,9 @@ import 'swiper/css';
 import SwiperCore from 'swiper';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
+import investmentField01 from '../../assets/about/investmentField01.png';
+import investmentField02 from '../../assets/about/investmentField02.png';
+import investmentField03 from '../../assets/about/investmentField03.png';
 interface ICompanyHistoryType {
   english_title: string;
   m: number;
@@ -256,7 +259,9 @@ function About() {
       </section>
       <section>
         <div
-          className={`${styles.contentArea} ${inView6 ? styles.isShowing : ''}`}
+          className={`${styles.contentArea} ${styles.philosophy} ${
+            inView6 ? styles.isShowing : ''
+          }`}
         >
           <h2>{t('about.section6.1')}</h2>
           <p>{t('about.section6.2')}</p>
@@ -308,6 +313,81 @@ function About() {
               </td>
             </tr>
           </table> */}
+          <Swiper
+            className={styles.investmentFieldSlider}
+            spaceBetween={32}
+            slidesPerView={1.1}
+            // autoHeight={true}
+            breakpoints={{
+              // 425: {
+              //   slidesPerView: 2.2,
+              // },
+              1023: {
+                slidesPerView: 3,
+              },
+            }}
+          >
+            <SwiperSlide>
+              <div className={styles.imageWrap}>
+                <img src={investmentField01} />
+              </div>
+              <div className={styles.detailWrap}>
+                <div className={styles.bigCategory}>
+                  <span>{t('about.section7.4')}</span>
+                  <h4>· {t('about.section7.7')}</h4>
+                </div>
+                <div className={styles.categoryDetail}>
+                  <span>{t('about.section7.5')}</span>
+                  <ul>
+                    <li>· {t('about.section7.10')}</li>
+                    <li>· {t('about.section7.11')}</li>
+                    <li>· {t('about.section7.12')}</li>
+                    <li>· {t('about.section7.13')}</li>
+                    <li>· {t('about.section7.14')}</li>
+                  </ul>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className={styles.imageWrap}>
+                <img src={investmentField02} />
+              </div>
+              <div className={styles.detailWrap}>
+                <div className={styles.bigCategory}>
+                  <span>{t('about.section7.4')}</span>
+                  <h4>· {t('about.section7.8')}</h4>
+                </div>
+                <div className={styles.categoryDetail}>
+                  <span>{t('about.section7.5')}</span>
+                  <ul>
+                    <li>· {t('about.section7.15')}</li>
+                    <li>· {t('about.section7.16')}</li>
+                    <li>· {t('about.section7.17')}</li>
+                  </ul>
+                </div>
+              </div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <div className={styles.imageWrap}>
+                <img src={investmentField03} />
+              </div>
+              <div className={styles.detailWrap}>
+                <div className={styles.bigCategory}>
+                  <span>{t('about.section7.4')}</span>
+                  <h4>· {t('about.section7.9')}</h4>
+                </div>
+                <div className={styles.categoryDetail}>
+                  <span>{t('about.section7.5')}</span>
+                  <ul>
+                    <li>· {t('about.section7.18')}</li>
+                    <li>· {t('about.section7.19')}</li>
+                    <li>· {t('about.section7.20')}</li>
+                    <li>· {t('about.section7.21')}</li>
+                  </ul>
+                </div>
+              </div>
+            </SwiperSlide>
+          </Swiper>
         </div>
         <div ref={ref7} className={styles.observer}></div>
       </section>

@@ -240,7 +240,8 @@ function Portfolio() {
                     >
                       <img
                         src={
-                          'https://testapi.onlinedrchina.com/storage/' +
+                          `${process.env.REACT_APP_API_URL}` +
+                          '/storage/' +
                           invest.logo_image
                         }
                         alt="로고"

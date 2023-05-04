@@ -1,6 +1,6 @@
 import axios from 'axios';
 const axiosClient = axios.create({
-  baseURL: 'https://testapi.onlinedrchina.com',
+  baseURL: process.env.REACT_APP_API_URL,
   // withCredentials: true,
   headers: {
     // 'Access-Control-Allow-Origin': 'https://67cc-112-169-5-244.jp.ngrok.io',

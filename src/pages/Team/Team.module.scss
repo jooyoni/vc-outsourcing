@@ -82,84 +82,134 @@
   margin: 0 auto;
 }
 section.contentArea {
-  padding: 0 16px 207px;
+  padding: 80px 16px 207px;
+  @media screen and (max-width: 1023px) {
+    padding: 60px 16px 144px;
+  }
   @media screen and (max-width: 767px) {
-    padding-bottom: 80px;
+    padding: 40px 16px 80px;
   }
 }
 
 .leadershipWrap,
 .investmentWrap,
-.operationWrap {
+.operationWrap,
+.positionWrap {
   h3 {
     font-weight: 700;
     font-size: 36px;
     line-height: 43px;
     color: #090b0f;
-    padding: 100px 0;
+    padding: 20px 0;
+    margin-bottom: 40px;
+  }
+  @media screen and (max-width: 1023px) {
+    h3 {
+      font-size: 30px;
+      line-height: 36px;
+      margin-bottom: 0px;
+    }
   }
   @media screen and (max-width: 767px) {
-    padding-top: 40px;
     h3 {
-      padding: 20px 0;
       font-size: 24px;
       line-height: 29px;
     }
   }
-  ul {
+  & > ul {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     // grid-template-rows: repeat(3, 1fr);
-    gap: 32px;
-    row-gap: 24px;
-    li {
+    column-gap: 32px;
+    & > li {
       width: 100%;
-      .imageWrap {
-        width: 100%;
-        aspect-ratio: 1/1.273;
-        background-color: #d9d9d9;
-      }
-      .detailWrap {
-        height: 137px;
+      .top {
         display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        .position {
+        align-items: flex-end;
+        padding: 10px 0;
+        border-bottom: 1px solid #d9d9d9;
+        gap: 10px;
+        h5 {
+          font-weight: 700;
+          font-size: 32px;
+          line-height: 38px;
+          color: #252629;
+          padding: 10px;
+        }
+        span {
           display: inline-block;
+          padding: 10px 0;
           font-weight: 700;
           font-size: 20px;
           line-height: 24px;
-          color: #090b0f;
-          padding: 20px 0;
+          color: #5ad8ef;
         }
-        .name {
-          display: inline-block;
-          padding: 10px 0;
-          font-weight: 300;
-          font-size: 24px;
-          line-height: 29px;
-          color: #090b0f;
+      }
+      .careerList {
+        display: flex;
+        flex-direction: column;
+        min-height: 271px;
+        padding-top: 10px;
+        box-sizing: border-box;
+        li {
+          span {
+            font-weight: 300;
+            font-size: 20px;
+            line-height: 29px;
+            color: #000000;
+          }
         }
       }
     }
     @media screen and (max-width: 1023px) {
       grid-template-columns: repeat(3, 1fr);
+      & > li {
+        .top {
+          gap: 7px;
+          h5 {
+            font-size: 26px;
+            line-height: 31px;
+          }
+          span {
+            font-size: 16px;
+            line-height: 19px;
+          }
+        }
+        .careerList {
+          min-height: 228px;
+          li {
+            span {
+              font-size: 19px;
+              line-height: 27px;
+            }
+          }
+        }
+      }
     }
     @media screen and (max-width: 767px) {
       grid-template-columns: repeat(2, 1fr);
-      li {
-        .detailWrap {
-          height: 73px;
-          .position {
-            font-size: 14px;
-            line-height: 17px;
-            padding: 4px 0;
+      column-gap: 21px;
+      & > li {
+        .top {
+          gap: 4px;
+          h5 {
+            font-size: 20px;
+            line-height: 24px;
+            padding: 10px 0;
           }
-          .name {
-            font-size: 16px;
-            line-height: 19px;
-            padding: 6px 0;
+          span {
+            font-size: 12px;
+            line-height: 14px;
+          }
+        }
+        .careerList {
+          min-height: 176px;
+          li {
+            span {
+              font-size: 14px;
+              line-height: 24px;
+            }
           }
         }
       }

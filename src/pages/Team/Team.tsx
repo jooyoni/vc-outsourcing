@@ -22,6 +22,11 @@ interface IEmployeeDataType {
     english_name: string | null;
     position: { title: string; english_title: string };
     position_id: 1;
+    career_career: {
+      title: null | string;
+      english_title: null | string;
+      career_type: number;
+    }[];
   }[];
 }
 function Team() {
@@ -51,7 +56,7 @@ function Team() {
       <section className={styles.contentArea}>
         {employeeData.length ? (
           employeeData.map((level) => (
-            <div className={styles.leadershipWrap}>
+            <div className={styles.positionWrap}>
               <h3>- {level.english_title.toUpperCase()}</h3>
               <InView threshold={0.2}>
                 {({ inView, ref, entry }) => (
@@ -68,22 +73,29 @@ function Team() {
                           key={employee.id}
                           style={{ transitionDelay: `${idx * 0.1}s` }}
                         >
-                          <div className={styles.imageWrap}>
-                            <img src={employee.avatar || ''} />
-                          </div>
-                          <div className={styles.detailWrap}>
-                            <span className={styles.position}>
+                          <div className={styles.top}>
+                            <h5>
+                              {i18n.resolvedLanguage == 'ko'
+                                ? employee.name
+                                : employee.english_name}
+                            </h5>
+                            <span>
                               {i18n.resolvedLanguage == 'ko'
                                 ? employee.position.title
                                 : employee.position.english_title}
                             </span>
-                            <span className={styles.name}>
-                              {i18n.resolvedLanguage == 'ko' ||
-                              !employee.english_name
-                                ? employee.name
-                                : employee.english_name}
-                            </span>
                           </div>
+                          <ul className={styles.careerList}>
+                            {employee.career_career.map((career, idx) => (
+                              <li key={idx}>
+                                <span>
+                                  {i18n.resolvedLanguage == 'ko'
+                                    ? career.title
+                                    : career.english_title}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
                         </li>
                       ))}
                   </ul>

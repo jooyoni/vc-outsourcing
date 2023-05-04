@@ -1,13 +1,31 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import Footer from '../../components/Footer/Footer';
 import styles from './Family.module.scss';
-import test from '../../assets/familyLogoTest.png';
+import axiosClient from '../../libs/axiosClient';
+interface IFamilyType {
+  background_image: null | string;
+  capital: null | string;
+  description: null | string;
+  english_description: null | string;
+  english_name: string;
+  establishment_date: 'string';
+  logo_image: null | string;
+  major_bussiness: string;
+  english_major_bussiness: string;
+  name: string;
+  sort_order: number;
+  url: null | string;
+}
 function Family() {
   const [ref1, inView1] = useInView();
   const [ref2, inView2] = useInView();
   const { t, i18n } = useTranslation();
+  const [familyData, setFamilyData] = useState<IFamilyType[]>([]);
+  useEffect(() => {
+    axiosClient.get('/api/family').then((res) => setFamilyData(res.data));
+  }, []);
   return (
     <div>
       <div
@@ -35,53 +53,74 @@ function Family() {
         className={`${styles.contentWrap} ${inView2 ? styles.isShowing : ''}`}
       >
         <div className={styles.contentArea}>
-          <div className={styles.left}>
-            <div className={styles.title}>{t('family.2')}</div>
-            <ul>
-              <li>
-                <img src={test} alt="" />
-                <span className={styles.date}>설립일 : 1998.10</span>
-                <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
+          <ul>
+            {familyData.map((family, idx) => (
+              <li
+                key={idx}
+                style={{
+                  backgroundImage: family.background_image
+                    ? `url(${
+                        process.env.REACT_APP_API_URL +
+                        '/storage/' +
+                        family.background_image
+                      })`
+                    : '',
+                  cursor: family.url ? 'pointer' : 'unset',
+                }}
+                onClick={() => {
+                  if (family.url) window.open(family.url, '_blank');
+                }}
+              >
+                <div className={styles.detailBox}>
+                  <div className={styles.logoWrap}>
+                    {family.logo_image ? (
+                      <img
+                        src={
+                          process.env.REACT_APP_API_URL +
+                          '/storage/' +
+                          family.logo_image
+                        }
+                        alt={family.name}
+                      />
+                    ) : (
+                      <div style={{ height: '32px' }}></div>
+                    )}
+                  </div>
+                  <p className={styles.description}>
+                    {i18n.resolvedLanguage == 'ko'
+                      ? family.description
+                      : family.english_description}
+                  </p>
+                  <ul className={styles.companyInfoList}>
+                    <li>
+                      {t('family.4')} :{' '}
+                      {i18n.resolvedLanguage == 'ko'
+                        ? family.establishment_date
+                            .substring(0, 7)
+                            .replace(/-/g, '.')
+                        : family.establishment_date.substring(5, 7) +
+                          '.' +
+                          family.establishment_date.substring(0, 4)}
+                    </li>
+                    {family.major_bussiness && (
+                      <li>
+                        {t('family.5')} :{' '}
+                        {i18n.resolvedLanguage == 'ko'
+                          ? family.major_bussiness
+                          : family.english_major_bussiness}
+                      </li>
+                    )}
+                    {family.capital && (
+                      <li>
+                        {t('family.6')} : {family.capital}
+                        {t('family.7')}
+                      </li>
+                    )}
+                  </ul>
+                </div>
               </li>
-              <li>
-                <span className={styles.date}>설립일 : 1998.10</span>
-                <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-              </li>
-              <li>
-                <span className={styles.date}>설립일 : 1998.10</span>
-                <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-              </li>
-            </ul>
-          </div>
-          <div className={styles.right}>
-            <div className={styles.title}>{t('family.3')}</div>
-            <ul>
-              <li>
-                <span className={styles.date}>설립일 : 1998.10</span>
-                <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-              </li>
-              <li>
-                <span className={styles.date}>설립일 : 1998.10</span>
-                <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-              </li>
-              <li>
-                <span className={styles.date}>설립일 : 1998.10</span>
-                <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-              </li>
-              <li>
-                <span className={styles.date}>설립일 : 1998.10</span>
-                <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-              </li>
-              <li>
-                <span className={styles.date}>설립일 : 1998.10</span>
-                <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-              </li>{' '}
-              <li>
-                <span className={styles.date}>설립일 : 1998.10</span>
-                <span className={styles.detail}>주요사업 : 창업 투자 회사</span>
-              </li>
-            </ul>
-          </div>
+            ))}
+          </ul>
         </div>
         <div ref={ref2} className={styles.observer}></div>
       </section>

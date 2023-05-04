@@ -4,13 +4,17 @@
     "2": "Environmental Investment Business",
     "3": "Battery Materials Business",
     "4": "Establishment Date",
-    "5": "Main Business"
+    "5": "Main Business",
+    "6": "",
+    "7": ""
   },
   "ko": {
     "1": "에코프로 파트너스",
     "2": "환경·투자사업",
     "3": "배터리 소재 사업",
     "4": "설립일",
-    "5": "주요사업"
+    "5": "주요사업",
+    "6": "자본금",
+    "7": "억원"
   }
 }
