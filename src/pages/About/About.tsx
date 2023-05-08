@@ -12,6 +12,8 @@ import { useTranslation } from 'react-i18next';
 import investmentField01 from '../../assets/about/investmentField01.png';
 import investmentField02 from '../../assets/about/investmentField02.png';
 import investmentField03 from '../../assets/about/investmentField03.png';
+import map from '../../assets/about/map.png';
+import pin from '../../assets/about/pin.png';
 interface ICompanyHistoryType {
   english_title: string;
   m: number;
@@ -315,15 +317,23 @@ function About() {
           </table> */}
           <Swiper
             className={styles.investmentFieldSlider}
-            spaceBetween={32}
+            spaceBetween={19}
             slidesPerView={1.1}
             // autoHeight={true}
             breakpoints={{
               // 425: {
               //   slidesPerView: 2.2,
               // },
+              550: {
+                slidesPerView: 1.6,
+              },
+              767: {
+                slidesPerView: 2.2,
+                spaceBetween: 26,
+              },
               1023: {
                 slidesPerView: 3,
+                spaceBetween: 32,
               },
             }}
           >
@@ -390,6 +400,30 @@ function About() {
           </Swiper>
         </div>
         <div ref={ref7} className={styles.observer}></div>
+      </section>
+      <section>
+        <div className={styles.contentArea}>
+          <h3>{t('about.section8.1')}</h3>
+          <img src={map} alt="에코프로파트너스 지도" className={styles.map} />
+          <ul className={styles.companyInfoList}>
+            <li>
+              <span>{t('about.section8.2')}</span>
+              <span>06775</span>
+            </li>
+            <li>
+              <span>{t('about.section8.3')}</span>
+              <span>02-6920-6599</span>
+            </li>
+            <li>
+              <span>{t('about.section8.4')}</span>
+              <span>02-6920-6599</span>
+            </li>
+          </ul>
+          <h5>
+            <img src={pin} />
+            <span>{t('about.section8.5')}</span>
+          </h5>
+        </div>
       </section>
       <Footer />
     </div>
