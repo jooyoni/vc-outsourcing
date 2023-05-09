@@ -39,11 +39,14 @@
   color: #ffffff;
   cursor: pointer;
   padding: 10px 0 10px 20px;
+  img {
+    width: 100%;
+  }
   @media screen and (max-width: 1023px) {
     font-size: 16px;
     line-height: 19px;
-    width: unset;
-    padding: 10px 5.5px;
+    width: 177px;
+    padding: 10px 5.5px 10px 0;
   }
 }
 .right {

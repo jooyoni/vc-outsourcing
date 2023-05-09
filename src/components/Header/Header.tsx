@@ -1,9 +1,9 @@
 import styles from './Header.module.scss';
 import arrow from '../../assets/arrowWhite.png';
+import logo from '../../assets/logo.png';
 import { useEffect, useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import logo from '../../assets/logo.png';
 function Header() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -50,7 +50,7 @@ function Header() {
     <>
       <div className={styles.container}>
         <div className={styles.logoWrap} onClick={() => navigate('/')}>
-          Ecopro Partners
+          <img src={logo} alt="에코프로 파트너스 로고" />
         </div>
         <div className={styles.right}>
           <ul
