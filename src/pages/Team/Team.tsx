@@ -56,7 +56,7 @@ function Team() {
       <section className={styles.contentArea}>
         {employeeData.length ? (
           employeeData.map((level) => (
-            <div className={styles.positionWrap}>
+            <div className={styles.positionWrap} key={level.id}>
               <h3>- {level.english_title.toUpperCase()}</h3>
               <InView threshold={0.2}>
                 {({ inView, ref, entry }) => (

@@ -10,6 +10,7 @@ import ir from './ir.json';
 import family from './family.json';
 import footer from './footer.json';
 import board from './board.json';
+import stewardship from './stewardship.json';
 i18n.use(initReactI18next).init({
   resources: {
     en: {
@@ -24,6 +25,7 @@ i18n.use(initReactI18next).init({
         family: { ...family.en },
         footer: { ...footer.en },
         board: { ...board.en },
+        stewardship: { ...stewardship.en },
       },
     },
     ko: {
@@ -38,6 +40,7 @@ i18n.use(initReactI18next).init({
         family: { ...family.ko },
         footer: { ...footer.ko },
         board: { ...board.ko },
+        stewardship: { ...stewardship.ko },
       },
     },
   },

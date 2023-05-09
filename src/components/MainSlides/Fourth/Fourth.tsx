@@ -74,8 +74,8 @@ function Fourth() {
             >
               {slideData.map((data, idx) => (
                 <SwiperSlide className={`${styles.slide} slide${idx}`}>
-                  <h3>{t(`fourth.${data.title}`)}</h3>
-                  <span>{data.content}</span>
+                  <h3>{t(`fourth.${(idx + 1) * 2}`)}</h3>
+                  <span>{t(`fourth.${idx * 2 + 3}`)}</span>
                 </SwiperSlide>
               ))}
             </Swiper>

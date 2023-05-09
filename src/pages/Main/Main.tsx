@@ -29,7 +29,6 @@ function Main() {
     if (window.innerWidth > 767) setIsFullpage(1);
     else setIsFullpage(2);
   }, []);
-  console.log(activeIdx);
   return (
     <div className={styles.container}>
       <div className={styles.paginationWrap}>

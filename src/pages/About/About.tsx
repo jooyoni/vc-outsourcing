@@ -49,7 +49,6 @@ function About() {
   const [ref6, inView6] = useInView();
   const [ref7, inView7] = useInView();
   const { t, i18n } = useTranslation();
-  console.log(i18n);
   return (
     <div className={styles.container}>
       <section>
@@ -241,7 +240,7 @@ function About() {
                                 history.y == year && history.m == month,
                             )
                             .map((history) => (
-                              <li>
+                              <li key={history.title}>
                                 ·{' '}
                                 {i18n.resolvedLanguage == 'ko'
                                   ? history.title
