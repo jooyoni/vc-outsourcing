@@ -139,7 +139,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-
         &:global(.slide0) {
           background: rgba(51, 103, 182, 0.45);
         }
@@ -265,7 +264,10 @@
         background: rgba(47, 245, 234, 0.45);
       }
       &:global(.slide2) {
-        background: rgba(47, 245, 234, 0.45);
+        background: rgba(245, 178, 47, 0.45);
+      }
+      &:global(.slide3) {
+        background: rgba(173, 108, 255, 0.45);
       }
       h5 {
         font-family: 'Spoqa Han Sans Neo';
