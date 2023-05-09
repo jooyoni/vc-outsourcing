@@ -709,14 +709,16 @@
     .investmentFieldSlider {
       width: 100%;
       padding-top: 100px;
-      // overflow: unset;
-      padding: 0 16px 200px;
+      overflow: unset;
+      overflow-x: hidden;
+      // overflow-y: visible;
+      padding: 100px 16px 200px;
       box-sizing: border-box;
       @media screen and (max-width: 1023px) {
-        padding: 0 16px 150px;
+        padding: 57px 16px 150px;
       }
       @media screen and (max-width: 767px) {
-        padding: 0 16px 100px;
+        padding: 45px 16px 100px;
       }
       & > div {
         min-height: 100%;
@@ -732,6 +734,9 @@
         // max-width: 416px;
         &:hover {
           transform: translateY(-50px);
+          @media screen and (max-width: 767px) {
+            transform: translateY(-25px);
+          }
         }
       }
       .imageWrap {
@@ -803,7 +808,6 @@
         padding: 36px 12%;
       }
       .investmentFieldSlider {
-        padding-top: 57px;
         .imageWrap {
           img {
             height: 298px;
@@ -848,10 +852,9 @@
       p {
         font-size: 14px;
         line-height: 22px;
-        padding: 29px 15%;
+        padding: 29px 15% 0;
       }
       .investmentFieldSlider {
-        padding-top: 14px;
         .imageWrap {
           img {
             height: 259px;
@@ -890,7 +893,7 @@
     }
     @media screen and (max-width: 425px) {
       p {
-        padding: 29px 5%;
+        padding: 29px 5% 0;
       }
     }
   }
