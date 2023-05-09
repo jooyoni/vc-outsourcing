@@ -34,6 +34,10 @@
         line-height: 29px;
         color: #ffffff;
         padding: 10px 27.5px;
+        max-width: 304px;
+        img {
+          width: 100%;
+        }
         @media screen and (max-width: 767px) {
           padding: 10px 0;
         }

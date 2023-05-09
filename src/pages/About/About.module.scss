@@ -675,13 +675,13 @@
   }
 }
 .container > section:nth-child(7) {
-  padding: 100px 16px 200px;
+  padding: 100px 0px 0px;
   background: #f5f7f9;
   @media screen and (max-width: 1023px) {
-    padding: 75px 16px 150px;
+    padding: 75px 0px 0px;
   }
   @media screen and (max-width: 767px) {
-    padding: 50px 16px 100px;
+    padding: 50px 0px 0px;
   }
   .contentArea {
     max-width: 1312px;
@@ -709,7 +709,15 @@
     .investmentFieldSlider {
       width: 100%;
       padding-top: 100px;
-      overflow: unset;
+      // overflow: unset;
+      padding: 0 16px 200px;
+      box-sizing: border-box;
+      @media screen and (max-width: 1023px) {
+        padding: 0 16px 150px;
+      }
+      @media screen and (max-width: 767px) {
+        padding: 0 16px 100px;
+      }
       & > div {
         min-height: 100%;
       }

@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTrue } from '../../store/stewardshipSlide';
 import { RootState } from '../../store/store';
 import Modal from '../Modal/Modal';
+import logo from '../../assets/logo.png';
 import styles from './Footer.module.scss';
 
 function Footer() {
@@ -16,7 +17,9 @@ function Footer() {
       <div className={styles.container}>
         <div className={styles.top}>
           <div className={styles.left}>
-            <h1>Ecopro Partners</h1>
+            <h1>
+              <img src={logo} alt="에코프로 파트너스 로고" />
+            </h1>
             <span>Copyright@2023 Ecopro Partners Co. Ltd.</span>
           </div>
           <ul className={styles.right}>
