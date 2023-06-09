@@ -205,7 +205,7 @@ section.content {
     &:hover,
     &:active {
       & > * {
-        transform: scale(1.1) !important;
+        transform: scale(1.05) !important;
       }
     }
     @media screen and (max-width: 767px) {
@@ -218,7 +218,8 @@ section.content {
       color: #090b0f;
       padding: 10px;
       margin-bottom: 44px;
-      word-break: keep-all;
+      // text-align: center;
+      // word-break: keep-all;
     }
     .detail {
       display: flex;

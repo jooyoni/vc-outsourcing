@@ -53,7 +53,8 @@
     line-height: 34px;
     text-align: center;
     color: #ffffff;
-    max-width: 430px;
+    max-width: 440px;
+    word-break: keep-all;
   }
   @media screen and (max-width: 1920px) {
     h3 {

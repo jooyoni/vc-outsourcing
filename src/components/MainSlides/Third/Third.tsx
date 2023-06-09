@@ -30,7 +30,7 @@ function Third() {
         >
           <div className={styles.left}>
             <div className={styles.textWrap}>
-              <span>“</span>
+              <span></span>
               <p dangerouslySetInnerHTML={{ __html: t('third.1') }}></p>
               <p>{t('third.2')}</p>
             </div>
@@ -44,19 +44,9 @@ function Third() {
                 }[]
               ).map((data, idx) => (
                 <li className={detailOpen[idx] ? styles.isOpen : ''} key={idx}>
-                  <div
-                    className={styles.title}
-                    onClick={() => {
-                      if (idx == 0)
-                        setDetailOpen((prev) => [!prev[idx], false, false]);
-                      else if (idx == 1)
-                        setDetailOpen((prev) => [false, !prev[idx], false]);
-                      else if (idx == 2)
-                        setDetailOpen((prev) => [false, false, !prev[idx]]);
-                    }}
-                  >
+                  <div className={styles.title}>
                     <h3>{data.title}</h3>
-                    <img src={plus} />
+                    {/* <img src={plus} /> */}
                   </div>
                   <p>{data.content}</p>
                 </li>
@@ -69,7 +59,7 @@ function Third() {
             isShowing ? styles.isIntersected : ''
           }`}
         >
-          <span>“</span>
+          <span></span>
           <h2 dangerouslySetInnerHTML={{ __html: t('third.1') }}></h2>
           <p>{t('third.2')}</p>
           <div className={styles.infomationWrap}>
@@ -81,19 +71,9 @@ function Third() {
                 }[]
               ).map((data, idx) => (
                 <li className={detailOpen[idx] ? styles.isOpen : ''} key={idx}>
-                  <div
-                    className={styles.title}
-                    onClick={() => {
-                      if (idx == 0)
-                        setDetailOpen((prev) => [!prev[idx], false, false]);
-                      else if (idx == 1)
-                        setDetailOpen((prev) => [false, !prev[idx], false]);
-                      else if (idx == 2)
-                        setDetailOpen((prev) => [false, false, !prev[idx]]);
-                    }}
-                  >
+                  <div className={styles.title}>
                     <span>{data.title}</span>
-                    <img src={plusWhite} />
+                    {/* <img src={plusWhite} /> */}
                   </div>
                   <div className={styles.detail}>
                     <p>{data.content}</p>

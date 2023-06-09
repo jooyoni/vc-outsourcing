@@ -1,6 +1,6 @@
 .container {
 }
-.container > section:first-child {
+.container > .section1 {
   background-image: url('../../assets/about/aboutBg.png');
   background-size: cover;
   .contentArea {
@@ -85,7 +85,7 @@
     }
   }
 }
-.container > section:nth-child(2) {
+.container > .section2 {
   padding: 0 16px;
   .contentArea {
     max-width: 1312px;
@@ -93,6 +93,7 @@
     padding: 80px 0;
     display: flex;
     gap: 32px;
+    justify-content: space-between;
     .left {
       width: 50%;
       box-sizing: border-box;
@@ -135,9 +136,11 @@
       }
     }
     .right {
-      width: 50%;
       background-image: url('../../assets/about/chairman.jpeg');
-      background-size: cover;
+      width: 40%;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
     }
     @media screen and (max-width: 1312px) {
       .left {
@@ -196,7 +199,7 @@
     }
   }
 }
-.container > section:nth-child(3) {
+.container > .section3 {
   padding: 0 16px;
   padding-bottom: 135px;
   @media screen and (max-width: 767px) {
@@ -269,7 +272,7 @@
     }
   }
 }
-.container > section:nth-child(4) {
+.container > .section4 {
   padding-bottom: 137px;
   @media screen and (max-width: 1023px) {
     padding-bottom: 0;
@@ -401,7 +404,7 @@
     }
   }
 }
-.container > section:nth-child(5) {
+.container > .section5 {
   .contentArea {
     max-width: 1312px;
     margin: 0 auto;
@@ -602,7 +605,7 @@
     }
   }
 }
-.container > section:nth-child(6) {
+.container > .section6 {
   padding: 0;
   .contentArea {
     // max-width: 1312px;
@@ -674,7 +677,7 @@
     }
   }
 }
-.container > section:nth-child(7) {
+.container > .section7 {
   padding: 100px 0px 0px;
   background: #f5f7f9;
   @media screen and (max-width: 1023px) {
@@ -785,6 +788,7 @@
           ul {
             display: flex;
             flex-wrap: wrap;
+            flex-direction: column;
             gap: 4px;
             li {
               font-weight: 300;
@@ -898,7 +902,7 @@
     }
   }
 }
-.container > section:nth-child(8) {
+.container > .section8 {
   padding: 100px 16px 207px;
   .contentArea {
     opacity: 1;

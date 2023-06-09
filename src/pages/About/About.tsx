@@ -51,7 +51,7 @@ function About() {
   const { t, i18n } = useTranslation();
   return (
     <div className={styles.container}>
-      <section>
+      <section className={styles.section1}>
         <div
           className={`${styles.contentArea} ${inView ? styles.isShowing : ''}`}
         >
@@ -61,7 +61,7 @@ function About() {
         </div>
         <div ref={ref} className={styles.observer}></div>
       </section>
-      <section>
+      <section className={styles.section2}>
         <div
           className={`${styles.contentArea} ${inView2 ? styles.isShowing : ''}`}
         >
@@ -84,7 +84,7 @@ function About() {
         </div>
         <div ref={ref2} className={styles.observer}></div>
       </section>
-      <section>
+      {/* <section className={styles.section3}>
         <div
           className={`${styles.contentArea} ${inView3 ? styles.isShowing : ''}`}
         >
@@ -105,8 +105,8 @@ function About() {
           </ul>
         </div>
         <div ref={ref3} className={styles.observer}></div>
-      </section>
-      <section>
+      </section> */}
+      <section className={styles.section4}>
         <div
           className={`${styles.contentArea} ${inView4 ? styles.isShowing : ''}`}
         >
@@ -122,12 +122,12 @@ function About() {
                   <span>{t('about.section4.4')}</span>
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <span className={styles.title}>{t('about.section4.5')}</span>
                 <div>
                   <span>{t('about.section4.6')}</span>
                 </div>
-              </li>
+              </li> */}
               <li>
                 <span className={styles.title}>{t('about.section4.7')}</span>
                 <div>
@@ -164,7 +164,7 @@ function About() {
         </div>
         <div ref={ref4} className={styles.observer}></div>
       </section>
-      <section>
+      <section className={styles.section5}>
         <div
           className={`${styles.contentArea} ${inView5 ? styles.isShowing : ''}`}
         >
@@ -258,7 +258,7 @@ function About() {
         </div>
         <div ref={ref5} className={styles.observer}></div>
       </section>
-      <section>
+      {/* <section className={styles.section6}>
         <div
           className={`${styles.contentArea} ${styles.philosophy} ${
             inView6 ? styles.isShowing : ''
@@ -268,8 +268,8 @@ function About() {
           <p>{t('about.section6.2')}</p>
         </div>
         <div ref={ref6} className={styles.observer}></div>
-      </section>
-      <section>
+      </section> */}
+      <section className={styles.section7}>
         <div
           className={`${styles.contentArea} ${inView7 ? styles.isShowing : ''}`}
         >
@@ -400,10 +400,10 @@ function About() {
         </div>
         <div ref={ref7} className={styles.observer}></div>
       </section>
-      <section>
+      <section className={styles.section8}>
         <div className={styles.contentArea}>
           <h3>{t('about.section8.1')}</h3>
-          <img src={map} alt="에코프로파트너스 지도" className={styles.map} />
+          {/* <img src={map} alt="에코프로파트너스 지도" className={styles.map} /> */}
           <ul className={styles.companyInfoList}>
             <li>
               <span>{t('about.section8.2')}</span>
@@ -417,10 +417,18 @@ function About() {
               <span>{t('about.section8.4')}</span>
               <span>02-6920-6599</span>
             </li>
+            <li>
+              <span>{t('about.section8.5')}</span>
+              <span>이메일?</span>
+            </li>
           </ul>
           <h5>
             <img src={pin} />
-            <span>{t('about.section8.5')}</span>
+            <span>{t('about.section8.6')}</span>
+          </h5>
+          <h5>
+            <img src={pin} />
+            <span>{t('about.section8.7')}</span>
           </h5>
         </div>
       </section>

@@ -30,7 +30,7 @@ function IRBanner() {
         className={`${styles.contentArea} ${inView1 ? styles.isShowing : ''}`}
       >
         <h3>IR</h3>
-        <h4>{t(`ir.${title}`)}</h4>
+        {/* <h4>{t(`ir.${title}`)}</h4> */}
         <nav>
           <div className={styles.homeBtn} onClick={() => navigate('/')}>
             <img src={home} />

@@ -20,7 +20,7 @@ function Footer() {
             <h1>
               <img src={logo} alt="에코프로 파트너스 로고" />
             </h1>
-            <span>Copyright@2023 Ecopro Partners Co. Ltd.</span>
+            <span>Copyright@2023 EcoPro Partners Co. Ltd.</span>
           </div>
           <ul className={styles.right}>
             <li
@@ -47,7 +47,7 @@ function Footer() {
             </li>
           </ul>
           <span className={styles.copyright}>
-            Copyright@2023 Ecopro Partners Co. Ltd.
+            Copyright@2023 EcoPro Partners Co. Ltd.
           </span>
         </div>
       </div>

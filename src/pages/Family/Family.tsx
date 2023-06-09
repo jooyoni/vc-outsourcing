@@ -28,7 +28,7 @@ function Family() {
   }, []);
   return (
     <div>
-      <div
+      {/* <div
         className={`${styles.bannerWrap} ${inView1 ? styles.isShowing : ''}`}
       >
         <div>
@@ -48,7 +48,7 @@ function Family() {
             <span>{t('family.3')}</span>
           </div>
         </div>
-      </div>
+      </div> */}
       <section
         className={`${styles.contentWrap} ${inView2 ? styles.isShowing : ''}`}
       >
@@ -65,10 +65,6 @@ function Family() {
                         family.background_image
                       })`
                     : '',
-                  cursor: family.url ? 'pointer' : 'unset',
-                }}
-                onClick={() => {
-                  if (family.url) window.open(family.url, '_blank');
                 }}
               >
                 <div className={styles.detailBox}>
@@ -81,6 +77,10 @@ function Family() {
                           family.logo_image
                         }
                         alt={family.name}
+                        style={{ cursor: family.url ? 'pointer' : 'unset' }}
+                        onClick={() => {
+                          if (family.url) window.open(family.url, '_blank');
+                        }}
                       />
                     ) : (
                       <div style={{ height: '32px' }}></div>
@@ -110,12 +110,12 @@ function Family() {
                           : family.english_major_bussiness}
                       </li>
                     )}
-                    {family.capital && (
+                    {/* {family.capital && (
                       <li>
                         {t('family.6')} : {family.capital}
                         {t('family.7')}
                       </li>
-                    )}
+                    )} */}
                   </ul>
                 </div>
               </li>

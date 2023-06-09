@@ -54,7 +54,7 @@ function Fourth() {
         >
           <div className={styles.left}>
             <div className={styles.contentWrap}>
-              <h3>Ecopro Partners</h3>
+              <h3>EcoPro Partners</h3>
               <p dangerouslySetInnerHTML={{ __html: t('fourth.1') }}></p>
               <div className={styles.btns}>
                 <img src={arrow} onClick={() => swiperPC?.slidePrev()} />
@@ -87,7 +87,7 @@ function Fourth() {
           }`}
         >
           <img src={irBg} className={styles.bg} />
-          <h2>Ecopro Partners</h2>
+          <h2>EcoPro Partners</h2>
           <p>{t('fourth.1')}</p>
           <Swiper
             slidesPerView={'auto'}

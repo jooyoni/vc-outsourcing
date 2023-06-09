@@ -23,7 +23,7 @@ function Fifth() {
       className={`${styles.container} ${isShowing ? styles.isIntersected : ''}`}
     >
       <div className={styles.text}>
-        <h3>Ecopro Partners</h3>
+        <h3>EcoPro Partners</h3>
         <span>{t('fifth.1')}</span>
         <p>{t('fifth.2')}</p>
       </div>

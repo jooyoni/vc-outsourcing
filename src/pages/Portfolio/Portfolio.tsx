@@ -117,7 +117,7 @@ function Portfolio() {
           className={`${styles.contentArea} ${inView1 ? styles.isShowing : ''}`}
         >
           <h3>Portfolio</h3>
-          <h4>{t(`portfolio.${title}`)}</h4>
+          {/* <h4>{t(`portfolio.${title}`)}</h4> */}
           <nav>
             <div className={styles.homeBtn}>
               <img src={home} />
@@ -182,11 +182,14 @@ function Portfolio() {
                       key={fund.id}
                       style={{ transitionDelay: `${idx * 0.1}s` }}
                     >
-                      <h2>
-                        {i18n.resolvedLanguage == 'ko'
-                          ? fund.title
-                          : fund.english_title}
-                      </h2>
+                      <h2
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            i18n.resolvedLanguage == 'ko'
+                              ? fund.title
+                              : fund.english_title,
+                        }}
+                      ></h2>
                       <ul className={styles.detail}>
                         <li>
                           {t(`portfolio.1`)} :{' '}
@@ -200,7 +203,7 @@ function Portfolio() {
                                 .substring(0, 10)
                                 .replaceAll('-', '.')}
                         </li>
-                        <li>
+                        {/* <li>
                           {t(`portfolio.2`)} :{' '}
                           {i18n.language == 'en'
                             ? fund.end_at.substring(0, 10).split('-')[1] +
@@ -209,7 +212,7 @@ function Portfolio() {
                               '.' +
                               fund.end_at.substring(0, 10).split('-')[0]
                             : fund.end_at.substring(0, 10).replaceAll('-', '.')}
-                        </li>
+                        </li> */}
                         <li>
                           {t(`portfolio.3`)} : {fund.fund_size}
                           {t(`portfolio.4`)}
@@ -236,7 +239,9 @@ function Portfolio() {
                     <li
                       key={invest.id}
                       style={{ transitionDelay: `${idx * 0.1}s` }}
-                      onClick={() => window.open(invest.url, '_blank')}
+                      onClick={() => {
+                        if (invest.url) window.open(invest.url, '_blank');
+                      }}
                     >
                       <img
                         src={
