@@ -119,7 +119,7 @@ function Portfolio() {
           <h3>Portfolio</h3>
           {/* <h4>{t(`portfolio.${title}`)}</h4> */}
           <nav>
-            <div className={styles.homeBtn}>
+            <div className={styles.homeBtn} onClick={() => navigate('/')}>
               <img src={home} />
             </div>
             <div className={styles.category}>
@@ -214,7 +214,10 @@ function Portfolio() {
                             : fund.end_at.substring(0, 10).replaceAll('-', '.')}
                         </li> */}
                         <li>
-                          {t(`portfolio.3`)} : {fund.fund_size}
+                          {t(`portfolio.3`)} :{' '}
+                          {i18n.language == 'ko'
+                            ? fund.fund_size
+                            : fund.fund_size / 10}
                           {t(`portfolio.4`)}
                         </li>
                       </ul>

@@ -2,13 +2,15 @@ import styles from './Second.module.scss';
 import arrow from '../../../assets/arrowWhite.png';
 import { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore from 'swiper';
+import SwiperCore, { EffectFade } from 'swiper';
 import 'swiper/css';
 import { useTranslation } from 'react-i18next';
-
+SwiperCore.use([EffectFade]);
 function Second() {
   const [swiper, setSwiper] = useState<SwiperCore>();
   const [swiperPC, setSwiperPC] = useState<SwiperCore>();
+  const [contentSwiper, setContentSwiper] = useState<SwiperCore>();
+  const [contentSwiperPC, setContentSwiperPC] = useState<SwiperCore>();
   const [activeIdx, setActiveIdx] = useState(0);
   const [pcActiveIdx, setPcActiveIdx] = useState(0);
   const intersectRef = useRef<HTMLDivElement>(null);
@@ -26,6 +28,12 @@ function Second() {
     io.observe(intersectRef.current);
     return () => io.disconnect();
   }, [isShowing]);
+  useEffect(() => {
+    contentSwiper?.slideTo(activeIdx, 500);
+  }, [activeIdx]);
+  useEffect(() => {
+    contentSwiperPC?.slideTo(pcActiveIdx, 500);
+  }, [pcActiveIdx]);
   return (
     <>
       <div className={styles.containerWrap}>
@@ -37,25 +45,39 @@ function Second() {
           <div className={styles.contentWrap}>
             <div>
               <h3>Our Business</h3>
-              <div className={styles.contentArea}>
+              <Swiper
+                effect="fade"
+                slidesPerView={'auto'}
+                loop={true}
+                className={styles.contentDetailSliderPC}
+                modules={[EffectFade]}
+                onSwiper={setContentSwiperPC}
+                // loopAdditionalSlides={1}
+
+                allowTouchMove={false}
+              >
                 {(
                   t('second.list', { returnObjects: true }) as {
                     title: string;
                   }[]
-                ).map((slide, idx) => (
-                  <div
-                    className={`${styles.content} ${
-                      idx == pcActiveIdx ? styles.hit : ''
-                    }`}
-                    key={idx}
-                  >
-                    <h4 dangerouslySetInnerHTML={{ __html: slide.title }}></h4>
-                  </div>
+                ).map((content, idx) => (
+                  <SwiperSlide key={idx}>
+                    <div className={styles.slide}>
+                      <h4
+                        dangerouslySetInnerHTML={{
+                          __html: content.title,
+                        }}
+                      ></h4>
+                    </div>
+                  </SwiperSlide>
                 ))}
-              </div>
+              </Swiper>
               <div
                 className={styles.slideNextBtn}
-                onClick={() => swiperPC?.slideNext()}
+                onClick={() => {
+                  swiperPC?.slideNext();
+                  contentSwiperPC?.slideNext();
+                }}
               >
                 <img src={arrow} />
               </div>
@@ -67,9 +89,9 @@ function Second() {
                 loop={true}
                 speed={800}
                 onSlideChangeTransitionEnd={(swiper) => {
-                  setPcActiveIdx(swiper.activeIndex % 4);
+                  setPcActiveIdx(swiper.activeIndex);
                 }}
-                loopAdditionalSlides={1}
+                // loopAdditionalSlides={1}
                 // slideToClickedSlide={true}
                 // loopedSlides={21}
                 spaceBetween={32}
@@ -109,7 +131,7 @@ function Second() {
                 onSwiper={setSwiper}
                 speed={800}
                 onSlideChangeTransitionEnd={(swiper) => {
-                  setActiveIdx(swiper.activeIndex % 4);
+                  setActiveIdx(swiper.activeIndex);
                 }}
               >
                 {(
@@ -134,21 +156,31 @@ function Second() {
                 <img src={arrow} />
               </div>
             </div>
-            <div className={styles.contentDetail}>
+            <Swiper
+              effect="fade"
+              slidesPerView={1}
+              loop
+              className={styles.contentDetailSlider}
+              modules={[EffectFade]}
+              onSwiper={setContentSwiper}
+              allowTouchMove={false}
+            >
               {(
                 t('second.list', { returnObjects: true }) as {
                   title: string;
                 }[]
               ).map((content, idx) => (
-                <div key={idx} className={idx == activeIdx ? styles.hit : ''}>
-                  <h4
-                    dangerouslySetInnerHTML={{
-                      __html: content.title.replace('<br />', ' '),
-                    }}
-                  ></h4>
-                </div>
+                <SwiperSlide key={idx}>
+                  <div className={styles.slide}>
+                    <h4
+                      dangerouslySetInnerHTML={{
+                        __html: content.title.replace('<br />', ' '),
+                      }}
+                    ></h4>
+                  </div>
+                </SwiperSlide>
               ))}
-            </div>
+            </Swiper>
           </div>
         </div>
         <div className={styles.intersecter} ref={intersectRef}></div>

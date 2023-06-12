@@ -53,7 +53,11 @@ function Team() {
         </div>
         <div ref={ref1} className={styles.observer}></div>
       </section>
-      <section className={styles.contentArea}>
+      <section
+        className={`${styles.contentArea} ${
+          i18n.language == 'en' ? styles.english : ''
+        }`}
+      >
         {employeeData.length ? (
           employeeData.map((level) => (
             <div className={styles.positionWrap} key={level.id}>
@@ -74,7 +78,9 @@ function Team() {
                           style={{ transitionDelay: `${idx * 0.1}s` }}
                         >
                           <div className={styles.top}>
-                            <h5>
+                            <h5
+                            // style={{ fontSize: '20px', lineHeight: '24px' }}
+                            >
                               {i18n.resolvedLanguage == 'ko'
                                 ? employee.name
                                 : employee.english_name}

@@ -39,6 +39,7 @@
       flex-shrink: 0;
       padding-left: 17.7vw;
       min-width: 352px;
+      max-width: 384px;
       opacity: 0;
       transform: translateY(100px);
       transition: all 0.7s ease;
@@ -55,6 +56,39 @@
         @media screen and (max-width: 1400px) {
           font-size: 54px;
           // padding: 40px 10px;
+        }
+      }
+      .contentDetailSliderPC {
+        width: 100%;
+        :global(.swiper-slide) {
+          opacity: 0 !important;
+          transition: opacity 0.8s linear;
+          &:global(.swiper-slide-active) {
+            opacity: 1 !important;
+            .slide {
+              transform: translateY(0);
+            }
+          }
+        }
+        .slide {
+          transform: translateY(50px);
+          transition: all 0.5s linear;
+          h4 {
+            font-family: 'Spoqa Han Sans Neo';
+            font-weight: 700;
+            font-size: 32px;
+            line-height: 50px;
+            color: #1e1e1e;
+            max-width: 300px;
+          }
+          p {
+            font-family: 'Spoqa Han Sans Neo';
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: rgba(30, 30, 30, 0.5);
+            white-space: nowrap;
+          }
         }
       }
       .contentArea {
@@ -104,7 +138,7 @@
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        margin: 120px 0 0;
+        margin: 70px 0 0;
         z-index: 1;
         @media screen and (max-width: 1200px) {
           margin: 70px 0 0;
@@ -298,6 +332,7 @@
           aspect-ratio: 1/1.216;
           background-size: cover;
           padding-top: 53px;
+          overflow: hidden;
           span {
             font-family: 'Spoqa Han Sans Neo';
             font-weight: 700;
@@ -322,23 +357,23 @@
         }
       }
     }
-    .contentDetail {
-      flex-grow: 1;
-      position: relative;
-      height: 220px;
-      padding: 20px 0;
-      & > div {
-        position: absolute;
-        top: 20px;
-        left: 6px;
-        right: 6px;
-        opacity: 0;
-        transform: translateY(40px);
-        transition: all 1s;
-        &.hit {
-          transform: translateY(0);
-          opacity: 1;
+    .contentDetailSlider {
+      margin-top: 40px;
+      padding-bottom: 30px;
+      width: 100%;
+      :global(.swiper-slide) {
+        opacity: 0 !important;
+        transition: opacity 0.8s linear;
+        &:global(.swiper-slide-active) {
+          opacity: 1 !important;
+          .slide {
+            transform: translateY(0);
+          }
         }
+      }
+      .slide {
+        transform: translateY(50px);
+        transition: all 0.5s linear;
         h4 {
           font-family: 'Spoqa Han Sans Neo';
           font-weight: 700;

@@ -119,17 +119,19 @@ section.contentArea {
   & > ul {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    // grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     column-gap: 32px;
     & > li {
       width: 100%;
+      display: flex;
+      flex-direction: column;
       .top {
         display: flex;
         align-items: flex-end;
         padding: 10px 0;
         border-bottom: 1px solid #d9d9d9;
         gap: 10px;
+        flex-grow: 1;
         h5 {
           font-weight: 700;
           font-size: 32px;
@@ -163,7 +165,7 @@ section.contentArea {
       }
     }
     @media screen and (max-width: 1023px) {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       & > li {
         .top {
           gap: 7px;
@@ -188,7 +190,7 @@ section.contentArea {
       }
     }
     @media screen and (max-width: 767px) {
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       column-gap: 21px;
       & > li {
         .top {
@@ -240,6 +242,33 @@ section.contentArea {
     li {
       opacity: 1;
       transform: translate(0, 0);
+    }
+  }
+}
+.english {
+  .leadershipWrap,
+  .investmentWrap,
+  .operationWrap,
+  .positionWrap {
+    & > ul > li > .top {
+      @media screen and (max-width: 450px) {
+        flex-direction: column;
+        align-items: flex-start;
+        h5 {
+          padding: 5px;
+        }
+        span {
+          padding: 5px;
+        }
+      }
+      h5 {
+        font-size: 20px;
+        line-height: 24px;
+      }
+      span {
+        font-size: 14px;
+        line-height: 19px;
+      }
     }
   }
 }
