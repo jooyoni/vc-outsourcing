@@ -122,7 +122,21 @@ function Portfolio() {
             <div className={styles.homeBtn} onClick={() => navigate('/')}>
               <img src={home} />
             </div>
-            <div className={styles.category}>
+            <ul className={styles.category}>
+              <li
+                onClick={() => navigate('/portfolio?tab=0')}
+                className={title == '펀드운용' ? styles.isOpen : ''}
+              >
+                <span>{t(`portfolio.펀드운용`)}</span>
+              </li>
+              <li
+                onClick={() => navigate('/portfolio?tab=1')}
+                className={title == '투자현황' ? styles.isOpen : ''}
+              >
+                <span>{t(`portfolio.투자현황`)}</span>
+              </li>
+            </ul>
+            {/* <div className={styles.category}>
               <div
                 className={`${styles.nowPageWrap} ${
                   subPageOpen ? styles.isOpen : ''
@@ -153,15 +167,9 @@ function Portfolio() {
                   <li onClick={() => navigate('/portfolio?tab=1')}>
                     {t(`portfolio.투자현황`)}
                   </li>
-                  {/* <li onClick={() => navigate('/portfolio?tab=2')}>
-                    esg 투자 실천
-                  </li> */}
-                  {/* <li onClick={() => navigate('/portfolio?tab=3')}>
-                    펀드 운용 현황
-                  </li> */}
                 </ul>
               </div>
-            </div>
+            </div>*/}
             <div className={styles.shadow}></div>
           </nav>
         </div>

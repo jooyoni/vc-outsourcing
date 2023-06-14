@@ -411,7 +411,7 @@ function About() {
             </li>
             <li>
               <span>{t('about.section8.3')}</span>
-              <span>02-6920-6599</span>
+              <span>02-6920-6500</span>
             </li>
             <li>
               <span>{t('about.section8.4')}</span>
@@ -419,7 +419,7 @@ function About() {
             </li>
             <li>
               <span>{t('about.section8.5')}</span>
-              <span>이메일?</span>
+              <span>partners@ecopro-partners.com</span>
             </li>
           </ul>
           <h5>

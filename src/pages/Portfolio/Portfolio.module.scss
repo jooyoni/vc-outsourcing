@@ -57,11 +57,13 @@
       .category {
         display: flex;
         position: relative;
+        max-width: calc(100% - 80px);
         .nowPageWrap,
-        .nowTabWrap {
+        .nowTabWrap,
+        li {
           width: 256px;
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
           align-items: center;
           position: relative;
           padding: 0 10px;
@@ -70,6 +72,7 @@
           border-right: 1px solid rgba(255, 255, 255, 0.6);
           flex-basis: 50%;
           flex-shrink: 1;
+          cursor: pointer;
           &.isOpen {
             background: rgba(58, 188, 212, 0.6);
             .subList {
@@ -125,7 +128,7 @@
           height: 60px;
         }
         .category {
-          width: calc(100% - 60px);
+          max-width: calc(100% - 60px);
           .nowPageWrap,
           .nowTabWrap {
             position: unset;

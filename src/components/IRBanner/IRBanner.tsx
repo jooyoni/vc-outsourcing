@@ -35,7 +35,21 @@ function IRBanner() {
           <div className={styles.homeBtn} onClick={() => navigate('/')}>
             <img src={home} />
           </div>
-          <div className={styles.category}>
+          <ul className={styles.category}>
+            <li
+              onClick={() => navigate('/ir?tab=0')}
+              className={title == '소식알림' ? styles.isOpen : ''}
+            >
+              <span>{t(`ir.소식알림`)}</span>
+            </li>
+            <li
+              onClick={() => navigate('/ir?tab=1')}
+              className={title == '홍보자료' ? styles.isOpen : ''}
+            >
+              <span>{t(`ir.홍보자료`)}</span>
+            </li>
+          </ul>
+          {/* <div className={styles.category}>
             <div
               className={`${styles.nowPageWrap} ${
                 subPageOpen ? styles.isOpen : ''
@@ -66,7 +80,7 @@ function IRBanner() {
                 </li>
               </ul>
             </div>
-          </div>
+          </div> */}
           <div className={styles.shadow}></div>
         </nav>
       </div>

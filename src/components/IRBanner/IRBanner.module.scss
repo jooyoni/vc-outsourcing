@@ -52,11 +52,14 @@
       .category {
         display: flex;
         position: relative;
+        max-width: calc(100% - 80px);
+
         .nowPageWrap,
-        .nowTabWrap {
+        .nowTabWrap,
+        li {
           width: 256px;
           display: flex;
-          justify-content: space-between;
+          justify-content: center;
           align-items: center;
           position: relative;
           padding: 0 10px;
@@ -120,7 +123,7 @@
           height: 60px;
         }
         .category {
-          width: calc(100% - 60px);
+          max-width: calc(100% - 60px);
           .nowPageWrap,
           .nowTabWrap {
             position: unset;
