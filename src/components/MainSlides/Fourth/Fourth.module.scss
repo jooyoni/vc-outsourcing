@@ -56,8 +56,8 @@
       h3 {
         font-family: 'Pretendard';
         font-weight: 700;
-        font-size: 48px;
-        line-height: 58px;
+        font-size: 42px;
+        line-height: 48px;
         color: #ffffff;
         padding: 10px;
         margin-bottom: 37px;
@@ -65,8 +65,8 @@
       p {
         font-family: 'Spoqa Han Sans Neo';
         font-weight: 500;
-        font-size: 24px;
-        line-height: 37px;
+        font-size: 30px;
+        line-height: 40px;
         color: #ffffff;
         padding: 10px;
         margin-bottom: 61px;
@@ -81,16 +81,6 @@
           &:last-child {
             transform: rotate(180deg);
           }
-        }
-      }
-      @media screen and (max-width: 1920px) {
-        h3 {
-          font-size: 2.5vw;
-          line-height: 3.02vw;
-        }
-        p {
-          font-size: 1.25vw;
-          line-height: 1.927vw;
         }
       }
       @media screen and (max-width: 1023px) {
@@ -119,7 +109,8 @@
       transform: translateY(-50%);
       right: 0;
       width: 80%;
-      max-width: 832px;
+      max-width: 645px;
+      max-height: 100%;
     }
     .slider {
       position: absolute;

@@ -50,7 +50,7 @@
         font-family: 'Spoqa Han Sans Neo';
         font-weight: 700;
         font-size: 64px;
-        line-height: 46px;
+        line-height: 64px;
         color: #1e1e1e;
         padding: 2.08vw 10px;
         @media screen and (max-width: 1400px) {
@@ -76,8 +76,8 @@
           h4 {
             font-family: 'Spoqa Han Sans Neo';
             font-weight: 700;
-            font-size: 32px;
-            line-height: 50px;
+            font-size: 30px;
+            line-height: 40px;
             color: #1e1e1e;
             max-width: 300px;
           }
@@ -151,26 +151,23 @@
       }
       @media screen and (max-width: 1920px) {
         h3 {
-          font-size: 3.333vw;
-          line-height: 2.395vw;
+          font-size: 42px;
+          line-height: 48px;
         }
         .contentArea {
           h4 {
-            font-size: 1.666vw !important;
-            line-height: 2.604vw !important;
+            font-size: 19px !important;
+            line-height: 29px !important;
           }
         }
       }
       @media screen and (max-width: 1023px) {
         .contentArea {
           h4 {
-            font-size: 2vw !important;
-            line-height: 2.604vw !important;
+            font-size: 22px !important;
+            line-height: 29px !important;
           }
         }
-        // .slideNextBtn {
-        //   margin-top: 10px;
-        // }
       }
     }
     .sliderWrap {

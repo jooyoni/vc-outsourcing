@@ -111,7 +111,7 @@ function About() {
           className={`${styles.contentArea} ${inView4 ? styles.isShowing : ''}`}
         >
           <div className={styles.left}>
-            <p>{t('about.section4.1')}</p>
+            {/* <p>{t('about.section4.1')}</p> */}
           </div>
           <div className={styles.right}>
             <h4>{t('about.section4.2')}</h4>

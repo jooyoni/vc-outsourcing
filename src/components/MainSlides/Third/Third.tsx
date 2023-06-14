@@ -30,7 +30,7 @@ function Third() {
         >
           <div className={styles.left}>
             <div className={styles.textWrap}>
-              <span></span>
+              <span>{t('third.0')}</span>
               <p dangerouslySetInnerHTML={{ __html: t('third.1') }}></p>
               <p>{t('third.2')}</p>
             </div>
@@ -59,7 +59,7 @@ function Third() {
             isShowing ? styles.isIntersected : ''
           }`}
         >
-          <span></span>
+          <span>{t('third.0')}</span>
           <h2 dangerouslySetInnerHTML={{ __html: t('third.1') }}></h2>
           <p>{t('third.2')}</p>
           <div className={styles.infomationWrap}>
