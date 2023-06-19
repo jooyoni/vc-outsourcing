@@ -49,13 +49,13 @@
       h3 {
         font-family: 'Spoqa Han Sans Neo';
         font-weight: 700;
-        font-size: 64px;
-        line-height: 64px;
+        font-size: 38px;
+        line-height: 44px;
         color: #1e1e1e;
-        padding: 2.08vw 10px;
-        @media screen and (max-width: 1400px) {
-          font-size: 54px;
-          // padding: 40px 10px;
+        padding: 2.08vw 0px;
+        @media screen and (max-width: 1023px) {
+          font-size: 34px;
+          line-height: 40px;
         }
       }
       .contentDetailSliderPC {
@@ -76,10 +76,14 @@
           h4 {
             font-family: 'Spoqa Han Sans Neo';
             font-weight: 700;
-            font-size: 30px;
-            line-height: 40px;
+            font-size: 23px;
+            line-height: 30px;
             color: #1e1e1e;
             max-width: 300px;
+            @media screen and (max-width: 1023px) {
+              font-size: 21px;
+              line-height: 28px;
+            }
           }
           p {
             font-family: 'Spoqa Han Sans Neo';
@@ -147,18 +151,6 @@
           transform: rotate(180deg);
           width: 24px;
           height: 24px;
-        }
-      }
-      @media screen and (max-width: 1920px) {
-        h3 {
-          font-size: 42px;
-          line-height: 48px;
-        }
-        .contentArea {
-          h4 {
-            font-size: 19px !important;
-            line-height: 29px !important;
-          }
         }
       }
       @media screen and (max-width: 1023px) {
@@ -291,8 +283,8 @@
     h3 {
       font-family: 'Spoqa Han Sans Neo';
       font-weight: 700;
-      font-size: 32px;
-      line-height: 46px;
+      font-size: 34px;
+      line-height: 40px;
       color: #ffffff;
       padding: 40.5px 10px;
     }
@@ -374,8 +366,8 @@
         h4 {
           font-family: 'Spoqa Han Sans Neo';
           font-weight: 700;
-          font-size: 24px;
-          line-height: 50px;
+          font-size: 21px;
+          line-height: 34px;
           color: #1e1e1e;
         }
         p {

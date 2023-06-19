@@ -52,12 +52,11 @@
         max-width: 400px;
         padding-right: 24px;
       }
-
       h3 {
         font-family: 'Pretendard';
         font-weight: 700;
-        font-size: 42px;
-        line-height: 48px;
+        font-size: 38px;
+        line-height: 44px;
         color: #ffffff;
         padding: 10px;
         margin-bottom: 37px;
@@ -65,8 +64,8 @@
       p {
         font-family: 'Spoqa Han Sans Neo';
         font-weight: 500;
-        font-size: 30px;
-        line-height: 40px;
+        font-size: 23px;
+        line-height: 30px;
         color: #ffffff;
         padding: 10px;
         margin-bottom: 61px;
@@ -85,13 +84,13 @@
       }
       @media screen and (max-width: 1023px) {
         h3 {
-          font-size: 4vw;
-          line-height: 5vw;
+          font-size: 34px;
+          line-height: 40px;
           margin-bottom: 16px;
         }
         p {
-          font-size: 2vw;
-          line-height: 2.6vw;
+          font-size: 21px;
+          line-height: 28px;
         }
         .btns img {
           width: 70px;
@@ -221,8 +220,8 @@
   & > h2 {
     font-family: 'Pretendard';
     font-weight: 700;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: 34px;
+    line-height: 40px;
     color: #ffffff;
     padding: 10px;
   }

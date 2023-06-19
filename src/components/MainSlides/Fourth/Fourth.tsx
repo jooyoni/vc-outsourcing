@@ -8,24 +8,14 @@ import irBg from '../../../assets/background/irBg.png';
 import { useEffect, useRef, useState } from 'react';
 import arrow from '../../../assets/arrowWhiteThin.png';
 import { useTranslation } from 'react-i18next';
-const slideData = [
-  {
-    title: '누적포트폴리오',
-    content: '+ 485건',
-  },
-  {
-    title: '펀드운용',
-    content: '132b +',
-  },
-  {
-    title: '운용인력',
-    content: '40명 +',
-  },
-  {
-    title: '에코프로 파트너',
-    content: '20팀 +',
-  },
-];
+import axiosClient from '../../../libs/axiosClient';
+type IInvestTotalDataType = {
+  [index: string]: string | number;
+  fund: number;
+  portfolio: number;
+  team: number;
+  total_sum: string;
+};
 function Fourth() {
   const [swiperPC, setSwiperPC] = useState<SwiperCore>();
   const [swiper, setSwiper] = useState<SwiperCore>();
@@ -43,6 +33,13 @@ function Fourth() {
     io.observe(intersectRef.current);
     return () => io.disconnect();
   }, [isShowing]);
+  const [investTotalData, setInvestTotalData] =
+    useState<IInvestTotalDataType>();
+  useEffect(() => {
+    axiosClient
+      .get('/api/investment_total_info')
+      .then((res) => setInvestTotalData(res.data));
+  }, []);
   const { t, i18n } = useTranslation();
   return (
     <>
@@ -72,12 +69,17 @@ function Fourth() {
               loop={true}
               speed={1000}
             >
-              {slideData.map((data, idx) => (
-                <SwiperSlide className={`${styles.slide} slide${idx}`}>
-                  <h3>{t(`fourth.${(idx + 1) * 2}`)}</h3>
-                  <span>{t(`fourth.${idx * 2 + 3}`)}</span>
-                </SwiperSlide>
-              ))}
+              {(t('fourth.10', { returnObjects: true }) as string[]).map(
+                (data, idx) => (
+                  <SwiperSlide className={`${styles.slide} slide${idx}`}>
+                    <h3>{t(`fourth.${(idx + 1) * 2}`)}</h3>
+                    <span>
+                      {investTotalData && investTotalData[data]}
+                      {t(`fourth.${idx * 2 + 3}`)}
+                    </span>
+                  </SwiperSlide>
+                ),
+              )}
             </Swiper>
           </div>
         </div>
@@ -95,15 +97,20 @@ function Fourth() {
             className={styles.slider}
             onSwiper={setSwiper}
           >
-            {slideData.map((data, idx) => (
-              <SwiperSlide
-                key={idx}
-                className={`${styles.slide} ${'slide' + idx}`}
-              >
-                <h5>{data.title}</h5>
-                <span>{data.content}</span>
-              </SwiperSlide>
-            ))}
+            {(t('fourth.10', { returnObjects: true }) as string[]).map(
+              (data, idx) => (
+                <SwiperSlide
+                  key={idx}
+                  className={`${styles.slide} ${'slide' + idx}`}
+                >
+                  <h5>{t(`fourth.${(idx + 1) * 2}`)}</h5>
+                  <span>
+                    {investTotalData && investTotalData[data]}
+                    {t(`fourth.${idx * 2 + 3}`)}
+                  </span>
+                </SwiperSlide>
+              ),
+            )}
           </Swiper>
           <div className={styles.slideBtns}>
             <img src={arrow} onClick={() => swiper?.slidePrev()} />

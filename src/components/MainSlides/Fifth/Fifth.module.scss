@@ -33,15 +33,15 @@
     padding: 10px;
     font-family: 'Pretendard';
     font-weight: 700;
-    font-size: 64px;
-    line-height: 77px;
+    font-size: 38px;
+    line-height: 44px;
     color: #ffffff;
   }
   span {
     font-family: 'Pretendard';
     font-weight: 700;
-    font-size: 60px;
-    line-height: 73px;
+    font-size: 38px;
+    line-height: 44px;
     color: #ffffff;
   }
   p {
@@ -50,49 +50,47 @@
     font-family: 'Spoqa Han Sans Neo';
     font-weight: 400;
     font-size: 23px;
-    line-height: 34px;
+    line-height: 30px;
     text-align: center;
     color: #ffffff;
     max-width: 440px;
     word-break: keep-all;
   }
-  @media screen and (max-width: 1920px) {
-    h3 {
-      font-size: 3.3vw;
-      line-height: 3.8vw;
-    }
-    span {
-      font-size: 3.1vw;
-      line-height: 3.8vw;
-    }
-    p {
-      font-size: 1.2vw;
-      line-height: 1.8vw;
-    }
-  }
+  // @media screen and (max-width: 1920px) {
+  //   h3 {
+  //     font-size: 3.3vw;
+  //     line-height: 3.8vw;
+  //   }
+  //   span {
+  //     font-size: 3.1vw;
+  //     line-height: 3.8vw;
+  //   }
+  //   p {
+  //     font-size: 1.2vw;
+  //     line-height: 1.8vw;
+  //   }
+  // }
   @media screen and (max-width: 1023px) {
-    h3 {
-      font-size: 5.9vw;
-      line-height: 6.6vw;
-    }
+    h3,
     span {
-      font-size: 4.2vw;
-      line-height: 5.1vw;
+      font-size: 34px;
+      line-height: 40px;
     }
     p {
-      font-size: 2.4vw;
-      line-height: 3.3vw;
+      font-size: 21px;
+      line-height: 28px;
     }
   }
 
   @media screen and (max-width: 480px) {
-    h3 {
-      font-size: 8.5vw;
-      line-height: 10.4vw;
-    }
+    // h3 {
+    //   font-size: 8.5vw;
+    //   line-height: 10.4vw;
+    // }
+    h3,
     span {
-      font-size: 5.3vw;
-      line-height: 6.4vw;
+      font-size: 24px;
+      line-height: 28px;
     }
     p {
       font-size: 3.7vw;
