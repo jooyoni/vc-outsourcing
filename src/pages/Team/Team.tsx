@@ -61,7 +61,9 @@ function Team() {
         {employeeData.length ? (
           employeeData.map((level) => (
             <div className={styles.positionWrap} key={level.id}>
-              <h3>- {level.english_title.toUpperCase()}</h3>
+              <h3>
+                - {i18n.language == 'en' ? level.english_title : level.title}
+              </h3>
               <InView threshold={0.2}>
                 {({ inView, ref, entry }) => (
                   <ul
