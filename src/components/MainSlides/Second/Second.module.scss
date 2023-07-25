@@ -29,7 +29,9 @@
   }
   .contentWrap {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     width: 100%;
     transition: all 2s linear;
     & > div:first-child {
@@ -164,25 +166,35 @@
     }
     .sliderWrap {
       // flex-grow: 1;
-      padding-top: 300px;
+      display: flex;
+      justify-content: flex-start;
+      gap: 32px;
+      // flex-wrap: wrap;
+      // padding-top: 300px;
       position: relative;
       z-index: 10;
       width: 100%;
-      overflow: hidden;
+      // overflow: hidden;
       opacity: 0;
       transform: translate(100px, 0);
       transition: all 0.7s ease;
-      @media screen and (max-width: 1920px) {
-        padding-top: 14vw;
+      padding: 0 5vw 0 17.7vw;
+      box-sizing: border-box;
+      @media screen and (max-width: 1023px) {
+        padding: 0 2vw 0 10vw;
+        gap: 16px;
       }
-      @media screen and (max-width: 1400px) {
-        padding-top: 6vw;
-      }
-      @media screen and (max-width: 1200px) {
-        padding-top: 0;
-      }
+      // @media screen and (max-width: 1920px) {
+      //   padding-top: 14vw;
+      // }
+      // @media screen and (max-width: 1400px) {
+      //   padding-top: 6vw;
+      // }
+      // @media screen and (max-width: 1200px) {
+      //   padding-top: 0;
+      // }
       & > div {
-        padding-left: 31px;
+        // padding-left: 31px;
         width: 100%;
       }
       .slideWrap {
@@ -219,8 +231,8 @@
         .slideWrap {
           width: 21.666vw;
           .slideTitle {
-            font-size: 1.666vw;
-            line-height: 2.604vw;
+            font-size: 1.5vw;
+            line-height: 1.804vw;
           }
         }
       }
@@ -228,8 +240,8 @@
         .slideWrap {
           width: 27.666vw;
           .slideTitle {
-            font-size: 2.366vw;
-            line-height: 2.604vw;
+            font-size: 1.5vw;
+            line-height: 2.104vw;
           }
         }
       }
@@ -291,6 +303,7 @@
     .sliderWrap {
       position: relative;
       flex-shrink: 1;
+      margin-bottom: 100px;
       .nextBtn {
         background: #252629;
         box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);

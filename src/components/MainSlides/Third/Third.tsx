@@ -31,12 +31,13 @@ function Third() {
           <div className={styles.left}>
             <div className={styles.textWrap}>
               <span>{t('third.0')}</span>
-              <p dangerouslySetInnerHTML={{ __html: t('third.1') }}></p>
-              <p>{t('third.2')}</p>
+              {/* <p dangerouslySetInnerHTML={{ __html: t('third.1') }}></p>
+              <p>{t('third.2')}</p> */}
             </div>
           </div>
           <div className={styles.right}>
-            <ul>
+            <p>{t('third.1')}</p>
+            {/* <ul>
               {(
                 t('third.3', { returnObjects: true }) as {
                   title: string;
@@ -46,12 +47,12 @@ function Third() {
                 <li className={detailOpen[idx] ? styles.isOpen : ''} key={idx}>
                   <div className={styles.title}>
                     <h3>{data.title}</h3>
-                    {/* <img src={plus} /> */}
+                    <img src={plus} />
                   </div>
                   <p>{data.content}</p>
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div
@@ -60,10 +61,11 @@ function Third() {
           }`}
         >
           <span>{t('third.0')}</span>
-          <h2 dangerouslySetInnerHTML={{ __html: t('third.1') }}></h2>
-          <p>{t('third.2')}</p>
+          {/* <h2 dangerouslySetInnerHTML={{ __html: t('third.1') }}></h2>
+          <p>{t('third.2')}</p> */}
           <div className={styles.infomationWrap}>
-            <ul>
+            <p>{t('third.1')}</p>
+            {/* <ul>
               {(
                 t('third.3', { returnObjects: true }) as {
                   title: string;
@@ -73,14 +75,14 @@ function Third() {
                 <li className={detailOpen[idx] ? styles.isOpen : ''} key={idx}>
                   <div className={styles.title}>
                     <span>{data.title}</span>
-                    {/* <img src={plusWhite} /> */}
+                    <img src={plusWhite} />
                   </div>
                   <div className={styles.detail}>
                     <p>{data.content}</p>
                   </div>
                 </li>
               ))}
-            </ul>
+            </ul> */}
           </div>
         </div>
         <div className={styles.intersecter} ref={intersectRef}></div>

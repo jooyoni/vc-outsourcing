@@ -74,6 +74,7 @@ function Fourth() {
                   <SwiperSlide className={`${styles.slide} slide${idx}`}>
                     <h3>{t(`fourth.${(idx + 1) * 2}`)}</h3>
                     <span>
+                      {idx == 3 && i18n.language == 'en' && 'KRW '}
                       {investTotalData && investTotalData[data]}
                       {t(`fourth.${idx * 2 + 3}`)}
                     </span>

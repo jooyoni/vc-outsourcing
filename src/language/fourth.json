@@ -1,25 +1,25 @@
 {
   "en": {
-    "1": "We aim to develop the Korean venture ecosystem and generate strong fund management returns with top professionals and a differentiated value-adding approach.",
-    "2": "EcoPro Partners",
-    "3": " 팀",
+    "1": "We contribute to nurturing the venture ecosystem by discovering promising companies and making active investments.",
+    "2": "Investment Professionals",
+    "3": " Teams",
     "4": "Fundraising",
-    "5": " 개",
+    "5": " Funds",
     "6": "Accumulated portfolio",
-    "7": " 건",
-    "8": "Assets under management (AUM)",
-    "9": " 억원",
+    "7": " cases",
+    "8": "Total AUM Size",
+    "9": " billion",
     "10": ["team", "fund", "portfolio", "total_sum"]
   },
   "ko": {
-    "1": "미래산업 투자 전문인력과 에코프로 그룹의 환경, 이차전지 분야 네트워크를 바탕으로 유망기업발굴 및 적극적인 투자로 대한민국 벤처생태계 육성과 벤처펀드를 운용해 오고 있습니다.",
+    "1": "우리는 유망 기업을 발굴, 적극적인 투자를 집행하여 벤처생태계 육성에 기여합니다.",
     "2": "에코프로 파트너",
     "3": " 팀",
     "4": "펀드조성",
     "5": " 개",
     "6": "누적포트폴리오",
     "7": " 건",
-    "8": "운용자산(AUM)",
+    "8": "운용자산",
     "9": " 억원",
     "10": ["team", "fund", "portfolio", "total_sum"]
   }

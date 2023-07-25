@@ -152,13 +152,13 @@ function About() {
                   <span>{t('about.section4.14')}</span>
                 </div>
               </li>
-              <li>
+              {/* <li>
                 <span className={styles.title}>{t('about.section4.15')}</span>
                 <div>
                   <span>{t('about.section4.16')}</span>
                   <span>{t('about.section4.17')}</span>
                 </div>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>
@@ -169,7 +169,7 @@ function About() {
           className={`${styles.contentArea} ${inView5 ? styles.isShowing : ''}`}
         >
           <h1>{t('about.section5.1')}</h1>
-          <div className={styles.btnsWrap}>
+          {/* <div className={styles.btnsWrap}>
             {
               <div
                 className={`${styles.prevBtn} ${
@@ -188,8 +188,52 @@ function About() {
             >
               <img src={arrow} />
             </div>
-          </div>
-          <Swiper
+          </div> */}
+          <ul className={styles.history}>
+            {historyYear.map((year) => (
+              <li>
+                <h3
+                  className={`${
+                    new Date().getFullYear() == year ? styles.hit : ''
+                  }`}
+                >
+                  {year}
+                </h3>
+                <ul>
+                  {(() => {
+                    let monthList: number[] = [];
+                    companyHistory
+                      .filter((history) => history.y == year)
+                      .map((history) => {
+                        if (!monthList.includes(history.m))
+                          monthList.push(history.m);
+                      });
+                    return monthList;
+                  })().map((month) => (
+                    <li key={month}>
+                      <span className={styles.month}>{month}</span>
+                      <ul>
+                        {companyHistory
+                          .filter(
+                            (history) =>
+                              history.y == year && history.m == month,
+                          )
+                          .map((history) => (
+                            <li key={history.title}>
+                              ·{' '}
+                              {i18n.resolvedLanguage == 'ko'
+                                ? history.title
+                                : history.english_title}
+                            </li>
+                          ))}
+                      </ul>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+          {/* <Swiper
             className={styles.historySlider}
             slidesPerView={'auto'}
             freeMode={true}
@@ -254,7 +298,7 @@ function About() {
                 </div>
               </SwiperSlide>
             ))}
-          </Swiper>
+          </Swiper> */}
         </div>
         <div ref={ref5} className={styles.observer}></div>
       </section>
@@ -345,7 +389,7 @@ function About() {
                   <span>{t('about.section7.4')}</span>
                   <h4>· {t('about.section7.7')}</h4>
                 </div>
-                <div className={styles.categoryDetail}>
+                {/* <div className={styles.categoryDetail}>
                   <span>{t('about.section7.5')}</span>
                   <ul>
                     <li>· {t('about.section7.10')}</li>
@@ -354,7 +398,7 @@ function About() {
                     <li>· {t('about.section7.13')}</li>
                     <li>· {t('about.section7.14')}</li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -366,14 +410,14 @@ function About() {
                   <span>{t('about.section7.4')}</span>
                   <h4>· {t('about.section7.8')}</h4>
                 </div>
-                <div className={styles.categoryDetail}>
+                {/* <div className={styles.categoryDetail}>
                   <span>{t('about.section7.5')}</span>
                   <ul>
                     <li>· {t('about.section7.15')}</li>
                     <li>· {t('about.section7.16')}</li>
                     <li>· {t('about.section7.17')}</li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </SwiperSlide>
             <SwiperSlide>
@@ -385,7 +429,7 @@ function About() {
                   <span>{t('about.section7.4')}</span>
                   <h4>· {t('about.section7.9')}</h4>
                 </div>
-                <div className={styles.categoryDetail}>
+                {/* <div className={styles.categoryDetail}>
                   <span>{t('about.section7.5')}</span>
                   <ul>
                     <li>· {t('about.section7.18')}</li>
@@ -393,7 +437,7 @@ function About() {
                     <li>· {t('about.section7.20')}</li>
                     <li>· {t('about.section7.21')}</li>
                   </ul>
-                </div>
+                </div> */}
               </div>
             </SwiperSlide>
           </Swiper>

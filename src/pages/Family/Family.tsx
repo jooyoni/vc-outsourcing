@@ -86,13 +86,13 @@ function Family() {
                       <div style={{ height: '32px' }}></div>
                     )}
                   </div>
-                  <p className={styles.description}>
+                  {/* <p className={styles.description}>
                     {i18n.resolvedLanguage == 'ko'
                       ? family.description
                       : family.english_description}
-                  </p>
+                  </p> */}
                   <ul className={styles.companyInfoList}>
-                    <li>
+                    {/* <li>
                       {t('family.4')} :{' '}
                       {i18n.resolvedLanguage == 'ko'
                         ? family.establishment_date
@@ -101,15 +101,15 @@ function Family() {
                         : family.establishment_date.substring(5, 7) +
                           '.' +
                           family.establishment_date.substring(0, 4)}
-                    </li>
-                    {family.major_bussiness && (
+                    </li> */}
+                    {/* {family.major_bussiness && (
                       <li>
                         {t('family.5')} :{' '}
                         {i18n.resolvedLanguage == 'ko'
                           ? family.major_bussiness
                           : family.english_major_bussiness}
                       </li>
-                    )}
+                    )} */}
                     {/* {family.capital && (
                       <li>
                         {t('family.6')} : {family.capital}

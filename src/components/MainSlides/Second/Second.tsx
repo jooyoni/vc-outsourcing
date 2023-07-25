@@ -45,7 +45,7 @@ function Second() {
           <div className={styles.contentWrap}>
             <div>
               <h3>Our Business</h3>
-              <Swiper
+              {/* <Swiper
                 effect="fade"
                 slidesPerView={'auto'}
                 loop={true}
@@ -71,8 +71,8 @@ function Second() {
                     </div>
                   </SwiperSlide>
                 ))}
-              </Swiper>
-              <div
+              </Swiper> */}
+              {/* <div
                 className={styles.slideNextBtn}
                 onClick={() => {
                   swiperPC?.slideNext();
@@ -80,38 +80,24 @@ function Second() {
                 }}
               >
                 <img src={arrow} />
-              </div>
+              </div> */}
             </div>
             <div className={styles.sliderWrap}>
-              <Swiper
-                onSwiper={setSwiperPC}
-                slidesPerView={'auto'}
-                loop={true}
-                speed={800}
-                onSlideChangeTransitionEnd={(swiper) => {
-                  setPcActiveIdx(swiper.activeIndex);
-                }}
-                // loopAdditionalSlides={1}
-                // slideToClickedSlide={true}
-                // loopedSlides={21}
-                spaceBetween={32}
-              >
-                {(
-                  t('second.list', { returnObjects: true }) as {
-                    title: string;
-                  }[]
-                ).map((val, idx) => (
-                  <SwiperSlide
-                    key={idx}
-                    className={`${styles.slideWrap} ${'slide' + idx}`}
-                  >
-                    <div
-                      className={styles.slideTitle}
-                      dangerouslySetInnerHTML={{ __html: val.title }}
-                    ></div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
+              {(
+                t('second.list', { returnObjects: true }) as {
+                  title: string;
+                }[]
+              ).map((val, idx) => (
+                <div
+                  key={idx}
+                  className={`${styles.slideWrap} ${'slide' + idx}`}
+                >
+                  <div
+                    className={styles.slideTitle}
+                    dangerouslySetInnerHTML={{ __html: val.title }}
+                  ></div>
+                </div>
+              ))}
             </div>
           </div>
           <div className={styles.right}></div>
@@ -156,7 +142,7 @@ function Second() {
                 <img src={arrow} />
               </div>
             </div>
-            <Swiper
+            {/* <Swiper
               effect="fade"
               slidesPerView={1}
               loop
@@ -180,7 +166,7 @@ function Second() {
                   </div>
                 </SwiperSlide>
               ))}
-            </Swiper>
+            </Swiper> */}
           </div>
         </div>
         <div className={styles.intersecter} ref={intersectRef}></div>
