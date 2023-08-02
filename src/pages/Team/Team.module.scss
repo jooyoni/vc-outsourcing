@@ -215,6 +215,9 @@ section.contentArea {
         }
       }
     }
+    @media screen and (max-width: 330px) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
   }
 }
 
