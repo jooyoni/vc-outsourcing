@@ -117,8 +117,8 @@
       }
       .chairmanInfo {
         display: flex;
-        align-items: flex-start;
-        flex-direction: column;
+        align-items: center;
+        // flex-direction: column;
         padding: 10px 0;
         span:first-child {
           font-weight: 300;
@@ -611,11 +611,11 @@
 
       & > li {
         flex-basis: 25%;
-        padding-right: 30px;
+        padding-right: 42px;
         box-sizing: border-box;
         & > h3 {
           font-weight: 400;
-          font-size: 64px;
+          font-size: 40px;
           line-height: 77px;
           color: #0b174b;
           padding: 10px;
@@ -776,8 +776,8 @@
     }
     p {
       font-weight: 300;
-      font-size: 32px;
-      line-height: 46px;
+      font-size: 26px;
+      line-height: 38px;
       text-align: center;
       color: #090b0f;
       padding: 44px 10%;

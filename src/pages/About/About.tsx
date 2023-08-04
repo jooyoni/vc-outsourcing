@@ -122,16 +122,10 @@ function About() {
                   <span>{t('about.section4.4')}</span>
                 </div>
               </li>
-              {/* <li>
-                <span className={styles.title}>{t('about.section4.5')}</span>
-                <div>
-                  <span>{t('about.section4.6')}</span>
-                </div>
-              </li> */}
               <li>
-                <span className={styles.title}>{t('about.section4.7')}</span>
+                <span className={styles.title}>{t('about.section4.11')}</span>
                 <div>
-                  <span>{t('about.section4.8')}</span>
+                  <span>{t('about.section4.12')}</span>
                 </div>
               </li>
               <li>
@@ -141,9 +135,9 @@ function About() {
                 </div>
               </li>
               <li>
-                <span className={styles.title}>{t('about.section4.11')}</span>
+                <span className={styles.title}>{t('about.section4.7')}</span>
                 <div>
-                  <span>{t('about.section4.12')}</span>
+                  <span>{t('about.section4.8')}</span>
                 </div>
               </li>
               <li>
