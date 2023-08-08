@@ -49,7 +49,14 @@ function Team() {
         >
           <h3>TEAM</h3>
           {/* <h2>{t('about.section1.1')}</h2> */}
-          <p>{t('team.1')}</p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html:
+                window.innerWidth > 450
+                  ? t('team.1')
+                  : t('team.1').replace(/<br \/>/gi, ''),
+            }}
+          ></p>
         </div>
         <div ref={ref1} className={styles.observer}></div>
       </section>

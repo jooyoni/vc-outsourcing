@@ -100,7 +100,7 @@ function Board() {
                         currentBoard?.created_at.substring(0, 10).split('-')[0]
                       : currentBoard?.created_at
                           .substring(0, 10)
-                          .replaceAll('-', '.')}
+                          .replace(/-/gi, '.')}
                   </span>
                   {/* <span>hit : 861</span> */}
                 </div>

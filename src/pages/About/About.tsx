@@ -214,7 +214,6 @@ function About() {
                           )
                           .map((history) => (
                             <li key={history.title}>
-                              ·{' '}
                               {i18n.resolvedLanguage == 'ko'
                                 ? history.title
                                 : history.english_title}

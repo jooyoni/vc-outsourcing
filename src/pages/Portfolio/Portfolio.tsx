@@ -209,7 +209,7 @@ function Portfolio() {
                               fund.start_at.substring(0, 10).split('-')[0]
                             : fund.start_at
                                 .substring(0, 10)
-                                .replaceAll('-', '.')}
+                                .replace(/-/gi, '.')}
                         </li>
                         {/* <li>
                           {t(`portfolio.2`)} :{' '}
@@ -219,7 +219,7 @@ function Portfolio() {
                               fund.end_at.substring(0, 10).split('-')[2] +
                               '.' +
                               fund.end_at.substring(0, 10).split('-')[0]
-                            : fund.end_at.substring(0, 10).replaceAll('-', '.')}
+                            : fund.end_at.substring(0, 10).replace(/-/gi, '.')}
                         </li> */}
                         <li>
                           {t(`portfolio.3`)} :{' '}

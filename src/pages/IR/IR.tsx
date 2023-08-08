@@ -198,7 +198,7 @@ function IR() {
                                 data.created_at.substring(0, 10).split('-')[0]
                               : data.created_at
                                   .substring(0, 10)
-                                  .replaceAll('-', '.')}
+                                  .replace(/-/gi, '.')}
                           </span>
                           {/* <span>hit : {data.}</span> */}
                         </div>
