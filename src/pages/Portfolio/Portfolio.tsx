@@ -47,6 +47,7 @@ function Portfolio() {
   const [pagination, setPagination] = useState(1);
   const [paginationList, setPaginationList] = useState<number[]>([]);
   //페이지네이션 관련 상태
+  const [isError, setIsError] = useState(false);
   useEffect(() => {
     let tab = new URL(document.URL).searchParams.get('tab');
     if (!tab || tab == '0') {
@@ -72,6 +73,7 @@ function Portfolio() {
   const [fundData, setFundData] = useState<IFundDataType[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
+    setIsError(false);
     setIsLoading(true);
     setInvestData([]);
     setFundData([]);
@@ -80,32 +82,41 @@ function Portfolio() {
     setPagination(page);
     if (!tab || tab == '0') tab = 'fund';
     else if (tab == '1') tab = 'portfolio';
-    axiosClient.get(`/api/${tab}?page=${page}&perpage=12`).then((res) => {
-      let page = Number(new URL(document.URL).searchParams.get('page') || 1);
-      let paginationList: number[] = [];
-      if (tab == 'portfolio') {
-        setFundData([]);
-        setInvestData(res.data.data);
-      } else if (tab == 'fund') {
-        setInvestData([]);
-        setFundData(res.data.data);
-      }
-      let last =
-        Math.floor(res.data.total / 12) + (res.data.total % 12 > 0 ? 1 : 0);
-      if (last <= 5 || page < 3) {
-        //5페이지 미만시 1~마지막 페이지까지
-        for (let i = 1; i <= (5 < last ? 5 : last); i++) paginationList.push(i);
-      } else {
-        if (last - 2 > page)
-          paginationList = [page - 2, page - 1, page, page + 1, page + 2];
-        else paginationList = [last - 4, last - 3, last - 2, last - 1, last];
-      }
-      setPagination(
-        Number(new URL(document.URL).searchParams.get('page') || 1),
-      );
-      setPaginationList(paginationList);
+    (async () => {
+      await axiosClient
+        .get(`/api/${tab}?page=${page}&perpage=12`)
+        .then((res) => {
+          let page = Number(
+            new URL(document.URL).searchParams.get('page') || 1,
+          );
+          let paginationList: number[] = [];
+          if (tab == 'portfolio') {
+            setFundData([]);
+            setInvestData(res.data.data);
+          } else if (tab == 'fund') {
+            setInvestData([]);
+            setFundData(res.data.data);
+          }
+          let last =
+            Math.floor(res.data.total / 12) + (res.data.total % 12 > 0 ? 1 : 0);
+          if (last <= 5 || page < 3) {
+            //5페이지 미만시 1~마지막 페이지까지
+            for (let i = 1; i <= (5 < last ? 5 : last); i++)
+              paginationList.push(i);
+          } else {
+            if (last - 2 > page)
+              paginationList = [page - 2, page - 1, page, page + 1, page + 2];
+            else
+              paginationList = [last - 4, last - 3, last - 2, last - 1, last];
+          }
+          setPagination(
+            Number(new URL(document.URL).searchParams.get('page') || 1),
+          );
+          setPaginationList(paginationList);
+        })
+        .catch((err) => setIsError(err));
       setIsLoading(false);
-    });
+    })();
   }, [location]);
   const [ref1, inView1] = useInView();
   const [ref2, inView2] = useInView();
@@ -177,41 +188,47 @@ function Portfolio() {
       </section>
       <section className={styles.content}>
         <div className={styles.contentArea}>
-          {title == '펀드운용' && (
-            <ul
-              className={`${styles.fund} ${styles.animationList} ${
-                inView2 ? styles.isShowing : ''
-              }`}
-            >
-              {fundData.length || !isLoading ? (
-                <>
-                  {fundData.map((fund, idx) => (
-                    <li
-                      key={fund.id}
-                      style={{ transitionDelay: `${idx * 0.1}s` }}
-                    >
-                      <h2
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            i18n.resolvedLanguage == 'ko'
-                              ? fund.title
-                              : fund.english_title,
-                        }}
-                      ></h2>
-                      <ul className={styles.detail}>
-                        <li>
-                          {t(`portfolio.1`)} :{' '}
-                          {i18n.language == 'en'
-                            ? fund.start_at.substring(0, 10).split('-')[1] +
-                              '.' +
-                              fund.start_at.substring(0, 10).split('-')[2] +
-                              '.' +
-                              fund.start_at.substring(0, 10).split('-')[0]
-                            : fund.start_at
-                                .substring(0, 10)
-                                .replace(/-/gi, '.')}
-                        </li>
-                        {/* <li>
+          {isLoading ? (
+            <Spinner />
+          ) : isError || (!fundData.length && !investData.length) ? (
+            <div className={styles.noResult}>등록된 게시글이 없습니다.</div>
+          ) : (
+            <>
+              {title == '펀드운용' && (
+                <ul
+                  className={`${styles.fund} ${styles.animationList} ${
+                    inView2 ? styles.isShowing : ''
+                  }`}
+                >
+                  {fundData.length || !isLoading ? (
+                    <>
+                      {fundData.map((fund, idx) => (
+                        <li
+                          key={fund.id}
+                          style={{ transitionDelay: `${idx * 0.1}s` }}
+                        >
+                          <h2
+                            dangerouslySetInnerHTML={{
+                              __html:
+                                i18n.resolvedLanguage == 'ko'
+                                  ? fund.title
+                                  : fund.english_title,
+                            }}
+                          ></h2>
+                          <ul className={styles.detail}>
+                            <li>
+                              {t(`portfolio.1`)} :{' '}
+                              {i18n.language == 'en'
+                                ? fund.start_at.substring(0, 10).split('-')[1] +
+                                  '.' +
+                                  fund.start_at.substring(0, 10).split('-')[2] +
+                                  '.' +
+                                  fund.start_at.substring(0, 10).split('-')[0]
+                                : fund.start_at
+                                    .substring(0, 10)
+                                    .replace(/-/gi, '.')}
+                            </li>
+                            {/* <li>
                           {t(`portfolio.2`)} :{' '}
                           {i18n.language == 'en'
                             ? fund.end_at.substring(0, 10).split('-')[1] +
@@ -221,84 +238,88 @@ function Portfolio() {
                               fund.end_at.substring(0, 10).split('-')[0]
                             : fund.end_at.substring(0, 10).replace(/-/gi, '.')}
                         </li> */}
-                        <li>
-                          {t(`portfolio.3`)} :{' '}
-                          {i18n.language == 'ko'
-                            ? fund.fund_size
-                            : fund.fund_size / 10}
-                          {t(`portfolio.4`)}
+                            <li>
+                              {t(`portfolio.3`)} :{' '}
+                              {i18n.language == 'ko'
+                                ? fund.fund_size
+                                : fund.fund_size / 10}
+                              {t(`portfolio.4`)}
+                            </li>
+                          </ul>
                         </li>
-                      </ul>
-                    </li>
-                  ))}
-                  <div ref={ref2} className={styles.observer}></div>
-                </>
-              ) : (
-                <Spinner />
+                      ))}
+                      <div ref={ref2} className={styles.observer}></div>
+                    </>
+                  ) : (
+                    <Spinner />
+                  )}
+                </ul>
               )}
-            </ul>
-          )}
-          {title == '투자현황' && (
-            <ul
-              className={`${styles.invest} ${styles.animationList} ${
-                inView2 ? styles.isShowing : ''
-              }`}
-            >
-              {investData.length || !isLoading ? (
-                <>
-                  {investData.map((invest, idx) => (
-                    <li
-                      key={invest.id}
-                      style={{ transitionDelay: `${idx * 0.1}s` }}
-                      onClick={() => {
-                        if (invest.url) window.open(invest.url, '_blank');
-                      }}
-                    >
-                      <img
-                        src={
-                          `${process.env.REACT_APP_API_URL}` +
-                          '/storage/' +
-                          invest.logo_image
-                        }
-                        alt="로고"
-                      />
-                      <div className={styles.detailBox}>
-                        <h2>
-                          {i18n.language == 'en'
-                            ? invest.english_name
-                            : invest.name}
-                        </h2>
-                        <span>{invest.url}</span>
-                      </div>
-                    </li>
-                  ))}
-                  <div ref={ref2} className={styles.observer}></div>
-                </>
-              ) : (
-                <Spinner />
+              {title == '투자현황' && (
+                <ul
+                  className={`${styles.invest} ${styles.animationList} ${
+                    inView2 ? styles.isShowing : ''
+                  }`}
+                >
+                  {investData.length || !isLoading ? (
+                    <>
+                      {investData.map((invest, idx) => (
+                        <li
+                          key={invest.id}
+                          style={{ transitionDelay: `${idx * 0.1}s` }}
+                          onClick={() => {
+                            if (invest.url) window.open(invest.url, '_blank');
+                          }}
+                        >
+                          <img
+                            src={
+                              `${process.env.REACT_APP_API_URL}` +
+                              '/storage/' +
+                              invest.logo_image
+                            }
+                            alt="로고"
+                          />
+                          <div className={styles.detailBox}>
+                            <h2>
+                              {i18n.language == 'en'
+                                ? invest.english_name
+                                : invest.name}
+                            </h2>
+                            <span>{invest.url}</span>
+                          </div>
+                        </li>
+                      ))}
+                      <div ref={ref2} className={styles.observer}></div>
+                    </>
+                  ) : (
+                    <Spinner />
+                  )}
+                </ul>
               )}
-            </ul>
+            </>
           )}
         </div>
-        <ul className={styles.paginationList}>
-          {paginationList.map((number, idx, arr) => (
-            <li
-              key={number}
-              className={`${number == pagination ? styles.hit : ''} ${
-                arr.length == 1 ? styles.onePage : ''
-              }`}
-              onClick={() =>
-                navigate(
-                  `/portfolio?tab=${
-                    new URL(document.URL).searchParams.get('tab') || 0
-                  }&page=${number}`,
-                )
-              }
-            >
-              <span>{number}</span>
-            </li>
-          ))}
-        </ul>
+        {!isError && (
+          <ul className={styles.paginationList}>
+            {paginationList.map((number, idx, arr) => (
+              <li
+                key={number}
+                className={`${number == pagination ? styles.hit : ''} ${
+                  arr.length == 1 ? styles.onePage : ''
+                }`}
+                onClick={() =>
+                  navigate(
+                    `/portfolio?tab=${
+                      new URL(document.URL).searchParams.get('tab') || 0
+                    }&page=${number}`,
+                  )
+                }
+              >
+                <span>{number}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </section>
       <Footer />
     </div>

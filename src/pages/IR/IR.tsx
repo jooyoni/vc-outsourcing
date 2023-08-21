@@ -28,6 +28,7 @@ function IR() {
   const [title, setTitle] = useState('');
   const [subPageOpen, setSubPageOpen] = useState(false);
   const [tabOpen, setTabOpen] = useState(false);
+  const [isError, setIsERror] = useState(false);
   //페이지네이션 관련 상태
   const [pagination, setPagination] = useState(1);
   const [paginationList, setPaginationList] = useState<number[]>([]);
@@ -59,6 +60,7 @@ function IR() {
     setBoardData([]);
   }, [location]);
   useEffect(() => {
+    setIsERror(false);
     setIsLoading(true);
     let tab = new URL(document.URL).searchParams.get('tab');
     let page = Number(new URL(document.URL).searchParams.get('page') || 1);
@@ -67,33 +69,41 @@ function IR() {
     setPagination(page);
     if (!tab || tab == '0') tab = 'post';
     else if (tab == '1') tab = 'advertise';
-    axiosClient
-      .get(
-        `/api/${tab}?page=${page}&perpage=${limit}&search=${search}&keyword=${keyword}`,
-      )
-      .then((res) => {
-        let page = Number(new URL(document.URL).searchParams.get('page') || 1);
-        let paginationList: number[] = [];
-        let last =
-          Math.floor(res.data.total / limit) +
-          (res.data.total % limit > 0 ? 1 : 0);
-        if (last <= 5 || page < 3) {
-          //5페이지 미만시 1~마지막 페이지까지
-          for (let i = 1; i <= (5 < last ? 5 : last); i++)
-            paginationList.push(i);
-        } else {
-          if (last - 2 > page)
-            paginationList = [page - 2, page - 1, page, page + 1, page + 2];
-          else paginationList = [last - 4, last - 3, last - 2, last - 1, last];
-        }
-        setBoardCount(res.data.total);
-        setBoardData(res.data.data);
-        setPagination(
-          Number(new URL(document.URL).searchParams.get('page') || 1),
-        );
-        setPaginationList(paginationList);
-        setIsLoading(false);
-      });
+    (async () => {
+      await axiosClient
+        .get(
+          `/api/${tab}?page=${page}&perpage=${limit}&search=${search}&keyword=${keyword}`,
+        )
+        .then((res) => {
+          let page = Number(
+            new URL(document.URL).searchParams.get('page') || 1,
+          );
+          let paginationList: number[] = [];
+          let last =
+            Math.floor(res.data.total / limit) +
+            (res.data.total % limit > 0 ? 1 : 0);
+          if (last <= 5 || page < 3) {
+            //5페이지 미만시 1~마지막 페이지까지
+            for (let i = 1; i <= (5 < last ? 5 : last); i++)
+              paginationList.push(i);
+          } else {
+            if (last - 2 > page)
+              paginationList = [page - 2, page - 1, page, page + 1, page + 2];
+            else
+              paginationList = [last - 4, last - 3, last - 2, last - 1, last];
+          }
+          setBoardCount(res.data.total);
+          setBoardData(res.data.data);
+          setPagination(
+            Number(new URL(document.URL).searchParams.get('page') || 1),
+          );
+          setPaginationList(paginationList);
+        })
+        .catch((err) => {
+          setIsERror(true);
+        });
+      setIsLoading(false);
+    })();
   }, [location]);
   const [ref1, inView1] = useInView();
 
@@ -162,7 +172,11 @@ function IR() {
               inView1 ? styles.isShowing : ''
             }`}
           >
-            {boardData.length || !isLoading ? (
+            {isLoading ? (
+              <Spinner />
+            ) : isError || !boardData.length ? (
+              <div className={styles.noPost}>등록된 게시글이 없습니다.</div>
+            ) : (
               <>
                 {boardData //일반글
                   .map((data, idx) => (
@@ -207,23 +221,23 @@ function IR() {
                   ))}
                 <div ref={ref1} className={styles.observer}></div>
               </>
-            ) : (
-              <Spinner />
             )}
           </ul>
-          <ul className={styles.paginationList}>
-            {paginationList.map((number, idx, arr) => (
-              <li
-                key={number}
-                className={`${number == pagination ? styles.hit : ''} ${
-                  arr.length == 1 ? styles.onePage : ''
-                }`}
-                onClick={() => handlePagination(number)}
-              >
-                <span>{number}</span>
-              </li>
-            ))}
-          </ul>
+          {!isError && (
+            <ul className={styles.paginationList}>
+              {paginationList.map((number, idx, arr) => (
+                <li
+                  key={number}
+                  className={`${number == pagination ? styles.hit : ''} ${
+                    arr.length == 1 ? styles.onePage : ''
+                  }`}
+                  onClick={() => handlePagination(number)}
+                >
+                  <span>{number}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </section>
       <Footer />

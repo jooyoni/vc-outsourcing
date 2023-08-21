@@ -505,6 +505,15 @@ section.content {
     }
   }
 }
+.noPost {
+  text-align: center;
+  min-height: 30vh;
+  max-height: 360px;
+  color: #797979;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .observer {
   position: absolute;
   top: 20%;

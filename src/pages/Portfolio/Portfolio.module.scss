@@ -561,6 +561,15 @@ section.content {
     }
   }
 }
+.noResult {
+  text-align: center;
+  color: #797979;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 30vh;
+  max-height: 360px;
+}
 .observer {
   position: absolute;
   top: 20%;
