@@ -136,6 +136,9 @@ section.contentWrap {
     gap: 32px;
     padding: 122px 0 207px;
     margin: 0 auto;
+    min-height: 60vh;
+    max-height: 300px;
+    box-sizing: border-box;
     & > ul {
       width: 100%;
       display: grid;
