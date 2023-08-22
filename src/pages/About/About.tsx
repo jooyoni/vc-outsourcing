@@ -9,9 +9,9 @@ import 'swiper/css';
 import SwiperCore from 'swiper';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
-import investmentField01 from '../../assets/about/investmentField01.png';
-import investmentField02 from '../../assets/about/investmentField02.png';
-import investmentField03 from '../../assets/about/investmentField03.png';
+import investmentField01 from '../../assets/about/investmentField01.jpg';
+import investmentField02 from '../../assets/about/investmentField02.jpg';
+import investmentField03 from '../../assets/about/investmentField03.jpg';
 import map from '../../assets/about/map.png';
 import pin from '../../assets/about/pin.png';
 interface ICompanyHistoryType {

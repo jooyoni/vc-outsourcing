@@ -4,7 +4,7 @@ import 'swiper/css';
 import { FreeMode, Autoplay } from 'swiper';
 import SwiperCore from 'swiper';
 import styles from './Fourth.module.scss';
-import irBg from '../../../assets/background/irBg.png';
+import irBg from '../../../assets/background/irBg.jpg';
 import { useEffect, useRef, useState } from 'react';
 import arrow from '../../../assets/arrowWhiteThin.png';
 import { useTranslation } from 'react-i18next';
